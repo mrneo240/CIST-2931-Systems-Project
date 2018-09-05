@@ -1,0 +1,171 @@
+/******************************************************
+     * Boobin Choi
+     * dentist.css
+     * Mar 14, 2018
+******************************************************/
+
+body {
+    background-color: lemonchiffon;
+    font-family: Verdana, Arial, sans-serif;
+    color: #7a8085;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+#wrapper {
+    background-color: #FFFFFF;
+    border: 2px solid orange;
+    margin: auto;
+    min-width: 900px;
+    max-width: 1280px;
+    width: 90%;
+}
+header {
+    height: 100px;
+    display: table;
+    width: 100%;
+}
+header div {
+    display: table-cell;
+    vertical-align: middle;
+}
+#header-name{
+    text-align: center;
+    width: 40%;
+    padding-right: 0;
+    font-size: 1.5em;
+}
+#header-logo {
+    text-align: left;
+    width: 5%;
+    padding-left: 0;
+}
+#header-middle {
+    text-align: right;
+    padding-right: 0;
+    width: 30%;
+}
+#header-right {
+    padding-right: 20px;
+    text-align: right;
+    width: 20%;
+    font-size: 1.2em;
+}
+header h2 {
+    padding-top: 30px;
+    color: blue;
+    margin: 0;
+}
+header p {
+    text-transform: uppercase;
+    padding-bottom: 20px;
+    margin: 0;
+}
+h4 {
+    background-color: orange;
+    
+    padding-top: 15px;
+    padding-bottom: 15px;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    font-size: 23px;
+}
+#smiles {
+    background-image: url(http://www.abcdds.com/assets/img/generation-family.jpg);
+    background-size: 100% 100%;
+    height: 500px;
+    margin-top: 20px;
+}
+#schedule {
+    padding: 50px;
+}
+.container {
+    text-align: center;
+}
+.loginPics {
+    width: 50%;
+    border-radius: 50%;
+}
+.row {   
+    display: flex;   
+}
+.column {
+    flex: 40%;
+    padding: 30px;
+    border: 2px solid orange;
+    margin: 20px;
+}
+table {
+    margin: auto;
+    width: 90%;   
+}
+caption {
+    font-size: 30px;
+    font-weight: bold;
+}
+td, th {
+    border: 1px solid orange;
+    text-align: left;
+    padding: 8px;
+}
+label {
+    font-weight: bold;
+}
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+input[type=submit], input[type=reset], input[type=button]{
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    background-color: orange;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    cursor: pointer;
+}
+input:hover {
+    background-color: white;
+    color: orange;
+    border: 2px solid orange;
+}
+.firstbutton {
+    font-size: 30px;
+    margin-top: 20px;
+    margin-bottom: 60px;
+    margin-left: 8%;
+    margin-right: 8%;
+    width: 84%;
+}
+.secondbutton {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+.buttonalone {
+    float: right;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    width: 200px;
+}
+.clearfix {
+    overflow: auto;
+}
+.emptyspot {
+    margin-bottom: 50px;
+}
+#displaybuttons {
+    display: inline-block;
+    width: 100%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.displaybutton {
+    margin-right: 70px;
+    float: right;
+}
