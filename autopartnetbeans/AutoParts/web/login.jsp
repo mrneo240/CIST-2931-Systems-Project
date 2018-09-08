@@ -28,5 +28,9 @@
 </tr>
 </table>
 </form>
+    <br><hr>
+    <form action="usersServlet" method="post">
+<input type="submit" value="ListAllUsers">
+</form>
 </body>
 </html>
