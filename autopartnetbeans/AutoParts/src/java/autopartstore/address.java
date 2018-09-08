@@ -68,6 +68,10 @@ public class address {
         
     }
     
+    public String toString(){
+        return String.format("%s %s, %s %s", getstreet(), getcity(), getstate(), getzip());
+    }
+    
     public static void main(String[] args){
         address a1 = new address("167 timber st", "atlanta", "ga", "11342");
         a1.display();   
