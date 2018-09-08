@@ -5,11 +5,12 @@ package autopartstore;
 Auto Parts Store 
  */
 public class Customer {
-    int cid;
-    String custName;
-    String address;
-    String email;
-    String creditC;
+    
+    private int cid;
+    private String custName;
+    private String address;
+    private String email;
+    private String creditC;
       
     //Constructors
     public Customer(){
