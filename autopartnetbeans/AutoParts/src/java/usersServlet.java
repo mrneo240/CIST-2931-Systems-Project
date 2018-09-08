@@ -41,29 +41,11 @@ public class usersServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
 
-        CustomerDAOImpl customerDAO = new CustomerDAOImpl();
+        CustomerDAOImpl customerDAO = new CustomerDAOImpl(ConnectionManager.init(this.getServletContext()));
         // Database operations using JDBC
-        try {
-            //ensure we have a connection to the DB
-            Connection temp = ConnectionManager.init(this.getServletContext());
-            
-            request.setAttribute("customers", customerDAO.getAllCustomers());
-                request.getRequestDispatcher("/listcustomers.jsp").forward(
-                        request, response);
 
-        } catch (Exception exception) {
-            exception.printStackTrace();
-        } finally {
-            try {
-                result.close();
-                querySmt.close();
-            } catch (NullPointerException e) {
-                {
-                }
-            } catch (SQLException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-        }
-
+        //ensure we have a connection to the DB
+        request.setAttribute("customers", customerDAO.getAllCustomers());
+        request.getRequestDispatcher("/listcustomers.jsp").forward(request, response);
     }
+}

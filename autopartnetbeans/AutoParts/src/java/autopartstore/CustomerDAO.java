@@ -17,7 +17,7 @@ import java.util.Set;
 public interface CustomerDAO {
     Customer getCustomer();
     Set<Customer> getAllCustomers();
-    CreditCard getCustomerByID();
+    Customer getCustomerByID(int id);
     boolean insertCustomer();
     boolean updateCustomer();
     boolean deleteCustomer();

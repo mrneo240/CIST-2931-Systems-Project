@@ -17,6 +17,20 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>All Customers:</h1>
+        <% Set<Customer> customers = (Set<Customer>) request.getAttribute("customers");
+
+            for (Customer customer : customers) {
+                out.print("Id: " + customer.getcid());
+                out.print("<br/>");
+                out.print("Name: " + customer.getcustName());
+                out.print("<br/>");
+                out.print("email: " + customer.getemail());
+
+                out.print("<br/>");
+                out.print("<br/>");
+            }
+
+        %>
     </body>
 </html>

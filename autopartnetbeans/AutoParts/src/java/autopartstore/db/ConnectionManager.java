@@ -20,24 +20,25 @@ import javax.servlet.ServletContext;
  * @author Hayden Kowalchuk
  */
 public class ConnectionManager {
-    
+
     private static ServletContext context = null;
-    public ConnectionManager(ServletContext con){
-            context = con;
+
+    public ConnectionManager(ServletContext con) {
+        context = con;
     }
-    
-    public static Connection init(ServletContext con) throws SQLException{
+
+    public static Connection init(ServletContext con) {
         ConnectionManager temp = new ConnectionManager(con);
         return ConnectionManager.getConnection();
     }
-    
+
     private static Connection connection = null;
     //Create our sql specific vars but leave them null
     private static boolean databaseConnected = false;
-    
+
     private static String lastMessage;
-    
-    public static Connection getConnection() throws SQLException {
+
+    public static Connection getConnection() {
         lastMessage = "";
         if (!databaseConnected) {
             //Check if ucanaccess if actually available and 
@@ -54,11 +55,14 @@ public class ConnectionManager {
             //ServletContext context = this.getServletContext();
             String path = context.getRealPath("/");
             String dbURL = "jdbc:ucanaccess://" + path + "/AutoPart1.mdb";
-
-            //Open our database file using ucanaccess
-            connection = DriverManager.getConnection(dbURL);
-            //Create a new Statement that we can use to retrieve data
-            databaseConnected = true;
+            try {
+                //Open our database file using ucanaccess
+                connection = DriverManager.getConnection(dbURL);
+                //Create a new Statement that we can use to retrieve data
+                databaseConnected = true;
+            } catch (SQLException ex) {
+                throw new RuntimeException("Error connecting to the database", ex);
+            }
         }
         return connection;
     }
@@ -85,5 +89,4 @@ public class ConnectionManager {
         return connection.createStatement();
     }
 
-    
 }
