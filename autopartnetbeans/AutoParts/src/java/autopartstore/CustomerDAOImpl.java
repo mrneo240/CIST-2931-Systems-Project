@@ -21,10 +21,10 @@ import java.util.Set;
  * @author Hayden Kowalchuk
  */
 public class CustomerDAOImpl implements CustomerDAO {
-    
+
     private Connection connection;
-    
-    public CustomerDAOImpl(Connection connect){
+
+    public CustomerDAOImpl(Connection connect) {
         connection = connect;
     }
 
@@ -41,14 +41,9 @@ public class CustomerDAOImpl implements CustomerDAO {
     }
 
     @Override
-    public Customer getCustomer() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
     public Set<Customer> getAllCustomers() {
+        connection = ConnectionManager.getConnection();
         try {
-            Connection connection = ConnectionManager.getConnection();
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM customers");
             Set<Customer> customers = new HashSet();
@@ -56,6 +51,8 @@ public class CustomerDAOImpl implements CustomerDAO {
                 Customer customer = extractCustomerFromResultSet(rs);
                 customers.add(customer);
             }
+            rs.close();
+            stmt.close();
             return customers;
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -65,10 +62,24 @@ public class CustomerDAOImpl implements CustomerDAO {
 
     @Override
     public Customer getCustomerByID(int id) {
-        Connection connection = ConnectionManager.getConnection();
+        connection = ConnectionManager.getConnection();
         try {
             Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM customer WHERE id=" + id);
+            ResultSet rs = stmt.executeQuery("SELECT * FROM customers WHERE id=" + id);
+            if (rs.next()) {
+                return extractCustomerFromResultSet(rs);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    }
+
+    public Customer getCustomerGuest() {
+        connection = ConnectionManager.getConnection();
+        try {
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM customers WHERE username='guest';");
             if (rs.next()) {
                 return extractCustomerFromResultSet(rs);
             }
@@ -79,18 +90,51 @@ public class CustomerDAOImpl implements CustomerDAO {
     }
 
     @Override
-    public boolean insertCustomer() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean insertCustomer(Customer customer) {
+        int numUpdated = 0;
+        connection = ConnectionManager.getConnection();
+        try {
+            Statement stmt = connection.createStatement();
+            numUpdated = stmt.executeUpdate("INSERT INTO customers (ID, name, username, password, email, address, creditcard) "
+                    + "VALUES ('" + customer.getcid() + "','" + customer.getcustName() + "','" + customer.getusername()
+                    + "','" + customer.getpassword() + "','" + customer.getemail() + "','" + customer.getaddress()
+                    + "','" + customer.getcreditC() + "')\n");
+            stmt.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return numUpdated > 0;
     }
 
     @Override
-    public boolean updateCustomer() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean updateCustomer(Customer customer) {
+        int numUpdated = 0;
+        connection = ConnectionManager.getConnection();
+        try {
+            Statement stmt = connection.createStatement();
+            numUpdated = stmt.executeUpdate("UPDATE customers SET name = '" + customer.getcustName() + "',"
+                    + " username = '" + customer.getusername() + "', password = '" + customer.getpassword()
+                    + "', address = '" + customer.getaddress() + "', email = '" + customer.getemail() + "',"
+                    + " creditcard = '" + customer.getcreditC() + "'  WHERE id=" + customer.getcid());
+            stmt.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return numUpdated > 0;
     }
 
     @Override
-    public boolean deleteCustomer() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean deleteCustomer(Customer customer) {
+        int numUpdated = 0;
+        connection = ConnectionManager.getConnection();
+        try {
+            Statement stmt = connection.createStatement();
+            numUpdated = stmt.executeUpdate("DELETE FROM customers WHERE id=" + customer.getcid());
+            stmt.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return numUpdated > 0;
     }
 
 }
