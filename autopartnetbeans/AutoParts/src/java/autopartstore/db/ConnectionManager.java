@@ -10,7 +10,6 @@ package autopartstore.db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.servlet.ServletContext;
@@ -33,13 +32,9 @@ public class ConnectionManager {
     }
 
     private static Connection connection = null;
-    //Create our sql specific vars but leave them null
     private static boolean databaseConnected = false;
 
-    private static String lastMessage;
-
     public static Connection getConnection() {
-        lastMessage = "";
         if (!databaseConnected) {
             //Check if ucanaccess if actually available and 
             //error out before we even try to use it
@@ -51,8 +46,6 @@ public class ConnectionManager {
             }
 
             //SQL Data
-            //Setup basic variables that will be used
-            //ServletContext context = this.getServletContext();
             String path = context.getRealPath("/");
             String dbURL = "jdbc:ucanaccess://" + path + "/AutoPart1.mdb";
             try {
@@ -72,10 +65,6 @@ public class ConnectionManager {
         //Enclose within a try/catch because closing might cause an exception
         try {
             //Safely close everything SQL related because we are done
-            /*if (results != null) {
-                results.close();
-            }*/
-            //getQuery().close();
             connection.close();
         } catch (SQLException e) {
             System.out.println(e);
@@ -84,6 +73,7 @@ public class ConnectionManager {
 
     /**
      * @return the query
+     * @throws java.sql.SQLException
      */
     public static Statement getQuery() throws SQLException {
         return connection.createStatement();

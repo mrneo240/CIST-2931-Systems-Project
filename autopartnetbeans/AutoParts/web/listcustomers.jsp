@@ -18,9 +18,23 @@
     </head>
     <body>
         <h1>All Customers:</h1>
-        <% Set<Customer> customers = (Set<Customer>) request.getAttribute("customers");
+        <% 
+            if(request.getAttribute("id") == null){
+                Set<Customer> customers = (Set<Customer>) request.getAttribute("customers");
 
-            for (Customer customer : customers) {
+                for (Customer customer : customers) {
+                    out.print("Id: " + customer.getcid());
+                    out.print("<br/>");
+                    out.print("Name: " + customer.getcustName());
+                    out.print("<br/>");
+                    out.print("email: " + customer.getemail());
+
+                    out.print("<br/>");
+                    out.print("<br/>");
+                }
+            } else {
+                Customer customer = (Customer) request.getAttribute("customer");
+
                 out.print("Id: " + customer.getcid());
                 out.print("<br/>");
                 out.print("Name: " + customer.getcustName());
@@ -30,7 +44,6 @@
                 out.print("<br/>");
                 out.print("<br/>");
             }
-
         %>
     </body>
 </html>
