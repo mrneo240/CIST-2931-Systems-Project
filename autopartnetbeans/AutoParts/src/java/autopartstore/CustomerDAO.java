@@ -15,10 +15,9 @@ import java.util.Set;
  * @author Hayden Kowalchuk
  */
 public interface CustomerDAO {
-    Customer getCustomer();
     Set<Customer> getAllCustomers();
     Customer getCustomerByID(int id);
-    boolean insertCustomer();
-    boolean updateCustomer();
-    boolean deleteCustomer();
+    boolean insertCustomer(Customer customer);
+    boolean updateCustomer(Customer customer);
+    boolean deleteCustomer(Customer customer);
 }

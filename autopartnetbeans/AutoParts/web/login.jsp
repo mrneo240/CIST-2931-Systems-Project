@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Sample Jsp-Servlet Example</title>
+<title>Example</title>
 </head>
 <body>
 <form action="loginServlet" method="post">
@@ -30,7 +30,8 @@
 </form>
     <br><hr>
     <form action="usersServlet" method="post">
-<input type="submit" value="ListAllUsers">
+         Customer ID: <input type="text" name="cid"><br>
+<input type="submit" value="List Specific User">
 </form>
 </body>
 </html>
