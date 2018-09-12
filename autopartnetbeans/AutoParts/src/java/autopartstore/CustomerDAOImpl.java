@@ -136,5 +136,10 @@ public class CustomerDAOImpl implements CustomerDAO {
         }
         return numUpdated > 0;
     }
+    
+    public Customer returnError(){
+        Customer error = new Customer(0,"ERROR!","","","","","0");
+        return error;
+    }
 
 }

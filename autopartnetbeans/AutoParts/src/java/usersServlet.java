@@ -1,4 +1,5 @@
 
+import autopartstore.Customer;
 import autopartstore.CustomerDAOImpl;
 import autopartstore.db.ConnectionManager;
 import java.io.IOException;
@@ -35,7 +36,8 @@ public class usersServlet extends HttpServlet {
         String custID = request.getParameter("cid").trim();
         if (custID.length() > 0) {
             int id = Integer.parseInt(custID);
-            request.setAttribute("customer", customerDAO.getCustomerByID(id));
+            Customer temp = customerDAO.getCustomerByID(id);
+            request.setAttribute("customer", temp != null ? temp : customerDAO.returnError());
             request.setAttribute("id", id);
         } else {
             request.setAttribute("customers", customerDAO.getAllCustomers());
