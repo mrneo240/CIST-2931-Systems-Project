@@ -3,13 +3,9 @@
     Created on : Sep 8, 2018, 6:30:22 PM
     Author     : Hayden Kowalchuk
 --%>
-
-<%@page import="java.util.ArrayList"%>
-<%@page import="java.util.List"%>
-<%@page import="java.util.Set"%>
-<%@page import="autopartstore.Customer"%>
-
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page trimDirectiveWhitespaces="true"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,32 +14,25 @@
     </head>
     <body>
         <h1>All Customers:</h1>
-        <% 
-            if(request.getAttribute("id") == null){
-                Set<Customer> customers = (Set<Customer>) request.getAttribute("customers");
-
-                for (Customer customer : customers) {
-                    out.print("Id: " + customer.getcid());
-                    out.print("<br/>");
-                    out.print("Name: " + customer.getcustName());
-                    out.print("<br/>");
-                    out.print("email: " + customer.getemail());
-
-                    out.print("<br/>");
-                    out.print("<br/>");
-                }
-            } else {
-                Customer customer = (Customer) request.getAttribute("customer");
-
-                out.print("Id: " + customer.getcid());
-                out.print("<br/>");
-                out.print("Name: " + customer.getcustName());
-                out.print("<br/>");
-                out.print("email: " + customer.getemail());
-
-                out.print("<br/>");
-                out.print("<br/>");
-            }
-        %>
+        <c:if test = "${requestScope.id == null}">
+            <c:forEach items="${customers}" var="customer">
+                <p>
+                    <c:out value="Name: ${customer.getcustName()}" /><br>
+                    <c:out value="ID: ${customer.getcid()}" /><br>
+                    <c:out value="Email: ${customer.getemail()}" /><br>
+                    <c:out value="Login: ${customer.getusername()}:${customer.getpassword()}" /><br>
+                    <br>
+                </p>
+            </c:forEach>
+        </c:if>
+        <c:if test = "${requestScope.id != null}">
+            <p>
+                <c:out value="Name: ${customer.getcustName()}" /><br>
+                <c:out value="ID: ${customer.getcid()}" /><br>
+                <c:out value="Email: ${customer.getemail()}" /><br>
+                <c:out value="Login: ${customer.getusername()}:${customer.getpassword()}" /><br>
+                <br>
+            </p>
+        </c:if>
     </body>
 </html>

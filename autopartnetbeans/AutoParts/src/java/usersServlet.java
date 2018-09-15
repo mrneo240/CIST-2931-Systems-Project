@@ -1,4 +1,3 @@
-
 import autopartstore.CustomerDAOImpl;
 import autopartstore.db.ConnectionManager;
 import java.io.IOException;
@@ -8,14 +7,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/*
-/*****************************
-* Hayden Kowalchuk - 900450331
-* CIST 2372-60273
-* Lab X: XXXXXXXXXXXXX	
-* Description of file and lab.
-* Copyright (C) 2018 Hayden Kowalchuk
-***************************** */
 /**
  *
  * @author Hayden Kowalchuk

@@ -72,7 +72,7 @@ public class CustomerDAOImpl implements CustomerDAO {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        return null;
+        return getCustomerError();
     }
 
     public Customer getCustomerGuest() {
@@ -86,7 +86,13 @@ public class CustomerDAOImpl implements CustomerDAO {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        return null;
+        return getCustomerError();
+    }
+    
+    public Customer getCustomerError() {
+        Customer error = new Customer();
+        error.setcustName("ERROR");
+        return error;
     }
 
     @Override
