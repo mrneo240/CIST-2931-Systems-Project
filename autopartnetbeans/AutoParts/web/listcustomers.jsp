@@ -28,6 +28,8 @@
                     out.print("Name: " + customer.getcustName());
                     out.print("<br/>");
                     out.print("email: " + customer.getemail());
+                    out.print("<br/>");
+                    out.print(customer.getusername()+":"+customer.getpassword());
 
                     out.print("<br/>");
                     out.print("<br/>");
