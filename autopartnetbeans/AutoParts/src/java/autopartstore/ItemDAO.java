@@ -17,6 +17,7 @@ import java.util.Set;
 public interface ItemDAO {
     Set<Item> getAllItems();
     Set<Item> getAllItemsByDept(String Dept);
+    Set<Item> getItemsBySearchParam(String search);
     Item getItemByID(int id);
     boolean insertItem(Item item);
     boolean updateItem(Item item);

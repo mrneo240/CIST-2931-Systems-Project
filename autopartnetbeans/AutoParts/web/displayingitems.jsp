@@ -9,7 +9,7 @@
 <%@ include file="WEB-INF/headerTemplate.jsp" %>
 
             <div class='main-container'>
-                <h1>Searching for <p class="font-weight-bold">${requestScope.searchTerm}</p></h1>
+                <h1>Searching for <p class="font-weight-bold">${searchTerm}</p></h1>
                 <c:set var="attractImgs" 
                        value="${['https://www.autozone.com/images/MEDIA_ProductCatalog/m9880016_deals-v47.png', 
                                 'https://www.autozone.com/images/MEDIA_ProductCatalog/m3490247_prd-Alternator.jpg',
@@ -18,31 +18,21 @@
                 
                 <div class="row text-center feature-imgs">
                     <c:if test="${searchItems != null}">
-                    <c:forEach items="${items}" var="item">
+                    <c:forEach items="${searchItems}" var="item">
+                    <%
+                        int randomNum = (int)(java.lang.Math.random() * (3));
+                        pageContext.setAttribute("randomNum", randomNum);
+                    %>
+                    <c:set var="random" value="${randomNum}"/>
                     <div class="col-sm-4">
                         <div class="thumbnail">
-                            <img src="https://www.autozone.com/images/MEDIA_ProductCatalog/m9880016_deals-v47.png" alt="Paris">
-                            <p><strong>Full Synthetic Oil</strong></p>
-                            <p>Extra info</p>
-                            <button class="btn">Add to cart</button>
+                            <img src="${attractImgs[random]}" alt="Paris">
+                            <p><strong>${item.getName()}</strong></p>
+                            <p>${item.getDesc()}</p>
+                            <button class="btn"><strong>$ ${item.getPrice()}</strong> - Add to cart</button>
                         </div>
                     </div>
-                    <div class="col-sm-4">
-                        <div class="thumbnail">
-                            <img src="https://www.autozone.com/images/MEDIA_ProductCatalog/m3490247_prd-Alternator.jpg" alt="New York">
-                            <p><strong>Alternator</strong></p>
-                            <p>Extra info</p>
-                            <button class="btn">Add to cart</button>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="thumbnail">
-                            <img src="https://www.autozone.com/images/MEDIA_ProductCatalog/m3490609_prd-Idler-Pulley.jpg" alt="San Francisco">
-                            <p><strong>Pulley</strong></p>
-                            <p>Extra info</p>
-                            <button class="btn">Add to cart</button>
-                        </div>
-                    </div>
+                    </c:forEach>
                     </c:if>
                     <c:if test="${searchItems == null}">
                      <div class="col-sm-4">

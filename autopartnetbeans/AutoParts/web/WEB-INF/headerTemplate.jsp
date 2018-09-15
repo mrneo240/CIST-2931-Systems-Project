@@ -48,7 +48,7 @@
                             </ul>
                             <div class='form-group'> 
                             </div>
-                            <form class="navbar-form navbar-left pull-right">
+                            <form class="navbar-form navbar-left pull-right" action="searchItemServlet" method="post">
                                 <div class="form-group">
                                 <c:if test="${loginID == null}">
                                     <a href="#" data-toggle="modal" class='login-btn btn btn-primary' data-target="#login-modal">Login</a>
@@ -56,7 +56,7 @@
                                 <c:if test="${loginID != null}">
                                     <a href="#" data-toggle="modal" class='logout-btn btn btn-primary' data-target="#logout-modal">Logout</a>
                                 </c:if>
-                                <input type="text" class="form-control" placeholder="Search">
+                                <input type="text" class="form-control" name="searchTerm" placeholder="Search">
                             </div>
                             <button type="submit" class="btn btn-primary submit-btn">Submit</button>
                         </form>
