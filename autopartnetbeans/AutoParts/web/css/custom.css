@@ -1,5 +1,6 @@
 body {
   background: #f2f2f2;
+  font-family: 'Open Sans', sans-serif;
 }
 
 html, body {
@@ -17,6 +18,10 @@ html, body {
 
 .login-btn {
   margin-right:  10px;
+}
+.logout-btn {
+  margin-right:  10px;
+  background: #FC2233;
 }
 
 .main-container, .feature-imgs {
@@ -60,7 +65,9 @@ html, body {
 }
 
 h1 { 
- text-align:center;}
+ text-align:center;
+}
+
 #slideshow-wrapper {
 
   height: 600px;
@@ -89,8 +96,6 @@ h1 {
   border-radius: 50px;
 }
 
-@import url(http://fonts.googleapis.com/css?family=Roboto);
-
 .loginmodal-container {
   padding: 30px;
   max-width: 350px;
@@ -100,13 +105,13 @@ h1 {
   border-radius: 2px;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
   overflow: hidden;
-  font-family: roboto;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .loginmodal-container h1 {
   text-align: center;
   font-size: 1.8em;
-  font-family: roboto;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .loginmodal-container input[type=submit] {
@@ -154,7 +159,17 @@ h1 {
   text-shadow: 0 1px rgba(0,0,0,0.1); 
   background-color: #4d90fe;
   padding: 17px 0px;
-  font-family: roboto;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+}
+
+.logoutmodal-submit {
+  border: 0px;
+  color: #fff;
+  text-shadow: 0 1px rgba(0,0,0,0.1); 
+  background-color: #fc2233;
+  padding: 17px;
+  font-family: 'Open Sans', sans-serif;
   font-size: 14px;
 }
 
@@ -189,8 +204,12 @@ h1 {
 }
 
 .footer {
-    position:absolute;
+   position:absolute;
    bottom:0;
    width:100%;
    height:60px;
  }
+
+.font-weight-bold {
+    font-weight:bold;
+}
