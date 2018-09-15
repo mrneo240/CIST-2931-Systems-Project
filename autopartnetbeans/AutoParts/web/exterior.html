@@ -29,13 +29,11 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="index.html">Home <span class="sr-only">(current)</span></a></li>
-              <li><a href="exterior.html">Exterior</a></li>
+              <li><a href="index.html">Home <span class="sr-only">(current)</span></a></li>
+              <li class="active"><a href="exterior.html">Exterior</a></li>
               <li><a href="interior.html">Interior</a></li>
-              <li class=""><a href="faq.html">FAQ</a></li>
+              <li><a href="faq.html">FAQ</a></li>
             </ul>
-            <div class='form-group'> 
-            </div>
             <form class="navbar-form navbar-left pull-right">
               <div class="form-group">
                 <a href="#" data-toggle="modal" class='login-btn btn btn-primary' data-target="#login-modal">Login</a>
@@ -43,90 +41,59 @@
               </div>
               <button type="submit" class="btn btn-primary submit-btn">Submit</button>
             </form>
-            
           </div>
         </div>
       </nav>
       <div class='main-container'>
-
-        <div id="slideshow-wrapper" class='relative'>
-              <div class='search-form col-xs-5'>
-          <h2>Search for parts</h2>
-          <form class="form-horizontal" action="/action_page.php">
-            <div class="form-group">
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="customerID" placeholder="Customer ID#">
-              </div>
+        <h1>Exterior</h1>
+        <div class="row text-center feature-imgs">
+          <h2>Feature Items</h2>
+          <div class="col-sm-4">
+            <div class="thumbnail">
+              <img src="https://www.autozone.com/images/MEDIA_ProductCatalog/m9880016_deals-v47.png" alt="Paris">
+              <p><strong>Full Synthetic Oil</strong></p>
+              <p>Extra info</p>
+              <button class="btn">Add to cart</button>
             </div>
-            <div class="form-group">
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="part" placeholder="Search for parts">
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="col-sm-10">
-                <button type="submit" class="btn btn-primary submit-btn">Submit</button>
-              </div>
-            </div>
-          </form>
-        </div>
-          <div id="slideshow">
-            <img src="https://images.pexels.com/photos/924675/pexels-photo-924675.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"></img>
-            <img src="https://images.pexels.com/photos/159275/macro-focus-cogwheel-gear-159275.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"></img>
-            <img src="https://images.pexels.com/photos/191738/pexels-photo-191738.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"></img>
           </div>
-          <div style="text-align: center">
-            <div id="circle1" class="circle"></div>
-            <div id="circle2" class="circle"></div>
-            <div id="circle3" class="circle"></div>
+          <div class="col-sm-4">
+            <div class="thumbnail">
+              <img src="https://www.autozone.com/images/MEDIA_ProductCatalog/m3490247_prd-Alternator.jpg" alt="New York">
+              <p><strong>Alternator</strong></p>
+              <p>Extra info</p>
+              <button class="btn">Add to cart</button>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="thumbnail">
+              <img src="https://www.autozone.com/images/MEDIA_ProductCatalog/m3490609_prd-Idler-Pulley.jpg" alt="San Francisco">
+              <p><strong>Pulley</strong></p>
+              <p>Extra info</p>
+              <button class="btn">Add to cart</button>
+            </div>
           </div>
         </div>
 
+      
       </div>
-
-    <hr/>
-    <div class="row text-center feature-imgs">
-      <h2>Feature Items</h2>
-      <div class="col-sm-4">
-        <div class="thumbnail">
-          <img src="https://www.autozone.com/images/MEDIA_ProductCatalog/m9880016_deals-v47.png" alt="Paris">
-          <p><strong>Full Synthetic Oil</strong></p>
-          <button class="btn">Add to cart</button>
-        </div>
-      </div>
-      <div class="col-sm-4">
-        <div class="thumbnail">
-          <img src="https://www.autozone.com/images/MEDIA_ProductCatalog/m3490247_prd-Alternator.jpg" alt="New York">
-          <p><strong>Alternator</strong></p>
-          <button class="btn">Add to cart</button>
-        </div>
-      </div>
-      <div class="col-sm-4">
-        <div class="thumbnail">
-          <img src="https://www.autozone.com/images/MEDIA_ProductCatalog/m3490609_prd-Idler-Pulley.jpg" alt="San Francisco">
-          <p><strong>Pulley</strong></p>
-          <button class="btn">Add to cart</button>
-        </div>
-      </div>
-    </div>
-
-
       <div class="footer">
         <div class='footer-content'>
           <p>Footer</p>
         </div>
       </div>
-
-
-      <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+       <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
         <div class="modal-dialog">
           <div class="loginmodal-container">
-          <h1>Login</h1><br>
+          <h1>Login to Your Account</h1><br>
           <form>
           <input type="text" name="user" placeholder="Username">
           <input type="password" name="pass" placeholder="Password">
           <input type="submit" name="login" class="login loginmodal-submit" value="Login">
-          </form>         
+          </form>
+
+            <div class="login-help">
+            <a href="#">Register</a> - <a href="#">Forgot Password</a>
+            </div>
           </div>
         </div>
       </div>
