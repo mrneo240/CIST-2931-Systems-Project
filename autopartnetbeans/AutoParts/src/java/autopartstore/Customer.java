@@ -4,7 +4,7 @@ package autopartstore;
  Advance Projects
 Auto Parts Store 
  */
-public class Customer {
+public class Customer implements java.io.Serializable {
     
     private int cid;
     private String custName;
