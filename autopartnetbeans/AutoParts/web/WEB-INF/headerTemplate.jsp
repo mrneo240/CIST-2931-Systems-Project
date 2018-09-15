@@ -41,7 +41,6 @@
                         <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav">
                                 <c:set var="requestPage" value="${fn:split(pageContext.request.requestURI, '/')}" />
-                                <c:out value="${requestPage[1]}" />
                                 <li class="${requestPage[1].equals('index.jsp') ? 'active' : ''}"><a href="index.jsp">Home ${requestPage[1].equals('index.jsp') ? '<span class="sr-only">(current)</span>' : ''}</a></li>
                                 <li class="${requestPage[1].equals('exterior.jsp') ? 'active' : ''}"><a href="exterior.jsp">Exterior${requestPage[1].equals('exterior.jsp') ? '<span class="sr-only">(current)</span>' : ''}</a></li>
                                 <li class="${requestPage[1].equals('interior.jsp') ? 'active' : ''}"><a href="interior.jsp">Interior${requestPage[1].equals('interior.jsp') ? '<span class="sr-only">(current)</span>' : ''}</a></li>
