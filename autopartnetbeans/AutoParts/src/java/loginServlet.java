@@ -1,9 +1,7 @@
-
 import autopartstore.Customer;
 import autopartstore.CustomerDAOImpl;
 import autopartstore.db.ConnectionManager;
 import java.io.IOException;
-import static java.lang.System.out;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,15 +14,15 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Author Java2db.com
+ *
+ * @author Hayden Kowalchuk
  */
 @WebServlet("/loginServlet")
 public class loginServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
-    String usernameDB = "";
-    String passwordDB = "";
 
+    @Override
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
         // TODO Auto-generated method stub
@@ -34,6 +32,7 @@ public class loginServlet extends HttpServlet {
     private Statement querySmt = null;
     private ResultSet result = null;
 
+    @Override
     protected void doPost(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
 
@@ -61,7 +60,7 @@ public class loginServlet extends HttpServlet {
                 }
                 // Database operations completed
                 
-            } catch (Exception exception) {
+            } catch (SQLException exception) {
                 exception.printStackTrace();
             } finally {
                 try {
@@ -70,7 +69,7 @@ public class loginServlet extends HttpServlet {
                 } catch (NullPointerException e) {
                     {
                     }
-                } catch (SQLException e) {
+                } catch (Exception e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
@@ -80,8 +79,7 @@ public class loginServlet extends HttpServlet {
             session.removeAttribute("loginID");
             session.removeAttribute("customer");
         }
-        
-        request.getRequestDispatcher("/index.jsp").forward(request, response);
+        response.sendRedirect(request.getHeader("referer"));
     }
 
 }
