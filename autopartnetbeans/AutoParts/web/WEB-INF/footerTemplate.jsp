@@ -46,7 +46,7 @@
                 <h1 class="title">Registration</h1>
             </div> 
             <div class="main-login main-center">
-                <form class="form-horizontal" method="post" action="#">
+                <form class="form-horizontal" method="post" action="signupServlet">
 
                     <div class="form-group">
                         <label for="name" class="cols-med-2 control-label">Your Name</label>
@@ -108,7 +108,9 @@
                     </div>
 
                     <div class="form-group ">
+                        <input type="submit" name="action" class="login logoutmodal-submit" value="register">
                         <button type="button" class="btn btn-primary btn-lg btn-block login-button">Register</button>
+                        </input   
                     </div>
                     <div class="login-register">
                         <a href="#" data-toggle="modal"  data-target="#login-modal" data-dismiss="modal">Login</a>
