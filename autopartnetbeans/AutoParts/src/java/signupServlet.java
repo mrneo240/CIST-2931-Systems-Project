@@ -11,16 +11,15 @@ import autopartstore.Customer;
 import autopartstore.CustomerDAOImpl;
 import autopartstore.db.ConnectionManager;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -28,6 +27,11 @@ import javax.servlet.http.HttpSession;
  */
 public class signupServlet extends HttpServlet {
 
+    protected void finishRequest(HttpServletRequest request,HttpServletResponse response)
+            throws ServletException, IOException {
+request.getRequestDispatcher("/newsignup.jsp").forward(request, response);
+    }
+    
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -39,6 +43,7 @@ public class signupServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 
     private Statement querySmt = null;
@@ -55,7 +60,7 @@ public class signupServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
+        
         request.removeAttribute("success");
         boolean success = false;
 
@@ -78,19 +83,21 @@ public class signupServlet extends HttpServlet {
                 // Select user from database to check user login id and password
                 querySmt = temp.createStatement();
                 result = querySmt.executeQuery("select * from Customers where (Username = '" + username + "' OR EMail = '" + email + "');");
-                result.last();
-                int count = result.getRow();
+               int count = 0;
+                while(result.next()){
+                    count++;
+                }
                 if (!password.equals(passwordConfirm)) {
                     //ERROR!
                     request.setAttribute("success", success);
                     request.setAttribute("lastMessage", "Passwords do not match!");
-                    return;
+                    finishRequest(request, response);
                 }
                 if (count > 0) {
                     //ERROR!
                     request.setAttribute("success", success);
                     request.setAttribute("lastMessage", "Username OR Email already in use!");
-                    return;
+                    finishRequest(request, response);
                 }
                 customer = new Customer(0, name, address, email, "", username, password);
                 success = customerDAO.insertCustomer(customer);
@@ -114,8 +121,8 @@ public class signupServlet extends HttpServlet {
                     e.printStackTrace();
                 }
             }
-            response.sendRedirect("newsignup.jsp");
         }
+        finishRequest(request, response);
     }
 
     /**

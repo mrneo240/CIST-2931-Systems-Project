@@ -13,12 +13,12 @@
                 <div>
                     <c:if test="${!requestScope.success}">
                         <div class="alert alert-danger fade in">
-                            <strong>Error!</strong>${requestScope.lastMessage}
+                            <strong>Error!</strong> ${requestScope.lastMessage}
                         </div>
                     </c:if>
                     <c:if test="${requestScope.success}">
                         <div class="alert alert-success" role="alert">
-                            <strong>Success!</strong>${requestScope.lastMessage} <a href="#" class="alert-link" data-toggle="modal"  data-target="#login-modal" data-dismiss="modal">Please proceed to Login</a>if you'd like.
+                            <strong>Success!</strong> ${requestScope.lastMessage} <a href="#" class="alert-link" data-toggle="modal"  data-target="#login-modal" data-dismiss="modal"><br>Please proceed to Login</a> if you'd like.
                         </div>
                     </c:if>
                 </div>

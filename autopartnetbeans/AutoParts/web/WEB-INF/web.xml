@@ -37,7 +37,7 @@
     </error-page>
     <servlet-mapping>
         <servlet-name>signupServlet</servlet-name>
-        <url-pattern>/signupServlet</url-pattern>
+        <url-pattern>/createNewSignup.jsp</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

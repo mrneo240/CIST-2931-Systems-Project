@@ -167,10 +167,13 @@ h1 {
     border: 0px;
     color: #fff;
     text-shadow: 0 1px rgba(0,0,0,0.1); 
-    background-color: #fc2233;
     padding: 17px;
     font-family: 'Open Sans', sans-serif;
     font-size: 14px;
+}
+.logoutmodal-submit:hover {
+    border: 0px;
+    text-shadow: 0 1px rgba(0,0,0,0.3);
 }
 
 .loginmodal-submit:hover {

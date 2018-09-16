@@ -61,7 +61,7 @@
                                     <a href="#" data-toggle="modal" class='login-btn btn btn-primary' data-target="#login-modal">Login</a>
                                 </c:if>
                                 <c:if test="${loginID != null}">
-                                    <a href="#" data-toggle="modal" class='logout-btn btn btn-primary' data-target="#logout-modal">Logout</a>
+                                    <a href="#" data-toggle="modal" class='logout-btn btn btn-danger' data-target="#logout-modal">Logout</a>
                                 </c:if>
                                 <input type="text" class="form-control" name="searchTerm" placeholder="Search">
                             </div>

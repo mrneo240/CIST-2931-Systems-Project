@@ -34,7 +34,7 @@
             <div class="modal-header"><h4>Logout <i class="fa fa-lock"></i></h4></div>
             <div class="modal-body"><i class="fa fa-question-circle"></i> Are you sure you want to log-off?</div>
             <div class="modal-footer">
-                <form action="loginServlet" method="post"><input type="submit" name="action" class="login logoutmodal-submit" value="logout"></form>         
+                <form action="loginServlet" method="post"><button type="submit" name="action" class="login logoutmodal-submit btn btn-danger" value="logout">Logout</button></form>         
             </div>
         </div>
     </div>
@@ -46,7 +46,7 @@
                 <h1 class="title">Registration</h1>
             </div> 
             <div class="main-login main-center">
-                <form class="form-horizontal" method="post" action="signupServlet">
+                <form class="form-horizontal" method="post" action="createNewSignup.jsp">
 
                     <div class="form-group">
                         <label for="name" class="cols-med-2 control-label">Your Name</label>
@@ -108,9 +108,7 @@
                     </div>
 
                     <div class="form-group ">
-                        <input type="submit" name="action" class="login logoutmodal-submit" value="register">
-                        <button type="button" class="btn btn-primary btn-lg btn-block login-button">Register</button>
-                        </input   
+                        <button class="btn btn-primary btn-lg btn-block login-button" type="submit" name="action" class="login logoutmodal-submit" value="register">Register</button>
                     </div>
                     <div class="login-register">
                         <a href="#" data-toggle="modal"  data-target="#login-modal" data-dismiss="modal">Login</a>
