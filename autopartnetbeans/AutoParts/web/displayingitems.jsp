@@ -9,7 +9,7 @@
 <%@ include file="WEB-INF/headerTemplate.jsp" %>
 
             <div class='main-container'>
-                <h1>Searching for <p class="font-weight-bold">${searchTerm}</p></h1>
+                <h1>Searching for <p class="font-weight-bold">${searchTerm != null ? searchTerm : "No Search Entered"}</p></h1>
                 <c:set var="attractImgs" 
                        value="${['https://www.autozone.com/images/MEDIA_ProductCatalog/m9880016_deals-v47.png', 
                                 'https://www.autozone.com/images/MEDIA_ProductCatalog/m3490247_prd-Alternator.jpg',

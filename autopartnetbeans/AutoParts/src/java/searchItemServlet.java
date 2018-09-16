@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.HashSet;
 import java.util.Set;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -35,20 +36,25 @@ public class searchItemServlet extends HttpServlet {
             HttpServletResponse response) throws ServletException, IOException {
 
         HttpSession session = request.getSession();
+        session.removeAttribute("searchTerm");
+        session.removeAttribute("searchItems");
 
         String searchTerm = request.getParameter("searchTerm").trim();
-        PrintWriter out = response.getWriter();
-        out.println(searchTerm);
-        out.println("SELECT * FROM engine WHERE (UPPER(partName) LIKE UPPER('%"+searchTerm+"%'))");
         Set<Item> items;
         ItemDAOImpl itemDAO = new ItemDAOImpl(ConnectionManager.init(this.getServletContext()));
-        
+
         // Database operations using JDBC
         try {
-            //items = itemDAO.getItemsBySearchParam(searchTerm);
             
-            session.setAttribute("searchTerm", searchTerm);
-            session.setAttribute("searchItems", itemDAO.getItemsBySearchParam(searchTerm));
+            if (searchTerm.length() != 0) {
+                session.setAttribute("searchTerm", searchTerm);
+                items = itemDAO.getItemsBySearchParam(searchTerm);
+                session.setAttribute("searchItems", items.size() > 0 ? items : null);
+            } else {
+                session.setAttribute("searchTerm", null);
+                session.setAttribute("searchItems", null);
+            }
+
         } // Database operations completed
         catch (Exception e) {
             e.printStackTrace();
