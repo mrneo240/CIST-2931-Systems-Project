@@ -92,12 +92,14 @@ request.getRequestDispatcher("/newsignup.jsp").forward(request, response);
                     request.setAttribute("success", success);
                     request.setAttribute("lastMessage", "Passwords do not match!");
                     finishRequest(request, response);
+                    return;
                 }
                 if (count > 0) {
                     //ERROR!
                     request.setAttribute("success", success);
                     request.setAttribute("lastMessage", "Username OR Email already in use!");
                     finishRequest(request, response);
+                    return;
                 }
                 customer = new Customer(0, name, address, email, "", username, password);
                 success = customerDAO.insertCustomer(customer);
