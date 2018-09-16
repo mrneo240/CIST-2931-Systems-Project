@@ -12,6 +12,10 @@
         <servlet-name>searchItemServlet</servlet-name>
         <servlet-class>searchItemServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>signupServlet</servlet-name>
+        <servlet-class>signupServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>loginServlet</servlet-name>
         <url-pattern>/loginServlet</url-pattern>
@@ -31,6 +35,10 @@
         <error-code>404</error-code>
         <location>/404.jsp</location>
     </error-page>
+    <servlet-mapping>
+        <servlet-name>signupServlet</servlet-name>
+        <url-pattern>/createNewSignup.jsp</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

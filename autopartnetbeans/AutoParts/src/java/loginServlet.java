@@ -28,7 +28,6 @@ public class loginServlet extends HttpServlet {
         // TODO Auto-generated method stub
     }
 
-    String lastMessage;
     private Statement querySmt = null;
     private ResultSet result = null;
 
