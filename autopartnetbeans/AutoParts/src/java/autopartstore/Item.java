@@ -12,7 +12,7 @@ package autopartstore;
  *
  * @author Hayden Kowalchuk
  */
-public class Item {
+public class Item implements java.io.Serializable {
 
     /**
      * @return the ID

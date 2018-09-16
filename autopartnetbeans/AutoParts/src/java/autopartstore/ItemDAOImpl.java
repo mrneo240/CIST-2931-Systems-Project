@@ -81,6 +81,32 @@ public class ItemDAOImpl implements ItemDAO {
     }
 
     @Override
+    public Set<Item> getItemsBySearchParam(String search) {
+        connection = ConnectionManager.getConnection();
+        Set<Item> items = new HashSet();
+        try {
+            for (String table : partTables) {
+                Statement stmt = connection.createStatement();
+                String cheatSearch = search.split(" ")[0];
+                String state = "SELECT * FROM "+table+" WHERE (UPPER(partName) LIKE UPPER('%"+cheatSearch+"%') "
+                                                    + "OR UPPER(description) LIKE UPPER('%"+cheatSearch+"%'))";
+                ResultSet rs = stmt.executeQuery(state);
+                while (rs.next()) {
+                    Item item = extractItemFromResultSet(rs);
+                    items.add(item);
+                }
+                rs.close();
+                stmt.close();
+            }
+
+            return items;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
     public boolean insertItem(Item item) {
         int numUpdated = 0;
         connection = ConnectionManager.getConnection();

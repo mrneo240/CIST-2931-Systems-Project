@@ -36,10 +36,7 @@
                         <div id="circle3" class="circle"></div>
                     </div>
                 </div>
-
             </div>
-
-            <hr/>
             <div class="row text-center feature-imgs">
                 <h2>Feature Items</h2>
                 <div class="col-sm-4">

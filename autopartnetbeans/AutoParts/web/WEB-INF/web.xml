@@ -8,6 +8,10 @@
         <servlet-name>usersServlet</servlet-name>
         <servlet-class>usersServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>searchItemServlet</servlet-name>
+        <servlet-class>searchItemServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>loginServlet</servlet-name>
         <url-pattern>/loginServlet</url-pattern>
@@ -19,6 +23,10 @@
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
+    <servlet-mapping>
+        <servlet-name>searchItemServlet</servlet-name>
+        <url-pattern>/searchItemServlet</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
