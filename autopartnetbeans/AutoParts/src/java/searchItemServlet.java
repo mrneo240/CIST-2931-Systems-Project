@@ -60,7 +60,7 @@ public class searchItemServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        request.getRequestDispatcher("/displayingitems.jsp").forward(request, response);
+        response.sendRedirect("displayingitems.jsp");
     }
 
 }
