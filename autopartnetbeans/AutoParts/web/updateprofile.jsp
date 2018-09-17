@@ -7,6 +7,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page trimDirectiveWhitespaces="true"%>
 <%@ include file="WEB-INF/headerTemplate.jsp" %>
+<%@ include file="WEB-INF/loggedInOnly.jsp" %>
+ 
 <div class='main-container'>
 
     <div class="row">
