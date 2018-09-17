@@ -42,51 +42,49 @@
                             <div class="panel-body">   
                                 <form action="updatecustomer.jsp" method="post">
                                     <div class="form-group">
+                                        <c:set var="customerNames" value="${fn:split(customer.getcustName(), ' ')}" />
                                         <div class="input-group">
-                                            <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span>
-                                            </span>
-                                            <input type="text" class="form-control" placeholder="First Name" />
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span><strong> First Name</strong></span>
+                                            <input type="text" name="fname" class="form-control" placeholder="First Name" value="${customerNames[0]}"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span><strong> Last Name</strong></span>
+                                            <input type="text" name="lname" class="form-control" placeholder="Last Name" value="${customerNames[1]}"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span><strong> Email</strong></span>
+                                            <input type="text" name="email" class="form-control" placeholder="Email" value="${customer.getemail()}"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span><strong> New Password</strong></span>
+                                            <input type="password" name="pass"class="form-control" placeholder="New Password" />
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <div class="input-group">
-                                            <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                                            <input type="text" class="form-control" placeholder="Last Name" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
-                                            <input type="text" class="form-control" placeholder="Email" />
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-home"></span><strong> Address</strong></span>
+                                            <input type="text" name="address" class="form-control" placeholder="Address" value="${customer.getaddress()}"/>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <div class="input-group">
-                                            <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                                            <input type="password" class="form-control" placeholder="New Password" />
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-heart"></span><strong> Username</strong></span>
+                                            <input type="text" name="username" class="form-control" placeholder="Username" value="${customer.getusername()}" disabled/>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <div class="input-group">
-                                            <span class="input-group-addon"><span class="glyphicon glyphicon-home"></span></span>
-                                            <input type="text" class="form-control" placeholder="Address" />
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><span class="glyphicon glyphicon-heart"></span></span>
-                                            <input type="text" class="form-control" placeholder="Username" />
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><span class="glyphicon glyphicon-credit-card"></span></span>
-                                            <input type="text" class="form-control" placeholder="Credit card" />
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-credit-card"></span><strong> Credit Card</strong></span>
+                                            <input type="text" name="creditc" class="form-control" placeholder="Credit card" value="${customer.getcreditC()}"/>
                                         </div>
                                     </div>
                                     <button class="btn btn-lg btn-primary btn-block" type="submit" name="action" value="update">

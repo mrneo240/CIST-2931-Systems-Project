@@ -54,9 +54,9 @@
                             <li class="${requestPage.equals('exterior.jsp') ? 'active' : ''}"><a href="exterior.jsp">Exterior${requestPage.equals('exterior.jsp') ? '<span class="sr-only">(current)</span>' : ''}</a></li>
                             <li class="${requestPage.equals('interior.jsp') ? 'active' : ''}"><a href="interior.jsp">Interior${requestPage.equals('interior.jsp') ? '<span class="sr-only">(current)</span>' : ''}</a></li>
                             <li class="${requestPage.equals('faq.jsp') ? 'active' : ''}"><a href="faq.jsp">FAQ${requestPage.equals('faq.jsp') ? '<span class="sr-only">(current)</span>' : ''}</a></li>
-                            <c:if test="${loginID != null}">
+                                <c:if test="${loginID != null}">
                                 <li class="${requestPage.equals('updateprofile.jsp') ? 'active' : ''}"><a href="updatecustomer.jsp">Manage Account${requestPage.equals('updateprofile.jsp') ? '<span class="sr-only">(current)</span>' : ''}</a></li>
-                            </c:if>
+                                </c:if>
                         </ul>
                         <div class='form-group'> 
                         </div>
@@ -76,3 +76,6 @@
                     </div>
                 </div>
             </nav>
+            <c:if test="${requestScope.displayAlert == true}">
+                <div class="alert ${requestScope.alertType}" role="alert">${requestScope.alertMessage}</div>
+            </c:if>

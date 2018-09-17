@@ -27,11 +27,11 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class signupServlet extends HttpServlet {
 
-    protected void finishRequest(HttpServletRequest request,HttpServletResponse response)
+    protected void finishRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-request.getRequestDispatcher("/newsignup.jsp").forward(request, response);
+        request.getRequestDispatcher("/newsignup.jsp").forward(request, response);
     }
-    
+
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -60,8 +60,7 @@ request.getRequestDispatcher("/newsignup.jsp").forward(request, response);
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        request.removeAttribute("success");
+
         boolean success = false;
 
         if (request.getParameter("action").equals("register")) {
@@ -83,21 +82,23 @@ request.getRequestDispatcher("/newsignup.jsp").forward(request, response);
                 // Select user from database to check user login id and password
                 querySmt = temp.createStatement();
                 result = querySmt.executeQuery("select * from Customers where (Username = '" + username + "' OR EMail = '" + email + "');");
-               int count = 0;
-                while(result.next()){
+                int count = 0;
+                while (result.next()) {
                     count++;
                 }
                 if (!password.equals(passwordConfirm)) {
                     //ERROR!
-                    request.setAttribute("success", success);
-                    request.setAttribute("lastMessage", "Passwords do not match!");
+                    request.setAttribute("displayAlert", true);
+                    request.setAttribute("alertType", "alert-danger");
+                    request.setAttribute("alertMessage", "Passwords do not match!");
                     finishRequest(request, response);
                     return;
                 }
                 if (count > 0) {
                     //ERROR!
-                    request.setAttribute("success", success);
-                    request.setAttribute("lastMessage", "Username OR Email already in use!");
+                    request.setAttribute("displayAlert", true);
+                    request.setAttribute("alertType", "alert-danger");
+                    request.setAttribute("alertMessage", "Email already in use!");
                     finishRequest(request, response);
                     return;
                 }
@@ -105,9 +106,13 @@ request.getRequestDispatcher("/newsignup.jsp").forward(request, response);
                 success = customerDAO.insertCustomer(customer);
                 request.setAttribute("success", success);
                 if (success) {
-                    request.setAttribute("lastMessage", "Account succesfully created!");
+                    request.setAttribute("displayAlert", true);
+                    request.setAttribute("alertType", "alert-success");
+                    request.setAttribute("alertMessage", "Account succesfully created!");
                 } else {
-                    request.setAttribute("lastMessage", "Some error occurred somewhere! uh oh!");
+                    request.setAttribute("displayAlert", true);
+                    request.setAttribute("alertType", "alert-danger");
+                    request.setAttribute("alertMessage", "Some error occurred somewhere! uh oh!");
                 }
             } catch (SQLException exception) {
                 exception.printStackTrace();
