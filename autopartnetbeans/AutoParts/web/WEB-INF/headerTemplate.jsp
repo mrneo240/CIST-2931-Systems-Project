@@ -48,13 +48,14 @@
                         <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav">
-                            <c:set var="requestPage" value="${fn:split(pageContext.request.requestURI, '/')}" />
-                            <li class="${requestPage[1].equals('index.jsp') ? 'active' : ''}"><a href="index.jsp">Home ${requestPage[1].equals('index.jsp') ? '<span class="sr-only">(current)</span>' : ''}</a></li>
-                            <li class="${requestPage[1].equals('exterior.jsp') ? 'active' : ''}"><a href="exterior.jsp">Exterior${requestPage[1].equals('exterior.jsp') ? '<span class="sr-only">(current)</span>' : ''}</a></li>
-                            <li class="${requestPage[1].equals('interior.jsp') ? 'active' : ''}"><a href="interior.jsp">Interior${requestPage[1].equals('interior.jsp') ? '<span class="sr-only">(current)</span>' : ''}</a></li>
-                            <li class="${requestPage[1].equals('faq.jsp') ? 'active' : ''}"><a href="faq.jsp">FAQ${requestPage[1].equals('faq.jsp') ? '<span class="sr-only">(current)</span>' : ''}</a></li>
+                            <c:set var="requestPageArr" value="${fn:split(pageContext.request.requestURI, '/')}" />
+                            <c:set var="requestPage" value="${requestPageArr[fn:length(requestPageArr)-1]}" />
+                            <li class="${requestPage.equals('index.jsp') ? 'active' : ''}"><a href="index.jsp">Home ${requestPage.equals('index.jsp') ? '<span class="sr-only">(current)</span>' : ''}</a></li>
+                            <li class="${requestPage.equals('exterior.jsp') ? 'active' : ''}"><a href="exterior.jsp">Exterior${requestPage.equals('exterior.jsp') ? '<span class="sr-only">(current)</span>' : ''}</a></li>
+                            <li class="${requestPage.equals('interior.jsp') ? 'active' : ''}"><a href="interior.jsp">Interior${requestPage.equals('interior.jsp') ? '<span class="sr-only">(current)</span>' : ''}</a></li>
+                            <li class="${requestPage.equals('faq.jsp') ? 'active' : ''}"><a href="faq.jsp">FAQ${requestPage.equals('faq.jsp') ? '<span class="sr-only">(current)</span>' : ''}</a></li>
                             <c:if test="${loginID != null}">
-                                <li class="${requestPage[1].equals('updateprofile.jsp') ? 'active' : ''}"><a href="updateprofile.jsp">Manage Account${requestPage[1].equals('updateprofile.jsp') ? '<span class="sr-only">(current)</span>' : ''}</a></li>
+                                <li class="${requestPage.equals('updateprofile.jsp') ? 'active' : ''}"><a href="updatecustomer.jsp">Manage Account${requestPage.equals('updateprofile.jsp') ? '<span class="sr-only">(current)</span>' : ''}</a></li>
                             </c:if>
                         </ul>
                         <div class='form-group'> 
