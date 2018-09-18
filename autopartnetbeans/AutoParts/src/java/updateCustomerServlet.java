@@ -75,6 +75,7 @@ public class updateCustomerServlet extends HttpServlet {
                 if (address.length()> 0) customer.setaddress(address); else  ;
                 
                 success = customerDAO.updateCustomer(customer);
+                if(email.equalsIgnoreCase("error")){success = false;}
                 if (success) {
                     request.setAttribute("displayAlert", true);
                     request.setAttribute("alertType", "alert-success");
@@ -92,7 +93,7 @@ public class updateCustomerServlet extends HttpServlet {
                 e.printStackTrace();
             }
         }
-
+        request.setAttribute("jsScript", "$('a[href=\"#user\"]').trigger('click');");
         finishRequest(request, response);
     }
 

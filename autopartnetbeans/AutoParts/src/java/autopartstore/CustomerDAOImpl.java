@@ -10,6 +10,7 @@ package autopartstore;
 
 import autopartstore.db.ConnectionManager;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -69,6 +70,24 @@ public class CustomerDAOImpl implements CustomerDAO {
             if (rs.next()) {
                 return extractCustomerFromResultSet(rs);
             }
+            rs.close();
+            stmt.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } 
+        return getCustomerError();
+    }
+    public Customer getCustomerByUsername(String user) {
+        connection = ConnectionManager.getConnection();
+        try {
+            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM customers WHERE username=?");
+            stmt.setString(1, user);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return extractCustomerFromResultSet(rs);
+            }
+            rs.close();
+            stmt.close();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -83,6 +102,8 @@ public class CustomerDAOImpl implements CustomerDAO {
             if (rs.next()) {
                 return extractCustomerFromResultSet(rs);
             }
+            rs.close();
+            stmt.close();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }

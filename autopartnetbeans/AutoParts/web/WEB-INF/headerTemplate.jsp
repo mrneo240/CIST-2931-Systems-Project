@@ -18,8 +18,6 @@
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"  integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="  crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js" integrity="sha384-pjaaA8dDz/5BgdFUPX6M/9SUZv4d12SUPF0axWc+VRZkx5xU3daN+lYb49+Ax+Tl" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="./css/custom.css" />
         <c:if test="${notFoundPage}">
             <link rel="stylesheet" href="./css/error.css" />
@@ -42,7 +40,6 @@
                             <span class="icon-bar"></span>
                         </button>
                         <a class="navbar-brand" href="#">AutoParts Logo</a>
-                        <c:if test="${loginID != null}"><p class="font-weight-bold">Hello ${customer.getcustName()}</p></c:if>
                         </div>
 
                         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -75,7 +72,8 @@
 
                     </div>
                 </div>
+                <div class="container"><c:if test="${loginID != null}"><p class="font-weight-bold">Hello ${customer.getcustName()}</p></c:if></div>
             </nav>
-            <c:if test="${requestScope.displayAlert == true}">
-                <div class="alert ${requestScope.alertType}" role="alert">${requestScope.alertMessage}</div>
+            <c:if test="${requestScope.displayAlert}">
+                <div class="alert ${requestScope.alertType} alert-dismissable" role="alert"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>${requestScope.alertMessage}</div>
             </c:if>

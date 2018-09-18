@@ -17,7 +17,7 @@
     <div class="modal-dialog">
         <div class="loginmodal-container">
             <h1>Login</h1><br>
-            <form action="loginServlet" method="post">
+            <form action="login.jsp" method="post">
                 <input type="text" name="user" placeholder="Username">
                 <input type="password" name="pass" placeholder="Password">
                 <input type="submit" name="action" class="login loginmodal-submit" value="login">
@@ -34,7 +34,7 @@
             <div class="modal-header"><h4>Logout <i class="fa fa-lock"></i></h4></div>
             <div class="modal-body"><i class="fa fa-question-circle"></i> Are you sure you want to log-off?</div>
             <div class="modal-footer">
-                <form action="loginServlet" method="post"><button type="submit" name="action" class="login logoutmodal-submit btn btn-danger" value="logout">Logout</button></form>         
+                <form action="login.jsp" method="post"><button type="submit" name="action" class="login logoutmodal-submit btn btn-danger" value="logout">Logout</button></form>         
             </div>
         </div>
     </div>
@@ -119,6 +119,13 @@
     </div>
 </div>
 </div>
-<script src="http://code.jquery.com/jquery-2.2.0.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script src="./js/slide.js"></script>
+<c:if test="${jsScript != null}">
+    <script>
+        $(function() {
+            ${jsScript}
+         });
+    </script>
+</c:if>

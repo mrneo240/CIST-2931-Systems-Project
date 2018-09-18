@@ -22,7 +22,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>loginServlet</servlet-name>
-        <url-pattern>/loginServlet</url-pattern>
+        <url-pattern>/login.jsp</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>usersServlet</servlet-name>
