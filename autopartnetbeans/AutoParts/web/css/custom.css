@@ -264,7 +264,11 @@ input::-webkit-input-placeholder {
 .form-signup input[type="text"],.form-signup input[type="password"] { border: 1px solid rgb(50, 118, 177); }
 
 
-.input-group-addon {
+.__input-group-addon {
     text-align: left;
     min-width: 10em;
+}
+
+.w-50 {
+    width: 50%!important;
 }

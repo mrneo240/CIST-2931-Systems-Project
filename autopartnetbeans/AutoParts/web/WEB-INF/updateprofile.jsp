@@ -43,49 +43,48 @@
                                 <form action="updatecustomer.jsp" method="post">
                                     <div class="form-group">
                                         <c:set var="customerNames" value="${fn:split(customer.getcustName(), ' ')}" />
+                                        <label for="confirm" class="cols-sm-2 control-label">First and Last Name</label>
+                                            
                                         <div class="input-group">
-                                            <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span><strong> First Name</strong></span>
-                                            <input type="text" name="fname" class="form-control" placeholder="First Name" value="${customerNames[0]}"/>
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                                            <input type="text" name="fname" class="form-control w-50" placeholder="First Name" value="${customerNames[0]}"/>
+                                            <input type="text" name="lname" class="form-control w-50" placeholder="Last Name" value="${customerNames[1]}"/>
                                         </div>
                                     </div>
                                     <div class="form-group">
+                                        <label for="confirm" class="cols-sm-2 control-label">Email</label>
                                         <div class="input-group">
-                                            <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span><strong> Last Name</strong></span>
-                                            <input type="text" name="lname" class="form-control" placeholder="Last Name" value="${customerNames[1]}"/>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span><strong> Email</strong></span>
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
                                             <input type="text" name="email" class="form-control" placeholder="Email" value="${customer.getemail()}"/>
                                         </div>
                                     </div>
                                     <div class="form-group">
+                                        <label for="confirm" class="cols-sm-2 control-label">New Password</label>
                                         <div class="input-group">
-                                            <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span><strong> New Password</strong></span>
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
                                             <input type="password" name="pass"class="form-control" placeholder="New Password" />
                                         </div>
                                     </div>
-
                                     <div class="form-group">
+                                        <label for="confirm" class="cols-sm-2 control-label">Address</label>
                                         <div class="input-group">
-                                            <span class="input-group-addon"><span class="glyphicon glyphicon-home"></span><strong> Address</strong></span>
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-home"></span></span>
                                             <input type="text" name="address" class="form-control" placeholder="Address" value="${customer.getaddress()}"/>
                                         </div>
                                     </div>
-
                                     <div class="form-group">
+                                        <label for="confirm" class="cols-sm-2 control-label">Username</label>
                                         <div class="input-group">
-                                            <span class="input-group-addon"><span class="glyphicon glyphicon-heart"></span><strong> Username</strong></span>
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-heart"></span></span>
                                             <input type="text" name="username" class="form-control" placeholder="Username" value="${customer.getusername()}" disabled/>
                                         </div>
                                     </div>
-
                                     <div class="form-group">
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><span class="glyphicon glyphicon-credit-card"></span><strong> Credit Card</strong></span>
-                                            <input type="text" name="creditc" class="form-control" placeholder="Credit card" value="${customer.getcreditC()}"/>
-                                        </div>
+                                        <label for="confirm" class="cols-sm-2 control-label">Credit Card</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="glyphicon glyphicon-credit-card"></span></span>
+                                                <input type="text" name="creditc" class="form-control" placeholder="Credit card" value="${customer.getcreditC()}"/>
+                                            </div>
                                     </div>
                                     <button class="btn btn-lg btn-primary btn-block" type="submit" name="action" value="update">
                                         Save

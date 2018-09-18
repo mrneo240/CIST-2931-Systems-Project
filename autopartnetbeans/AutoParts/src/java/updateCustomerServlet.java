@@ -54,7 +54,7 @@ public class updateCustomerServlet extends HttpServlet {
 
         if (request.getParameter("action").equals("update")) {
 
-            String name = request.getParameter("fname").trim() + request.getParameter("lname").trim();
+            String name = request.getParameter("fname").trim() + " "+request.getParameter("lname").trim();
             String email = request.getParameter("email").trim();
             //String username = request.getParameter("username").trim();
             String password = request.getParameter("pass").trim();
