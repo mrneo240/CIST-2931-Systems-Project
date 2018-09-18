@@ -7,15 +7,11 @@
                 <div id="slideshow-wrapper" class='relative'>
                     <div class='search-form col-xs-5'>
                         <h2>Search for parts</h2>
-                        <form class="form-horizontal" action="/action_page.php">
+                        <form class="form-horizontal" action="searchItemServlet" method="post">
+                            
                             <div class="form-group">
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="customerID" placeholder="Customer ID#">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="part" placeholder="Search for parts">
+                                    <input type="text" class="form-control" name="searchTerm" placeholder="Search for parts">
                                 </div>
                             </div>
                             <div class="form-group">
