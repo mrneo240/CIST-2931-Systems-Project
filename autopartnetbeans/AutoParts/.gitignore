@@ -4,3 +4,5 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+project.properties
+ant-deploy.xml
