@@ -21,7 +21,6 @@ html, body {
 }
 .logout-btn {
     margin-right:  10px;
-    background: #FC2233;
 }
 
 .main-container, .feature-imgs {
@@ -121,7 +120,7 @@ h1 {
     position: relative;
 }
 
-.loginmodal-container input[type=text], input[type=password] {
+.loginmodal-container input[type=text], .loginmodal-container input[type=password] {
     height: 44px;
     font-size: 16px;
     width: 100%;
@@ -260,4 +259,16 @@ input::-webkit-input-placeholder {
 }
 
 .form-horizontal .form-group{
+}
+
+.form-signup input[type="text"],.form-signup input[type="password"] { border: 1px solid rgb(50, 118, 177); }
+
+
+.__input-group-addon {
+    text-align: left;
+    min-width: 10em;
+}
+
+.w-50 {
+    width: 50%!important;
 }

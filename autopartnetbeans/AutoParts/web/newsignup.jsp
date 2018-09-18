@@ -9,19 +9,22 @@
 <%@ include file="WEB-INF/headerTemplate.jsp" %>
 
             <div class='main-container'>
-                <h1>New Registration</h1>
-                <div>
-                    <c:if test="${!requestScope.success}">
-                        <div class="alert alert-danger fade in">
-                            <strong>Error!</strong> ${requestScope.lastMessage}
-                        </div>
-                    </c:if>
-                    <c:if test="${requestScope.success}">
-                        <div class="alert alert-success" role="alert">
-                            <strong>Success!</strong> ${requestScope.lastMessage} <a href="#" class="alert-link" data-toggle="modal"  data-target="#login-modal" data-dismiss="modal"><br>Please proceed to Login</a> if you'd like.
-                        </div>
-                    </c:if>
+                 <c:if test="${requestScope.success}">
+                <div class="jumbotron">
+                    <h1>New Registration!</h1>
+                    <hr>
+                    <p>Welcome to AutoPartsStore.com..... blah blah blah</p>
+                    <p><a class="btn btn-primary btn-lg" role="button" href="#" data-toggle="modal" data-target="#login-modal" data-dismiss="modal">Login</a></p>
                 </div>
+                 </c:if>
+                <c:if test="${!requestScope.success}">
+                <div class="jumbotron">
+                    <h1>Error in Registration!</h1>
+                    <hr>
+                    <p>Err... Let's correct the issues then try again ..... blah blah blah</p>
+                    <p><a class="btn btn-primary btn-lg" role="button" href="#" data-toggle="modal" data-target="#register-modal" data-dismiss="modal">Register New Account</a></p>
+                </div>
+                 </c:if>
             </div>
         <%@ include file="WEB-INF/footerTemplate.jsp" %>
     </body>

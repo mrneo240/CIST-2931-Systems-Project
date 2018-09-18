@@ -1,11 +1,8 @@
+
 import autopartstore.Customer;
 import autopartstore.CustomerDAOImpl;
 import autopartstore.db.ConnectionManager;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,14 +19,22 @@ public class loginServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
+    protected void finishRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        //response.sendRedirect(request.getHeader("referer"));
+        String referrerArr[] = request.getHeader("referer").split("/");
+        String ref = referrerArr[referrerArr.length - 1];
+        if(ref.equals("login.jsp") || ref.equals("createNewSignup.jsp") || !ref.contains(".jsp")){
+            ref = "index.jsp";
+        }
+        request.getRequestDispatcher(ref).forward(request, response);
+    }
+
     @Override
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
-        // TODO Auto-generated method stub
+        finishRequest(request, response);
     }
-
-    private Statement querySmt = null;
-    private ResultSet result = null;
 
     @Override
     protected void doPost(HttpServletRequest request,
@@ -38,47 +43,41 @@ public class loginServlet extends HttpServlet {
         HttpSession session = request.getSession();
 
         if (request.getParameter("action").equals("login")) {
-
+            session.removeAttribute("loginID");
+            session.removeAttribute("customer");
             String user_id = request.getParameter("user").trim();
             String password = request.getParameter("pass").trim();
-            Customer customer = null;
+
             CustomerDAOImpl customerDAO = new CustomerDAOImpl(ConnectionManager.init(this.getServletContext()));
+            Customer customer = customerDAO.getCustomerByUsername(user_id);
 
-            // Database operations using JDBC
-            try {
-                //ensure we have a connection to the DB
-                Connection temp = ConnectionManager.init(this.getServletContext());
-
-                // Select user from database to check user login id and password
-                querySmt = temp.createStatement();
-                result = querySmt.executeQuery("select * from Customers where Username = '" + user_id + "' AND Password = '" + password + "'");
-                while (result.next()) {
-                    customer = customerDAO.getCustomerByID(result.getInt("id"));
-                    session.setAttribute("customer", customer);
-                    session.setAttribute("loginID", result.getInt("id"));
-                }
-                // Database operations completed
-                
-            } catch (SQLException exception) {
-                exception.printStackTrace();
-            } finally {
-                try {
-                    result.close();
-                    querySmt.close();
-                } catch (NullPointerException e) {
-                    {
-                    }
-                } catch (Exception e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
+            if (customer.getcustName().equals("ERROR")) {
+                //ERROR!
+                request.setAttribute("displayAlert", true);
+                request.setAttribute("alertType", "alert-danger");
+                request.setAttribute("alertMessage", "Username not found!");
+                finishRequest(request, response);
+                return;
             }
 
+            if (!customer.getpassword().equals(password)) {
+                //ERROR!
+                request.setAttribute("displayAlert", true);
+                request.setAttribute("alertType", "alert-danger");
+                request.setAttribute("alertMessage", "Passwords do not match!");
+                finishRequest(request, response);
+                return;
+            }
+
+            session.setAttribute("customer", customer);
+            session.setAttribute("loginID", customer.getcid());
+
         } else {
+            //Must be for Logout
             session.removeAttribute("loginID");
             session.removeAttribute("customer");
         }
-        response.sendRedirect(request.getHeader("referer"));
+        finishRequest(request, response);
     }
 
 }

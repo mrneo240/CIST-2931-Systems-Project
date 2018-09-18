@@ -27,11 +27,20 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class signupServlet extends HttpServlet {
 
-    protected void finishRequest(HttpServletRequest request,HttpServletResponse response)
+    protected void finishRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-request.getRequestDispatcher("/newsignup.jsp").forward(request, response);
+        request.getRequestDispatcher("/newsignup.jsp").forward(request, response);
     }
-    
+
+    protected void failWithError(HttpServletRequest request, HttpServletResponse response, String error)
+            throws ServletException, IOException {
+        //ERROR!
+        request.setAttribute("displayAlert", true);
+        request.setAttribute("alertType", "alert-danger");
+        request.setAttribute("alertMessage", error);
+        finishRequest(request, response);
+    }
+
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -60,8 +69,7 @@ request.getRequestDispatcher("/newsignup.jsp").forward(request, response);
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        request.removeAttribute("success");
+
         boolean success = false;
 
         if (request.getParameter("action").equals("register")) {
@@ -72,42 +80,50 @@ request.getRequestDispatcher("/newsignup.jsp").forward(request, response);
             String password = request.getParameter("password").trim();
             String passwordConfirm = request.getParameter("confirm").trim();
             String address = request.getParameter("address").trim();
-            Customer customer = null;
-            CustomerDAOImpl customerDAO = new CustomerDAOImpl(ConnectionManager.init(this.getServletContext()));
+            Connection temp = ConnectionManager.init(this.getServletContext());
+            CustomerDAOImpl customerDAO = new CustomerDAOImpl(temp);
 
-            // Database operations using JDBC
             try {
-                //ensure we have a connection to the DB
-                Connection temp = ConnectionManager.init(this.getServletContext());
 
                 // Select user from database to check user login id and password
                 querySmt = temp.createStatement();
                 result = querySmt.executeQuery("select * from Customers where (Username = '" + username + "' OR EMail = '" + email + "');");
-               int count = 0;
-                while(result.next()){
+                this.getServletContext().log("select * from Customers where (Username = '" + username + "' OR EMail = '" + email + "')");
+                int count = 0;
+                while (result.next()) {
                     count++;
                 }
+                this.getServletContext().log("Found "+count+" records!");
                 if (!password.equals(passwordConfirm)) {
-                    //ERROR!
-                    request.setAttribute("success", success);
-                    request.setAttribute("lastMessage", "Passwords do not match!");
-                    finishRequest(request, response);
+                    failWithError(request, response, "Passwords don't match!");
+                    return;
+                }
+                if (username.length() == 0) {
+                    failWithError(request, response, "Missing Username!");
+                    return;
+                }
+                if (password.length() == 0) {
+                    failWithError(request, response, "Missing Password!");
+                    return;
+                }
+                if (name.length() == 0) {
+                    failWithError(request, response, "Missing Name!");
                     return;
                 }
                 if (count > 0) {
-                    //ERROR!
-                    request.setAttribute("success", success);
-                    request.setAttribute("lastMessage", "Username OR Email already in use!");
-                    finishRequest(request, response);
+                    failWithError(request, response, "Email or Username already in use!");
                     return;
                 }
-                customer = new Customer(0, name, address, email, "", username, password);
+                Customer customer = new Customer(0, name, address, email, "", username, password);
                 success = customerDAO.insertCustomer(customer);
                 request.setAttribute("success", success);
                 if (success) {
-                    request.setAttribute("lastMessage", "Account succesfully created!");
+                    request.setAttribute("displayAlert", true);
+                    request.setAttribute("alertType", "alert-success");
+                    request.setAttribute("alertMessage", "Account succesfully created!");
                 } else {
-                    request.setAttribute("lastMessage", "Some error occurred somewhere! uh oh!");
+                    failWithError(request, response, "Some error occurred somewhere! uh oh!");
+                    return;
                 }
             } catch (SQLException exception) {
                 exception.printStackTrace();

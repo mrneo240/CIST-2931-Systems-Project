@@ -17,7 +17,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="./css/custom.css" />
         <c:if test="${notFoundPage}">
             <link rel="stylesheet" href="./css/error.css" />
@@ -27,7 +27,6 @@
         </c:if>
         <title>System Project</title>
     </head>
-
     <body class='container'>
         <div class='wrapper'>
             <nav class="navbar navbar-default">
@@ -41,22 +40,25 @@
                             <span class="icon-bar"></span>
                         </button>
                         <a class="navbar-brand" href="#">AutoParts Logo</a>
-                        <c:if test="${loginID != null}"><p class="font-weight-bold">Hello ${customer.getcustName()}</p></c:if>
                         </div>
 
                         <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav">
-                                <c:set var="requestPage" value="${fn:split(pageContext.request.requestURI, '/')}" />
-                                <li class="${requestPage[1].equals('index.jsp') ? 'active' : ''}"><a href="index.jsp">Home ${requestPage[1].equals('index.jsp') ? '<span class="sr-only">(current)</span>' : ''}</a></li>
-                                <li class="${requestPage[1].equals('exterior.jsp') ? 'active' : ''}"><a href="exterior.jsp">Exterior${requestPage[1].equals('exterior.jsp') ? '<span class="sr-only">(current)</span>' : ''}</a></li>
-                                <li class="${requestPage[1].equals('interior.jsp') ? 'active' : ''}"><a href="interior.jsp">Interior${requestPage[1].equals('interior.jsp') ? '<span class="sr-only">(current)</span>' : ''}</a></li>
-                                <li class="${requestPage[1].equals('faq.jsp') ? 'active' : ''}"><a href="faq.jsp">FAQ${requestPage[1].equals('faq.jsp') ? '<span class="sr-only">(current)</span>' : ''}</a></li>
-                            </ul>
-                            <div class='form-group'> 
-                            </div>
-                            <form class="navbar-form navbar-left pull-right" action="searchItemServlet" method="post">
-                                <div class="form-group">
+                            <c:set var="requestPageArr" value="${fn:split(pageContext.request.requestURI, '/')}" />
+                            <c:set var="requestPage" value="${requestPageArr[fn:length(requestPageArr)-1]}" />
+                            <li class="${requestPage.equals('index.jsp') ? 'active' : ''}"><a href="index.jsp">Home ${requestPage.equals('index.jsp') ? '<span class="sr-only">(current)</span>' : ''}</a></li>
+                            <li class="${requestPage.equals('exterior.jsp') ? 'active' : ''}"><a href="exterior.jsp">Exterior${requestPage.equals('exterior.jsp') ? '<span class="sr-only">(current)</span>' : ''}</a></li>
+                            <li class="${requestPage.equals('interior.jsp') ? 'active' : ''}"><a href="interior.jsp">Interior${requestPage.equals('interior.jsp') ? '<span class="sr-only">(current)</span>' : ''}</a></li>
+                            <li class="${requestPage.equals('faq.jsp') ? 'active' : ''}"><a href="faq.jsp">FAQ${requestPage.equals('faq.jsp') ? '<span class="sr-only">(current)</span>' : ''}</a></li>
+                                <c:if test="${loginID != null}">
+                                <li class="${requestPage.equals('updateprofile.jsp') ? 'active' : ''}"><a href="updatecustomer.jsp">Manage Account${requestPage.equals('updateprofile.jsp') ? '<span class="sr-only">(current)</span>' : ''}</a></li>
+                                </c:if>
+                        </ul>
+                        <div class='form-group'> 
+                        </div>
+                        <form class="navbar-form navbar-left pull-right" action="searchItemServlet" method="post">
+                            <div class="form-group">
                                 <c:if test="${loginID == null}">
                                     <a href="#" data-toggle="modal" class='login-btn btn btn-primary' data-target="#login-modal">Login</a>
                                 </c:if>
@@ -70,4 +72,8 @@
 
                     </div>
                 </div>
+                <div class="container"><c:if test="${loginID != null}"><p class="font-weight-bold">Hello ${customer.getcustName()}</p></c:if></div>
             </nav>
+            <c:if test="${requestScope.displayAlert}">
+                <div class="alert ${requestScope.alertType} alert-dismissable" role="alert"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>${requestScope.alertMessage}</div>
+            </c:if>
