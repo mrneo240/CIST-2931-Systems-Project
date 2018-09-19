@@ -12,8 +12,7 @@
     </div>
 </div>
 
-
-<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+<div class="modal fade" id="login-modal" role="dialog" style="display: none;">
     <div class="modal-dialog">
         <div class="loginmodal-container">
             <h1>Login</h1><br>
@@ -23,12 +22,12 @@
                 <input type="submit" name="action" class="login loginmodal-submit" value="login">
             </form>    
             <div class="login-help">
-            <a href="#" data-toggle="modal" data-target="#register-modal" data-dismiss="modal">Register</a> - <a href="#">Forgot Password</a>
+            <a href="#" data-toggle="modal" data-target="#register-modal" data-dismiss="modal">Register</a>
             </div>
         </div>
     </div>
 </div>
-<div class="modal fade" id="logout-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+<div class="modal fade" id="logout-modal" role="dialog" style="display: none;">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-header"><h4>Logout <i class="fa fa-lock"></i></h4></div>
@@ -39,7 +38,7 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="register-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+<div class="modal fade" id="register-modal" tabindex="-1" role="dialog" style="display: none;">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -129,3 +128,5 @@
          });
     </script>
 </c:if>
+</body>
+</html>

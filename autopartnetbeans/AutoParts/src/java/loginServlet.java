@@ -22,8 +22,11 @@ public class loginServlet extends HttpServlet {
     protected void finishRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //response.sendRedirect(request.getHeader("referer"));
+        String ref="";
+        if(request.getHeader("referer") != null){
         String referrerArr[] = request.getHeader("referer").split("/");
-        String ref = referrerArr[referrerArr.length - 1];
+        ref= referrerArr[referrerArr.length - 1];
+        }
         if(ref.equals("login.jsp") || ref.equals("createNewSignup.jsp") || !ref.contains(".jsp")){
             ref = "index.jsp";
         }
