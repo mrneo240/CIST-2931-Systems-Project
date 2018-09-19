@@ -4,5 +4,10 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+<<<<<<< HEAD
 nbproject/ant-deploy.xml
 nbproject/project.properties
+=======
+project.properties
+ant-deploy.xml
+>>>>>>> 7ca9fee89239e5535130337c88b12f3b2fbad33c
