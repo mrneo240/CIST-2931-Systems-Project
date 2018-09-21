@@ -7,7 +7,7 @@ html, body {
 }
 
 .modal-open {
-    padding-right: 0px !important;
+    aoverflow: auto;
 }
 
 .wrapper {
