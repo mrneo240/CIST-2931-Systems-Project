@@ -83,12 +83,46 @@ public class Item implements java.io.Serializable {
     public void setPrice(double price) {
         this.price = price;
     }
-
+    
     private int ID;
     private String dept;
     private String name;
     private String desc;
     private double price;
+    
+    /** Michelle
+     * adding the quantity of items and total cost properties for Shopping Cart
+     */
+    private int quantity;
+    private double totalPrice;
+    /**
+     * 
+     * @return the quantity
+     */
+    public int getQuantity() {
+        return quantity;
+    }
+    /**
+     * set the quantity
+     * @param quantity 
+     */
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+    /**
+     * 
+     * @return the total price
+     */
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+    /**
+     * set the total price
+     * @param totalPrice 
+     */
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
+    }
 
     //Constructors
     public Item() {
@@ -97,18 +131,24 @@ public class Item implements java.io.Serializable {
         desc = "";
         name = "";
         price = 0.0;
+        
+        quantity = 0;
+        totalPrice = 0.0;
     }
 
-    public Item(int id, String _dept, String _name, String _desc, double _price) {
+    public Item(int id, String _dept, String _name, String _desc, double _price, int _quantity, double _totalPrice) {
         ID = id;
         dept = _dept;
         desc = _desc;
         name = _name;
         price = _price;
+        
+        quantity = _quantity;
+        totalPrice = _totalPrice;
     }
     
     public String toString(){
-        return String.format("Item[%d, %s, %s, %s, %f]", ID, dept, desc, name, price);
+        return String.format("Item[%d, %s, %s, %s, %f]", ID, dept, desc, name, price, quantity, totalPrice);
     }
     
     public void display(){
@@ -118,7 +158,8 @@ public class Item implements java.io.Serializable {
     //MAin tester
     public static void main(String[] args) {
         Item i1;
-        i1 = new Item(1, "Maintenance", "Filter", "An air filter", 5.99);
+        //i1 = new Item(1, "Maintenance", "Filter", "An air filter", 5.99);
         //i1.display();
+        
     }
 }
