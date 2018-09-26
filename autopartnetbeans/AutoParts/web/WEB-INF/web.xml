@@ -13,6 +13,10 @@
         <servlet-class>searchItemServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>displayCategoryItems</servlet-name>
+        <servlet-class>displayCategoryItems</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>signupServlet</servlet-name>
         <servlet-class>signupServlet</servlet-class>
     </servlet>
@@ -46,6 +50,10 @@
     <servlet-mapping>
         <servlet-name>updateCustomerServlet</servlet-name>
         <url-pattern>/updatecustomer.jsp</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>displayCategoryItems</servlet-name>
+        <url-pattern>/displayDeptItems.jsp</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
