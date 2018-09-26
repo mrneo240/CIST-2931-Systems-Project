@@ -22,6 +22,17 @@ import javax.servlet.http.HttpSession;
 @WebServlet(urlPatterns = {"/ShoppingCartServlet"})
 public class ShoppingCartServlet extends HttpServlet {
 
+    public void finishRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.sendRedirect("ShoppingCart.jsp");
+    }
+
+    public void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        finishRequest(request, response);
+    }
+    
+
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
@@ -41,9 +52,7 @@ public class ShoppingCartServlet extends HttpServlet {
 
             }
         }
-
-        response.sendRedirect("ShoppingCart.jsp");
-        //request.getRequestDispatcher("ShoppingCart.jsp").forward(request, response);
+        finishRequest(request, response);
     }
 
     protected void addToCart(HttpServletRequest request) {
@@ -53,7 +62,7 @@ public class ShoppingCartServlet extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         ItemDAOImpl itemDAO = new ItemDAOImpl(ConnectionManager.init(this.getServletContext()));
         Item temp = itemDAO.getItemByID(id);
-        System.out.println("Item id: "+id);
+        System.out.println("Item id: " + id);
         temp.setQuantity(1);
 
         ShoppingCart shoppingCart;
