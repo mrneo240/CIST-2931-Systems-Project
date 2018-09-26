@@ -42,8 +42,8 @@ public class ShoppingCartServlet extends HttpServlet {
             }
         }
 
-        //response.sendRedirect("ShoppingCart.jsp");
-        request.getRequestDispatcher("ShoppingCart.jsp").forward(request, response);
+        response.sendRedirect("ShoppingCart.jsp");
+        //request.getRequestDispatcher("ShoppingCart.jsp").forward(request, response);
     }
 
     protected void addToCart(HttpServletRequest request) {
@@ -53,6 +53,7 @@ public class ShoppingCartServlet extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         ItemDAOImpl itemDAO = new ItemDAOImpl(ConnectionManager.init(this.getServletContext()));
         Item temp = itemDAO.getItemByID(id);
+        System.out.println("Item id: "+id);
         temp.setQuantity(1);
 
         ShoppingCart shoppingCart;
@@ -64,9 +65,9 @@ public class ShoppingCartServlet extends HttpServlet {
             shoppingCart = new ShoppingCart();
             session.setAttribute("cart", shoppingCart);
         }
-        
-        System.out.println("shopping cart items: "+shoppingCart.getLineItemCount());
-        
+
+        System.out.println("shopping cart items: " + shoppingCart.getLineItemCount());
+
         shoppingCart.addCartItem(temp);
     }
 
