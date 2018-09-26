@@ -94,7 +94,6 @@ public class Item implements java.io.Serializable {
      * adding the quantity of items and total cost properties for Shopping Cart
      */
     private int quantity;
-    private double totalPrice;
     /**
      * 
      * @return the quantity
@@ -126,10 +125,9 @@ public class Item implements java.io.Serializable {
         price = 0.0;
         
         quantity = 0;
-        totalPrice = 0.0;
     }
 
-    public Item(int id, String _dept, String _name, String _desc, double _price, int _quantity, double _totalPrice) {
+    public Item(int id, String _dept, String _name, String _desc, double _price, int _quantity) {
         ID = id;
         dept = _dept;
         desc = _desc;
@@ -137,22 +135,14 @@ public class Item implements java.io.Serializable {
         price = _price;
         
         quantity = _quantity;
-        totalPrice = _totalPrice;
     }
     
     public String toString(){
-        return String.format("Item[%d, %s, %s, %s, %f]", ID, dept, desc, name, price, quantity, totalPrice);
+        return String.format("Item[%d, %s, %s, %s, %f]", ID, dept, desc, name, price, quantity, getTotalPrice());
     }
     
     public void display(){
         System.out.println(toString());
     }
 
-    //MAin tester
-    public static void main(String[] args) {
-        Item i1;
-        //i1 = new Item(1, "Maintenance", "Filter", "An air filter", 5.99);
-        //i1.display();
-        
-    }
 }
