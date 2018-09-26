@@ -26,10 +26,15 @@
                 <c:set var="random" value="${randomNum}"/>
                 <div class="col-sm-4">
                     <div class="thumbnail">
-                        <img src="${attractImgs[random]}" alt="Paris">
-                        <p><strong>${item.getName()}</strong></p>
-                        <p>${item.getDesc()}</p>
-                        <button class="btn"><strong>$ ${item.getPrice()}</strong> - Add to cart</button>
+                        <form action="ShoppingCartServlet" method="post">
+                            <input type="hidden" name="action" value="add">
+                            <img src="${attractImgs[random]}" >
+                            <input type="hidden" name="id" value="${item.getID()}"/>
+                            <input type="hidden" name="department" value="${item.getDept()}" />
+                            <p><strong>${item.getName()}</strong></p>
+                            <p>${item.getDesc()}</p>
+                            <button class="btn" name="addToCart" type="submit"><strong>$ ${item.getPrice()}<input type="hidden" name="price" value="${item.getPrice()}"/></strong> - Add to cart</button>
+                        </form>
                     </div>
                 </div>
             </c:forEach>
