@@ -43,7 +43,7 @@ html, body {
     height: 100px;
     width: 100%;
     color: whitesmoke;
-    background: #62acb5de;
+    background: #0066ccad;
     text-align: center;
 }
 
@@ -202,10 +202,10 @@ h1 {
     position: absolute;
     top: 11em;
     left: 24em;
-    background: #62acb5de;
+    background: #0066ccad;
     border-radius: 6px;
     padding: 50px;
-    box-shadow: 0px 0px 6px #6eaeb5;
+    box-shadow: 0px 0px 6px #0066ccad;
 }
 
 .footer {
