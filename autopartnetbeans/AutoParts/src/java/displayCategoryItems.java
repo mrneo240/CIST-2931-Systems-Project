@@ -34,7 +34,7 @@ public class displayCategoryItems extends HttpServlet {
             
             if (cat.length() != 0) {
                 items = itemDAO.getAllItemsByDept(cat);
-                session.setAttribute("searchItems", items.size() > 0 ? items : null);
+                session.setAttribute("searchItems", items!= null ? (items.size() > 0 ? items : null) : null);
             } else {
                 session.setAttribute("searchItems", null);
             }
