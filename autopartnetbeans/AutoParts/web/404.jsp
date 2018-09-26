@@ -22,5 +22,4 @@
                 </div>
             </div>
         <%@ include file="WEB-INF/footerTemplate.jsp" %>
-    </body>
-</html>
+        

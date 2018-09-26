@@ -32,30 +32,29 @@
             </div>
         </div>
 
-    <c:set var="attractImgs" 
-           value="${['https://www.autozone.com/images/MEDIA_ProductCatalog/m9880016_deals-v47.png', 
-                    'https://www.autozone.com/images/MEDIA_ProductCatalog/m3490247_prd-Alternator.jpg',
-                    'https://www.autozone.com/images/MEDIA_ProductCatalog/m3490609_prd-Idler-Pulley.jpg']}"
-           scope="application" />
-    <c:if test="${searchItems != null}">
-        <c:forEach items="${searchItems}" var="item">
-            <%
-                int randomNum = (int) (java.lang.Math.random() * (3));
-                pageContext.setAttribute("randomNum", randomNum);
-            %>
-            <c:set var="random" value="${randomNum}"/>
-            <div class="col-sm-4">
-                <div class="thumbnail">
-                    <img src="${attractImgs[random]}" alt="Paris">
-                    <p><strong>${item.getName()}</strong></p>
-                    <p>${item.getDesc()}</p>
-                    <button class="btn"><strong>$ ${item.getPrice()}</strong> - Add to cart</button>
+        <c:set var="attractImgs" 
+               value="${['https://www.autozone.com/images/MEDIA_ProductCatalog/m9880016_deals-v47.png', 
+                        'https://www.autozone.com/images/MEDIA_ProductCatalog/m3490247_prd-Alternator.jpg',
+                        'https://www.autozone.com/images/MEDIA_ProductCatalog/m3490609_prd-Idler-Pulley.jpg']}"
+               scope="application" />
+        <c:if test="${searchItems != null}">
+            <c:forEach items="${searchItems}" var="item">
+                <%
+                    int randomNum = (int) (java.lang.Math.random() * (3));
+                    pageContext.setAttribute("randomNum", randomNum);
+                %>
+                <c:set var="random" value="${randomNum}"/>
+                <div class="col-sm-4">
+                    <div class="thumbnail">
+                        <img src="${attractImgs[random]}" alt="Paris">
+                        <p><strong>${item.getName()}</strong></p>
+                        <p>${item.getDesc()}</p>
+                        <button class="btn"><strong>$ ${item.getPrice()}</strong> - Add to cart</button>
+                    </div>
                 </div>
-            </div>
-        </c:forEach>
-    </c:if>
-        </div>
+            </c:forEach>
+        </c:if>
+    </div>
 </div>
+<c:set var="searchTerm" value="" scope="session"></c:set>
 <%@ include file="WEB-INF/footerTemplate.jsp" %>
-</body>
-</html>
