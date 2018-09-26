@@ -48,18 +48,24 @@
                             <c:set var="requestPageArr" value="${fn:split(pageContext.request.requestURI, '/')}" />
                             <c:set var="requestPage" value="${requestPageArr[fn:length(requestPageArr)-1]}" />
                             <li class="${requestPage.equals('index.jsp') ? 'active' : ''}"><a href="index.jsp">Home ${requestPage.equals('index.jsp') ? '<span class="sr-only">(current)</span>' : ''}</a></li>
-                            <li><a class="dropdown-toggle" data-toggle="dropdown" href="#">Department<span class="caret"></span></a>
+                            <li class="${requestPage.equals('displaydept.jsp') ? 'active' : ''}"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Department<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li class="${requestPage.equals('exterior.jsp') ? 'active' : ''}"><a href="displayDeptItems.jsp?cat=exterior">Exterior${requestPage.equals('exterior.jsp') ? '<span class="sr-only">(current)</span>' : ''}</a></li>
-                                    <li class="${requestPage.equals('interior.jsp') ? 'active' : ''}"><a href="displayDeptItems.jsp?cat=interior">Interior${requestPage.equals('interior.jsp') ? '<span class="sr-only">(current)</span>' : ''}</a></li>
-                                    <li class="${requestPage.equals('exterior.jsp') ? 'active' : ''}"><a href="displayDeptItems.jsp?cat=maintenance">Maintenance${requestPage.equals('exterior.jsp') ? '<span class="sr-only">(current)</span>' : ''}</a></li>
-                                    <li class="${requestPage.equals('interior.jsp') ? 'active' : ''}"><a href="displayDeptItems.jsp?cat=engine">Engine${requestPage.equals('interior.jsp') ? '<span class="sr-only">(current)</span>' : ''}</a></li>
-
+                                    <li class="${searchTerm.equals('Exterior') ? 'active' : ''}"><a href="displayDeptItems.jsp?cat=exterior">Exterior</a></li>
+                                    <li class="${searchTerm.equals('Interior') ? 'active' : ''}"><a href="displayDeptItems.jsp?cat=interior">Interior</a></li>
+                                    <li class="${searchTerm.equals('Engine') ? 'active' : ''}"><a href="displayDeptItems.jsp?cat=engine">Engine</a></li>
+                                    <li class="${searchTerm.equals('Maintenance') ? 'active' : ''}"><a href="displayDeptItems.jsp?cat=maintenace">Maintenance</a></li>
                                 </ul>
-                            </li> 
+                            </li>
                             <li class="${requestPage.equals('faq.jsp') ? 'active' : ''}"><a href="faq.jsp">FAQ${requestPage.equals('faq.jsp') ? '<span class="sr-only">(current)</span>' : ''}</a></li>
+                                <c:if test="${loginID == null}">
+                                <li><a a href="#" data-toggle="modal" data-target="#login-modal">Login</a></li>
+                                </c:if>    
                                 <c:if test="${loginID != null}">
-                                <li class="${requestPage.equals('updateprofile.jsp') ? 'active' : ''}"><a href="updatecustomer.jsp">Manage Account${requestPage.equals('updateprofile.jsp') ? '<span class="sr-only">(current)</span>' : ''}</a></li>
+                                <li class="${requestPage.equals('updateprofile.jsp') ? 'active' : ''}"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Account<span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a a href="#" data-toggle="modal" data-target="#logout-modal">Logout</a></li>
+                                        <li class="${requestPage.equals('updateprofile.jsp') ? 'active' : ''}"><a href="updatecustomer.jsp">Manage Account</a></li>
+                                    </ul></li>
                                 </c:if>
                         </ul>
                         <div class='form-group'> 
@@ -67,19 +73,13 @@
                         <form class="navbar-form navbar-left pull-right" action="searchItemServlet" method="post">
                             <div class="form-group">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-shopping-cart"></i></span>
+                                    <a href="ShoppingCart.jsp" ><span class="input-group-addon"><i class="fa fa-shopping-cart"></i></span></a>
                                 </div>
                                 <div class="form-group">
                                     <input type="text" class="form-control" name="searchTerm" placeholder="Search">
                                 </div>
                                 <button type="submit" class="btn btn-primary submit-btn">Submit</button>
                         </form>
-                        <c:if test="${loginID == null}">
-                            <a href="#" data-toggle="modal" class='login-btn btn btn-primary' data-target="#login-modal">Login</a>
-                        </c:if>
-                        <c:if test="${loginID != null}">
-                            <a href="#" data-toggle="modal" class='logout-btn btn btn-danger' data-target="#logout-modal">Logout</a>
-                        </c:if>
                     </div>
                 </div>
                 <div class="container"><c:if test="${loginID != null}"><p class="font-weight-bold">Hello ${customer.getcustName()}</p></c:if></div>
