@@ -73,7 +73,7 @@
                         <form class="navbar-form navbar-left pull-right" action="searchItemServlet" method="post">
                             <div class="form-group">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-shopping-cart"></i></span>
+                                    <a href="ShoppingCart.jsp" ><span class="input-group-addon"><i class="fa fa-shopping-cart"></i></span></a>
                                 </div>
                                 <div class="form-group">
                                     <input type="text" class="form-control" name="searchTerm" placeholder="Search">
