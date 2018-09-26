@@ -42,7 +42,7 @@ public class ShoppingCartServlet extends HttpServlet {
             }
         }
         
-        response.sendRedirect("../ShoppingCart.jsp");
+        response.sendRedirect("ShoppingCart.jsp");
         
     }
     
