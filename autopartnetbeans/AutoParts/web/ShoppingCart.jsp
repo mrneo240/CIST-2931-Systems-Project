@@ -23,35 +23,35 @@
                             <td>Unit Price</td>
                             <td>Total Price</td>
                         </tr>
-                        <jsp:useBean id="cart" scope="session" class="autopartstore.ShoppingCart" />
                         <c:if test="${cart.lineItemCount==0}">
                             <tr>
                                 <td>Cart is currently empty!</td>
                             </tr>
                         </c:if>
-                        <c:forEach var="cartItem" items="${cart.cartItems}" varStatus="counter">
+                        <c:forEach var="cartItem" items="${cart.getCartItems()}" varStatus="counter">
                             <form action="ShoppingCartServlet" method="POST" name="item">
                                 <tr>
-                                    <td><c:out value="${cartItem.dept}" /><br /><c:out value="${cartItem.partName}" /></td>
+                                    <td>${cartItem.getDept()}</td>
+                                    <td>${cartItem.getName()}</td>
+                                    <td>desc</td>
                                     <td>
-                                        <input type='hidden' name='itemIndex' value='<c:out value="${counter.count}" />'>
-                                        <input type='text' name='quantity' value='<c:out value="${cartItem.quantity}"/>'>
+                                        <input type='hidden' name='itemIndex' value='<c:out value="${counter.count-1}" />'>
+                                        <input type='text' name='quantity' value='${cartItem.getQuantity()}'>
                                         <input type="submit" name="action" value="Update"><br />
                                         <input type="submit" name="action" value="Delete"
                                     </td>
-                                    <td>$<c:out value="${cartItem.unitPrice}"/></td>
-                                    <td>$<c:out value="${cartItem.totalPrice}"/></td>
+                                    <td>${cartItem.getPrice()}</td>
+                                    <td>${cartItem.getTotalPrice()}</td>
                                 </tr>
                             </form>
                         </c:forEach>
                                 <tr>
                                     <td> </td>
                                     <td> </td>
-                                    <td>Subtotal: $<c:out value="${cart.orderTotal}"/></td>
+                                    <td>Subtotal: ${cart.getOrderTotal()}</td>
                                 </tr>
                     </table>
                     
             </div>
         <%@ include file="WEB-INF/footerTemplate.jsp" %>
-    </body>
-</html>
+        

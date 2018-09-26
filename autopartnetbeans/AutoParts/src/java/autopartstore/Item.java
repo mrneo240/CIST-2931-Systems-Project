@@ -114,14 +114,7 @@ public class Item implements java.io.Serializable {
      * @return the total price
      */
     public double getTotalPrice() {
-        return totalPrice;
-    }
-    /**
-     * set the total price
-     * @param totalPrice 
-     */
-    public void setTotalPrice(double totalPrice) {
-        this.totalPrice = totalPrice;
+        return getPrice()*getQuantity();
     }
 
     //Constructors
