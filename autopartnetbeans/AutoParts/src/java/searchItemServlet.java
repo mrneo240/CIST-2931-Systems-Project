@@ -49,7 +49,7 @@ public class searchItemServlet extends HttpServlet {
             if (searchTerm.length() != 0) {
                 session.setAttribute("searchTerm", searchTerm);
                 items = itemDAO.getItemsBySearchParam(searchTerm);
-                session.setAttribute("searchItems", items.size() > 0 ? items : null);
+                session.setAttribute("searchItems", items!= null ? (items.size() > 0 ? items : null) : null);
             } else {
                 session.setAttribute("searchTerm", null);
                 session.setAttribute("searchItems", null);

@@ -73,12 +73,13 @@ public class ItemDAOImpl implements ItemDAO {
         connection = ConnectionManager.getConnection();
         try {
             Statement stmt = connection.createStatement();
-            
-            ResultSet rs = stmt.executeQuery("SELECT * FROM Engine AS f "
-                    + "FULL OUTER JOIN Exterior as d ON d.ID = f.ID "
-                    + "FULL OUTER JOIN Interior as c ON c.ID = f.ID "
-                    + "FULL OUTER JOIN Maintenance as n ON n.ID = f.ID "
-                    + " WHERE f.ID=" + id);
+            ResultSet rs = stmt.executeQuery("SELECT ID, dept, partName, description, price FROM Exterior WHERE ID=" + id
+                    + " UNION ALL "
+                    + "SELECT ID, dept, partName, description, price FROM Engine WHERE ID=" + id
+                    + " UNION ALL "
+                    + "SELECT ID, dept, partName, description, price FROM Interior WHERE ID=" + id
+                    + " UNION ALL "
+                    + "SELECT ID, dept, partName, description, price FROM Maintenance WHERE ID=" + id);
             if (rs.next()) {
                 return extractItemFromResultSet(rs);
             }
@@ -89,22 +90,25 @@ public class ItemDAOImpl implements ItemDAO {
     }
 
     @Override
-    public SortedSet<Item> getItemsBySearchParam(String search) {
+    public Set<Item> getItemsBySearchParam(String search) {
         connection = ConnectionManager.getConnection();
-        SortedSet<Item> items = new TreeSet<>(Comparator.comparing(Item::getName));
+        Set<Item> items = new HashSet();
         try {
             for (String table : partTables) {
-                Statement stmt = connection.createStatement();
-                String cheatSearch = search.split(" ")[0];
-                String state = "SELECT * FROM "+table+" WHERE (UPPER(partName) LIKE UPPER('%"+cheatSearch+"%') "
-                                                    + "OR UPPER(description) LIKE UPPER('%"+cheatSearch+"%'))";
-                ResultSet rs = stmt.executeQuery(state);
-                while (rs.next()) {
-                    Item item = extractItemFromResultSet(rs);
-                    items.add(item);
+                String searchTerms[] = search.split(" ");
+                for (String term : searchTerms) {
+                    Statement stmt = connection.createStatement();
+                    System.out.printf("Searching [%s] for '%s'\n", table, term);
+                    String state = "SELECT * FROM " + table + " WHERE (UPPER(partName) LIKE UPPER('%" + term + "%') "
+                            + "OR UPPER(description) LIKE UPPER('%" + term + "%'))";
+                    ResultSet rs = stmt.executeQuery(state);
+                    while (rs.next()) {
+                        Item item = extractItemFromResultSet(rs);
+                        items.add(item);
+                    }
+                    rs.close();
+                    stmt.close();
                 }
-                rs.close();
-                stmt.close();
             }
 
             return items;
@@ -167,9 +171,9 @@ public class ItemDAOImpl implements ItemDAO {
     }
 
     @Override
-    public SortedSet<Item> getAllItemsByDept(String Dept) {
+    public Set<Item> getAllItemsByDept(String Dept) {
         connection = ConnectionManager.getConnection();
-        SortedSet<Item> items = new TreeSet<>(Comparator.comparing(Item::getName));
+        Set<Item> items = new HashSet();
         try {
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM " + Dept);

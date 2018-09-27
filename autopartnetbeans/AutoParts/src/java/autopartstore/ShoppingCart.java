@@ -67,7 +67,6 @@ public class ShoppingCart {
     }
 
     public void updateCartItem(int itemIndex, int quant) {
-
         try {
 
             if (quant > 0) {

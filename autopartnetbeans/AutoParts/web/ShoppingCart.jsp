@@ -38,7 +38,7 @@
                                 <table class="table borderless">
                                     <thead>
                                         <tr>
-                                            <td><strong>Your Cart: # item</strong></td>
+                                            <td><strong>Your Cart: ${cart.getLineItemCount()} item(s)</strong></td>
                                             <td></td>
                                             <td></td>
                                             <td></td>
@@ -80,7 +80,7 @@
                             </div>
                             <div class="panel-body">
                                 <div class="col-md-12">
-                                    <strong>Subtotal (# item)</strong>
+                                    <strong>Subtotal</strong>
                                     <div class="pull-right"><span>$</span><span><fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="2" value="${cart.getOrderSubTotal()}"/></span></div>
                                 </div>
                                 <div class="col-md-12">
@@ -97,7 +97,7 @@
                                     <div class="pull-right"><span>$</span><span><fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="2" value="${cart.getOrderTotal()}"/></span></div>
                                     <hr>
                                 </div>
-                                <a class="btn btn-primary btn-lg col-md-12" href="OrderConfirm.jsp">Checkout</a>
+                                    <a class="btn btn-primary btn-lg col-md-12" href="OrderConfirm.jsp"<c:if test="${cart.getLineItemCount() == 0 || cart == null}"> disabled onClick="return false;"</c:if>>Checkout</a>
                             </div>                </div>
                         <!--REVIEW ORDER END-->
                     </div>
