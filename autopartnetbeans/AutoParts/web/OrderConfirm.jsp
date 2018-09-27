@@ -32,11 +32,11 @@
                 <form class="form-horizontal" method="post" action="PlaceOrderServlet">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-md-push-6 col-sm-push-6">
                         <!--REVIEW ORDER-->
-                        <div class="panel panel-info">
+                        <div class="panel panel-default">
                             <div class="panel-heading">
                                 Review Order <div class="pull-right"><small><a class="afix-1" href="ShoppingCart.jsp">Edit Cart</a></small></div>
                             </div>
-                            <div class="panel-body">
+                            <div class="panel-body panel-cart">
                                 <c:forEach var="cartItem" items="${cart.getCartItems()}" varStatus="counter">
                                     <div class="form-group">
                                         <div class="col-sm-3 col-xs-3">
@@ -80,7 +80,7 @@
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-md-pull-6 col-sm-pull-6">
                         <!--SHIPPING METHOD-->
-                        <div class="panel panel-info">
+                        <div class="panel panel-default">
                             <div class="panel-heading">Address</div>
                             <div class="panel-body">
                                 <div class="form-group">
@@ -95,17 +95,13 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <c:set var="customerNames" value="${fn:split(customer.getcustName(), ' ')}" />
-                                    <div class="col-md-6 col-xs-12">
-                                        <strong>First Name:</strong>
-                                        <input type="text" name="first_name" class="form-control" value="${customerNames[0]}" />
+                                    <div class="col-md-12 col-xs-12">
+                                        <strong>Name:</strong>
+                                        <input type="text" name="first_name" class="form-control" value="${customer.getcustName()}" />
                                     </div>
-                                    <div class="span1"></div>
-                                    <div class="col-md-6 col-xs-12">
-                                        <strong>Last Name:</strong>
-                                        <input type="text" name="last_name" class="form-control" value="${customerNames[1]}" />
-                                    </div>
+                                    
                                 </div>
+                                
                                 <div class="form-group">
                                     <div class="col-md-12"><strong>Address:</strong></div>
                                     <div class="col-md-12">
@@ -113,23 +109,22 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-md-12"><strong>City:</strong></div>
-                                    <div class="col-md-12">
+                                    <div class="col-md-6 col-xs-12">
+                                        <strong>City:</strong>
                                         <input type="text" name="city" class="form-control" value="" />
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-md-12"><strong>State:</strong></div>
-                                    <div class="col-md-12">
+                                    <div class="span1"></div>
+                                    <div class="col-md-3 col-xs-6">
+                                        <strong>State:</strong>
                                         <input type="text" name="state" class="form-control" value="" />
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-md-12"><strong>Zip / Postal Code:</strong></div>
-                                    <div class="col-md-12">
+                                    <div class="span1"></div>
+                                    <div class="col-md-3 col-xs-6">
+                                        <strong>Zip Code:</strong>
                                         <input type="text" name="zip_code" class="form-control" value="" />
                                     </div>
                                 </div>
+                                
                                 <div class="form-group">
                                     <div class="col-md-12"><strong>Phone Number:</strong></div>
                                     <div class="col-md-12"><input type="text" name="phone_number" class="form-control" value="" /></div>

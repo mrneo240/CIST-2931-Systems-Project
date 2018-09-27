@@ -233,9 +233,8 @@ h1 {
 .font-weight-bold {
     font-weight:bold;
 }
-
-.form-group{
-    margin-bottom: 15px;
+.panel-cart .form-group {
+    margin-bottom: 0px;
 }
 
 label{

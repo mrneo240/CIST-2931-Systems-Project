@@ -74,7 +74,7 @@
                     </div>
                     <div class="col-md-4">
                         <!--REVIEW ORDER-->
-                        <div class="panel panel-default">
+                        <div class="panel panel-info">
                             <div class="panel-heading text-center">
                                 <h4>Review Order</h4>
                             </div>
