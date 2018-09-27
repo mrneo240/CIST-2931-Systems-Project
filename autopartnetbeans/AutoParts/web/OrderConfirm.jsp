@@ -33,8 +33,8 @@
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-md-push-6 col-sm-push-6">
                         <!--REVIEW ORDER-->
                         <div class="panel panel-default">
-                            <div class="panel-heading">
-                                Review Order <div class="pull-right"><small><a class="afix-1" href="ShoppingCart.jsp">Edit Cart</a></small></div>
+                            <div class="panel-heading text-center">
+                                <h4>Review Order <div class="pull-right"><small><a class="afix-1" href="ShoppingCart.jsp">Edit Cart</a></small></div></h4>
                             </div>
                             <div class="panel-body panel-cart">
                                 <c:forEach var="cartItem" items="${cart.getCartItems()}" varStatus="counter">
@@ -81,7 +81,7 @@
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-md-pull-6 col-sm-pull-6">
                         <!--SHIPPING METHOD-->
                         <div class="panel panel-default">
-                            <div class="panel-heading">Address</div>
+                            <div class="panel-heading text-center"><H4>Address</H4></div>
                             <div class="panel-body">
                                 <div class="form-group">
                                     <div class="col-md-12">
@@ -138,7 +138,7 @@
                         <!--SHIPPING METHOD END-->
                         <!--CREDIT CART PAYMENT-->
                         <div class="panel panel-info">
-                            <div class="panel-heading"><span><i class="fa fa-lock fa-lg"></i></span> Secure Payment</div>
+                            <div class="panel-heading text-center"><H4><span><i class="fa fa-lock fa-lg"></i></span> Secure Payment</div></H4>
                             <div class="panel-body">
                                 <div class="form-group">
                                     <div class="col-md-12"><strong>Card Type:</strong></div>

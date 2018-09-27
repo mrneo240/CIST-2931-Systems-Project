@@ -81,7 +81,7 @@
                             </div>
                             <a class="btn btn-success btn-sm ml-3" href="ShoppingCart.jsp">
                                 <i class="fa fa-shopping-cart fa-lg"></i> Cart
-                                <span class="badge badge-light">${cart.getLineItemCount()}</span>
+                                <span class="badge badge-light">${cart.getLineItemCount()>0? cart.getLineItemCount():""}</span>
                             </a>
                         </form>
                     </div>
