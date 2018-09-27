@@ -53,6 +53,8 @@
                             <li class="${requestPage.equals('index.jsp') ? 'active' : ''}"><a href="index.jsp">Home ${requestPage.equals('index.jsp') ? '<span class="sr-only">(current)</span>' : ''}</a></li>
                             <li class="${requestPage.equals('displaydept.jsp') ? 'active' : ''}"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Department<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
+                                    
+                                    <li class="${searchTerm.equals('All') ? 'active' : ''}"><a href="displayDeptItems.jsp?cat=All">All</a></li>
                                     <li class="${searchTerm.equals('Exterior') ? 'active' : ''}"><a href="displayDeptItems.jsp?cat=exterior">Exterior</a></li>
                                     <li class="${searchTerm.equals('Interior') ? 'active' : ''}"><a href="displayDeptItems.jsp?cat=interior">Interior</a></li>
                                     <li class="${searchTerm.equals('Engine') ? 'active' : ''}"><a href="displayDeptItems.jsp?cat=engine">Engine</a></li>
