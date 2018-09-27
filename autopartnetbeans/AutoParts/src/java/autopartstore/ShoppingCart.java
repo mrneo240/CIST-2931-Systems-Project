@@ -23,13 +23,22 @@ public class ShoppingCart {
         this.cartItems = cartItems;
     }
 
-    public double getOrderTotal() {
-        double total = 0;
+    public double getOrderSubTotal() {
+        double total = 0.0;
         for (int c = 0; c < cartItems.size(); c++) {
             Item cartItem = (Item) cartItems.get(c);
             total += cartItem.getTotalPrice();
         }
         return total;
+    }
+    
+    public double getOrderTax(){
+        return getOrderSubTotal()*0.07;
+    }
+    
+    
+    public double getOrderTotal() {
+        return getOrderSubTotal()+getOrderTax();
     }
 
     public int getLineItemCount() {

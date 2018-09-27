@@ -6,6 +6,21 @@ html, body {
     height:  100%;
 }
 
+.navbar-brand {
+    float: left;
+     padding: 0 0 0 0;
+    font-size: 18px;
+    line-height: 20px;
+}
+
+.media-left, .media>.pull-left {
+    padding-right: 5px;
+}
+
+.media-heading {
+    margin-left: 10px;
+}
+
 .modal-open {
     aoverflow: auto;
 }

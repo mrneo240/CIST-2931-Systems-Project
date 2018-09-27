@@ -15,10 +15,16 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+
+        <link rel="stylesheet" href="./css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <link rel="stylesheet" href="./css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+        <link rel="stylesheet" href="./css/font-awesome.min.css">
+
         <link rel="stylesheet" href="./css/custom.css" />
         <c:if test="${notFoundPage}">
             <link rel="stylesheet" href="./css/error.css" />
@@ -30,7 +36,7 @@
     </head>
     <body class='container'>
         <div class='wrapper'>
-            <nav class="navbar navbar-default">
+            <nav class="navbar navbar-default ">
                 <div class="container-fluid">
                     <!-- Brand and toggle get grouped for better mobile display -->
                     <div class="navbar-header">
@@ -40,9 +46,9 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <img src="img/autopartlogo2.jpg" alt="auto parts image" width="200px" height="70"/>
-                        <!--<a class="navbar-brand" href="#">Auto Parts Co.</a>-->
-                        
+                        <a class="navbar-brand" href="#">
+                        <img src="img/brand.png" alt="auto parts image" width="180x" height="60"/>
+                        </a>
                     </div>
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -71,17 +77,18 @@
                                     </ul></li>
                                 </c:if>
                         </ul>
-                        <div class='form-group'> 
-                        </div>
-                        <form class="navbar-form navbar-left pull-right" action="searchItemServlet" method="post">
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <a href="ShoppingCart.jsp" ><span class="input-group-addon"><i class="fa fa-shopping-cart"></i></span></a>
+
+                        <form class="navbar-form pull-right" role="search" action="searchItemServlet" method="post">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search..." name="searchTerm">
+                                <div class="input-group-btn">
+                                    <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
                                 </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" name="searchTerm" placeholder="Search">
-                                </div>
-                                <button type="submit" class="btn btn-primary submit-btn">Submit</button>
+                            </div>
+                            <a class="btn btn-success btn-sm ml-3" href="ShoppingCart.jsp">
+                                <i class="fa fa-shopping-cart fa-lg"></i> Cart
+                                <span class="badge badge-light">${cart.getLineItemCount()}</span>
+                            </a>
                         </form>
                     </div>
                 </div>
