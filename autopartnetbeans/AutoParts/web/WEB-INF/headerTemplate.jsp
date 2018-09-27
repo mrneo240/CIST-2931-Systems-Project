@@ -6,6 +6,7 @@
 
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page trimDirectiveWhitespaces="true"%>
 <!DOCTYPE html>
@@ -57,7 +58,7 @@
                                     <li class="${searchTerm.equals('Exterior') ? 'active' : ''}"><a href="displayDeptItems.jsp?cat=exterior">Exterior</a></li>
                                     <li class="${searchTerm.equals('Interior') ? 'active' : ''}"><a href="displayDeptItems.jsp?cat=interior">Interior</a></li>
                                     <li class="${searchTerm.equals('Engine') ? 'active' : ''}"><a href="displayDeptItems.jsp?cat=engine">Engine</a></li>
-                                    <li class="${searchTerm.equals('Maintenance') ? 'active' : ''}"><a href="displayDeptItems.jsp?cat=maintenace">Maintenance</a></li>
+                                    <li class="${searchTerm.equals('Maintenance') ? 'active' : ''}"><a href="displayDeptItems.jsp?cat=maintenance">Maintenance</a></li>
                                 </ul>
                             </li>
                             <li class="${requestPage.equals('faq.jsp') ? 'active' : ''}"><a href="faq.jsp">FAQ${requestPage.equals('faq.jsp') ? '<span class="sr-only">(current)</span>' : ''}</a></li>

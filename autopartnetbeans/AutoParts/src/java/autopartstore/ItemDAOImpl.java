@@ -70,16 +70,12 @@ public class ItemDAOImpl implements ItemDAO {
         connection = ConnectionManager.getConnection();
         try {
             Statement stmt = connection.createStatement();
+            
             ResultSet rs = stmt.executeQuery("SELECT * FROM Engine AS f "
                     + "FULL OUTER JOIN Exterior as d ON d.ID = f.ID "
                     + "FULL OUTER JOIN Interior as c ON c.ID = f.ID "
                     + "FULL OUTER JOIN Maintenance as n ON n.ID = f.ID "
-                    + " WHERE id=" + id);
-            
-/*SELECT <fieldlist>  FROM Faculty AS f
-INNER JOIN Division AS d ON d.FacultyID = f.FacultyID 
-INNER JOIN Country AS c ON c.FacultyID = f.FacultyID
-INNER JOIN Nationality AS n ON n.FacultyID = f.FacultyID*/
+                    + " WHERE f.ID=" + id);
             if (rs.next()) {
                 return extractItemFromResultSet(rs);
             }

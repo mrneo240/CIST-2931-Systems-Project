@@ -35,12 +35,10 @@ public class displayCategoryItems extends HttpServlet {
             if (cat.length() != 0) {
                 if (cat.equals("all")){
                     items = itemDAO.getAllItems();
-                }
-                else{
+                } else{
                 items = itemDAO.getAllItemsByDept(cat);}
                 session.setAttribute("searchItems", items.size() > 0 ? items : null);
-            }
-                else {
+            } else {
                 session.setAttribute("searchItems", null);
             }
 
