@@ -14,8 +14,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 /**
  *
@@ -42,9 +45,9 @@ public class ItemDAOImpl implements ItemDAO {
     }
 
     @Override
-    public Set<Item> getAllItems() {
+    public SortedSet<Item> getAllItems() {
         connection = ConnectionManager.getConnection();
-        Set<Item> items = new HashSet();
+        SortedSet<Item> items = new TreeSet<>(Comparator.comparing(Item::getName));
         try {
             for (String table : partTables) {
                 Statement stmt = connection.createStatement();
@@ -86,9 +89,9 @@ public class ItemDAOImpl implements ItemDAO {
     }
 
     @Override
-    public Set<Item> getItemsBySearchParam(String search) {
+    public SortedSet<Item> getItemsBySearchParam(String search) {
         connection = ConnectionManager.getConnection();
-        Set<Item> items = new HashSet();
+        SortedSet<Item> items = new TreeSet<>(Comparator.comparing(Item::getName));
         try {
             for (String table : partTables) {
                 Statement stmt = connection.createStatement();
@@ -164,9 +167,9 @@ public class ItemDAOImpl implements ItemDAO {
     }
 
     @Override
-    public Set<Item> getAllItemsByDept(String Dept) {
+    public SortedSet<Item> getAllItemsByDept(String Dept) {
         connection = ConnectionManager.getConnection();
-        Set<Item> items = new HashSet();
+        SortedSet<Item> items = new TreeSet<>(Comparator.comparing(Item::getName));
         try {
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM " + Dept);

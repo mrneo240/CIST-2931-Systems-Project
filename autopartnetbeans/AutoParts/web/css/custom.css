@@ -11,6 +11,14 @@ html, body {
     padding: 0 0 0 0;
     font-size: 18px;
     line-height: 20px;
+    height: 100%;
+}
+
+.line {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 1px solid #000;
 }
 
 .media-left, .media>.pull-left {
@@ -239,6 +247,9 @@ h1 {
 
 label{
     margin-bottom: 15px;
+}
+.btn-success {
+    padding: 0.5em 1em;
 }
 
 input,
