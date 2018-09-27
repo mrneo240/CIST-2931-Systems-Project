@@ -24,7 +24,13 @@ public class ShoppingCartServlet extends HttpServlet {
 
     public void finishRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.sendRedirect("ShoppingCart.jsp");
+        String ref="";
+        if(request.getHeader("referer") != null){
+        String referrerArr[] = request.getHeader("referer").split("/");
+        ref= referrerArr[referrerArr.length - 1];
+        }
+        //response.sendRedirect("ShoppingCart.jsp");
+        response.sendRedirect(ref);
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)
