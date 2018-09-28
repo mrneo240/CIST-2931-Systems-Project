@@ -38,7 +38,7 @@
                         <input type='hidden' name='itemIndex' value='<c:out value="${counter.count-1}" />'>
                         <input type='text' name='quantity' value='${cartItem.getQuantity()}'>
                         <input type="submit" name="action" value="Update"><br />
-                        <input type="submit" name="action" value="Delete"
+                        <input type="submit" name="action" value="Delete">
                     </td>
                     <td>$<fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="2" value="${cartItem.getPrice()}"/></td>
                     <td>$<fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="2" value="${cartItem.getTotalPrice()}"/></td>
@@ -51,6 +51,9 @@
             <td>Subtotal: $<fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="2" value="${cart.getOrderTotal()}"/></td>
         </tr>
     </table>
+        <Form action="OrderReview.jsp" method="POST">
+            <input type="submit" name="action" value="Order">
+        </Form>
 
 </div>
 <%@ include file="WEB-INF/footerTemplate.jsp" %>
