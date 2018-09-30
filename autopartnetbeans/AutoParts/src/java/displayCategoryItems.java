@@ -25,8 +25,8 @@ public class displayCategoryItems extends HttpServlet {
 
         HttpSession session = request.getSession();
 
-        String cat = request.getParameter("cat").trim().toLowerCase();
-        session.setAttribute("searchTerm", cat.substring(0, 1).toUpperCase() + cat.substring(1));
+        String cat = request.getParameter("cat").trim().substring(0, 1).toUpperCase() + request.getParameter("cat").trim().substring(1);
+        session.setAttribute("searchTerm", cat);
         Set<Item> items;
         Set<Item> featureItems = new HashSet();
         ItemDAOImpl itemDAO = new ItemDAOImpl(ConnectionManager.init(this.getServletContext()));
@@ -35,7 +35,7 @@ public class displayCategoryItems extends HttpServlet {
         try {
 
             if (cat.length() != 0) {
-                if (cat.equals("all")) {
+                if (cat.equalsIgnoreCase("all")) {
                     items = itemDAO.getAllItems();
                 } else {
                     items = itemDAO.getAllItemsByDept(cat);
@@ -61,7 +61,7 @@ public class displayCategoryItems extends HttpServlet {
             e.printStackTrace();
         }
 
-        response.sendRedirect("displaydept.jsp");
+        response.sendRedirect("displaydept.jsp?cat="+cat);
     }
 
 }

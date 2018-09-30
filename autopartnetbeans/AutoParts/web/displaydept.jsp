@@ -8,7 +8,7 @@
                 'https://www.autozone.com/images/MEDIA_ProductCatalog/m3490609_prd-Idler-Pulley.jpg']}"
        scope="application" />
 <div class='main-container'>
-    <h1>${searchTerm}</h1>
+    <h1>${param.cat}</h1>
     <div class="row text-center feature-imgs">
         <h2>Feature Items</h2>
         <c:if test="${featureItems != null}">
