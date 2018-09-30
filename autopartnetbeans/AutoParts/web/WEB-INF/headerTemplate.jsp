@@ -46,7 +46,7 @@
                     </div>
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
+                    <div>
                         <ul class="nav navbar-nav">
                             <c:set var="requestPageArr" value="${fn:split(pageContext.request.requestURI, '/')}" />
                             <c:set var="requestPage" value="${requestPageArr[fn:length(requestPageArr)-1]}" />

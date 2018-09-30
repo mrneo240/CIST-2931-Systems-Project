@@ -18,7 +18,7 @@
                     pageContext.setAttribute("randomNum", randomNum);
                 %>
                 <c:set var="random" value="${randomNum}"/>
-                <div class="col-sm-4">
+                <div class="col-sm-4 col-xs-6">
                     <div class="thumbnail">
                         <form action="ShoppingCartServlet" method="post">
                             <input type="hidden" name="action" value="add">
@@ -33,7 +33,7 @@
                 </div>
             </c:forEach>
         </c:if>
-        <div class="col-md-12">
+        <div class="col-md-12 col-xs-12">
             <hr class="line">
         </div>
         <c:if test="${searchItems != null}">
@@ -43,7 +43,7 @@
                     pageContext.setAttribute("randomNum", randomNum);
                 %>
                 <c:set var="random" value="${randomNum}"/>
-                <div class="col-sm-4">
+                <div class="col-sm-4 col-xs-6">
                     <div class="thumbnail">
                         <form action="ShoppingCartServlet" method="post">
                             <input type="hidden" name="action" value="add">

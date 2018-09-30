@@ -29,50 +29,67 @@
                 </ul>
             </div>
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="col-md-8">
                         <!--SHIPPING METHOD-->
                         <div class="panel panel-default">
                             <div class="panel-heading text-center"><h4>Current Cart</h4></div>
                             <div class="panel-body">
-                                <table class="table borderless">
-                                    <thead>
-                                        <tr>
-                                            <td><strong>Your Cart: ${cart.getLineItemCount()} item(s)</strong></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <c:forEach var="cartItem" items="${cart.getCartItems()}" varStatus="counter">
-                                        <form action="ShoppingCartServlet" method="POST" name="item">
-                                            <input type='hidden' name='itemIndex' value='<c:out value="${counter.count-1}" />'>
+                                <c:if test="${cart.getLineItemCount() == 0 || cart == null}">
+                                    <div class="row" id="box-search">
+                                        <div class="text-center">
+                                            <img src="img/empty-shopping-cart.png" alt="" width="50%" height="50%" style="margin-right: auto;margin-left: auto;" class="img-responsive">
+                                            <div class="caption well well-sm">
+                                                <p>Your Shopping cart is empty, Let's find some items to add to it!<h3><a href="index.jsp">Take me There!</a></h3></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </c:if>
+                                <c:if test="${cart.getLineItemCount() > 0}">
+                                    <table class="table borderless">
+                                        <thead>
                                             <tr>
-                                                <td class="col-md-3">
-                                                    <div class="media">
-                                                        <a class="thumbnail pull-left" href="#"> <img class="media-object" src="https://loremflickr.com/320/240/${cartItem.getDept()}?id=${cartItem.getPrice()}" style="width: 72px; height: 72px;"> </a>
-                                                        <div class="media-body">
-                                                            <h5 class="media-heading"> ${cartItem.getName()}</h5>
-                                                            <h5 class="media-heading"> ${cartItem.getID()}</h5>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="text-center"><fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="2" value="${cartItem.getPrice()}"/></td>
-                                                <td class="text-center"><input type='text' name='quantity' value='${cartItem.getQuantity()}'><input type="submit" name="action" value="Update"></td>
-                                                <td class="text-right"><fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="2" value="${cartItem.getTotalPrice()}"/></td>
-                                                <td class="text-right"><button type="submit" name="action" value="Delete" class="btn btn-danger">Remove</button></td>
+                                                <td><strong>Your Cart: ${cart.getLineItemCount()} item(s)</strong></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
                                             </tr>
-                                        </form>
-                                    </c:forEach>
-                                    </tbody>
-                                </table> 
+                                        </thead>
+                                        <tbody>
+                                            <c:forEach var="cartItem" items="${cart.getCartItems()}" varStatus="counter">
+                                            <form action="ShoppingCartServlet" method="POST" name="item">
+                                                <input type='hidden' name='itemIndex' value='<c:out value="${counter.count-1}" />'>
+                                                <tr>
+                                                    <td class="col-md-3">
+                                                        <div class="media">
+                                                            <a class="thumbnail pull-left" href="#"> <img class="media-object" src="https://loremflickr.com/320/240/${cartItem.getDept()}?id=${cartItem.getPrice()}" style="width: 72px; height: 72px;"> </a>
+                                                            <div class="media-body">
+                                                                <h5 class="media-heading"> ${cartItem.getName()}</h5>
+                                                                <h5 class="media-heading"> ${cartItem.getID()}</h5>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="text-center"><fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="2" value="${cartItem.getPrice()}"/></td>
+                                                    <td class="text-center"><div class="input-group">
+                                                            <input type="text" class="form-control" placeholder="1" name="quantity" value='${cartItem.getQuantity()}'>
+                                                            <div class="input-group-btn">
+                                                                <button class="btn btn-default" type="submit" name="action" value="Update"><i class="fa fa-search"></i></button>
+                                                            </div>
+                                                        </div></td>
+                                                    <td class="text-right"><fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="2" value="${cartItem.getTotalPrice()}"/></td>
+                                                    <td class="text-right"><button type="submit" name="action" value="Delete" class="btn btn-danger">Remove</button></td>
+                                                </tr>
+                                            </form>
+                                        </c:forEach>
+                                        </tbody>
+                                    </table>
+                                </c:if>
                             </div>
                         </div>
                         <!--SHIPPING METHOD END-->
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 col-sm-12 col-xs-12">
                         <!--REVIEW ORDER-->
                         <div class="panel panel-info">
                             <div class="panel-heading text-center">
@@ -97,14 +114,14 @@
                                     <div class="pull-right"><span>$</span><span><fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="2" value="${cart.getOrderTotal()}"/></span></div>
                                     <hr>
                                 </div>
-                                    <a class="btn btn-primary btn-lg col-md-12" href="OrderConfirm.jsp"<c:if test="${cart.getLineItemCount() == 0 || cart == null}"> disabled onClick="return false;"</c:if>>Checkout</a>
-                            </div>                </div>
-                        <!--REVIEW ORDER END-->
-                    </div>
+                                <a class="btn btn-primary btn-lg col-md-12" href="OrderConfirm.jsp"<c:if test="${cart.getLineItemCount() == 0 || cart == null}"> disabled onClick="return false;"</c:if>>Checkout</a>
+                                </div>                </div>
+                            <!--REVIEW ORDER END-->
+                        </div>
 
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 <%@ include file="WEB-INF/footerTemplate.jsp" %>

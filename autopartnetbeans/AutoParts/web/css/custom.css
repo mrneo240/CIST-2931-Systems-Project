@@ -6,6 +6,33 @@ html, body {
     height:  100%;
 }
 
+.col-cen{
+    margin: 0 auto;
+    float: none;
+}
+
+.well {
+    background-image: -webkit-linear-gradient(top,#e8e8e888 0,#f5f5f588 100%);
+    background-image: -o-linear-gradient(top,#e8e8e888 0,#f5f5f588 100%);
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#e8e8e888),to(#f5f5f588));
+    background-image: linear-gradient(to bottom,rgba(232,232,232,0.75) 0,rgba(245,245,245,0.75) 100%);
+    background-color: initial;
+}
+
+.caption {
+    position: absolute;
+    top: 45%;
+    left: 13%;
+    width: 75%;
+    font-weight:bold;
+}
+
+p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .navbar-brand {
     float: left;
     padding: 0 0 0 0;
@@ -30,7 +57,7 @@ html, body {
 }
 
 .modal-open {
-    aoverflow: auto;
+    overflow: auto;
 }
 
 .wrapper {
@@ -80,8 +107,6 @@ html, body {
     color: white;
     text-align: center;
     margin-top: 0px;
-
-
     margin-bottom: 25px;
 }
 
@@ -222,13 +247,15 @@ h1 {
 }
 
 .search-form  {
-    position: absolute;
-    top: 11em;
-    left: 24em;
     background: #0066ccad;
     border-radius: 6px;
     padding: 50px;
     box-shadow: 0px 0px 6px #0066ccad;
+    top: 25%;
+    left: 20%;
+    position: absolute;
+    right: 20%;
+    bottom: 25%;
 }
 
 .footer {
