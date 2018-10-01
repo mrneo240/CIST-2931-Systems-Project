@@ -8,14 +8,12 @@
 ***************************** */
 package autopartstore.json;
 
-import autopartstore.Item;
 import autopartstore.ItemDAOImpl;
+import autopartstore.Order;
+import autopartstore.OrderDAOImpl;
 import autopartstore.db.ConnectionManager;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import java.sql.Connection;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
 
 /**
  *
@@ -43,11 +41,15 @@ public class NewClass {
         order.synchronize();
         
         String json = gson.toJson(order);*/
-        String input = "{\"ID\":1,\"custID\":6,\"total\":69.0,\"items\":[{\"itemID\":\"I2\",\"qty\":1},{\"itemID\":\"M1\",\"qty\":4}],\"date\":\"Oct 1, 2018\",\"status\":1}";
+        String input = "{\"ID\":1,\"custID\":6,\"total\":69.0,\"items\":[{\"itemID\":\"I2\",\"qty\":1},{\"itemID\":\"M1\",\"qty\":4}],\"lineCount\":2,\"date\":\"Oct 1, 2018\",\"status\":1,\"details\":{\"name\":\"Danielle Strom\",\"addr\":\"987 Thotville lane\"}}";
         OrderJSON tmp = gson.fromJson(input, OrderJSON.class);
         tmp.synchronize();
         System.out.println(tmp.getItems().get(0).getItem().toString());
         
+        OrderDAOImpl orderDAO =(new OrderDAOImpl((new ConnectionManager(false)).getConnection()));
+        Order order = orderDAO.getOrderByID(1);
+        order.setOrderJSON(input);
+        orderDAO.insertOrder(order);
         
         System.out.println(gson.toJson(tmp));
         /*

@@ -32,10 +32,10 @@ public class OrderDAOImpl implements OrderDAO {
     private Order extractOrderFromResultSet(ResultSet rs) throws SQLException {
         Order order = new Order();
         order.setID(rs.getInt("id"));
-        order.setCustID(rs.getInt("orderid"));
+        order.setCustID(rs.getInt("customerid"));
         order.setOrderJSON(rs.getString("orderjson"));
         order.setStatus(rs.getInt("status"));
-        order.setTotal(rs.getDouble("double"));
+        order.setTotal(rs.getDouble("total"));
         order.setDate(rs.getDate("dateplaced"));
         return order;
     }

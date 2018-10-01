@@ -8,9 +8,6 @@
 ***************************** */
 package autopartstore.json;
 
-import autopartstore.Item;
-import autopartstore.ItemDAOImpl;
-import autopartstore.db.ConnectionManager;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -36,7 +33,7 @@ public class OrderDetailsJSON {
 
     }
 
-    public void getItem() {
+    public void getDetails() {
         synchronize();
     }
 
