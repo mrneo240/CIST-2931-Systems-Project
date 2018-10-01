@@ -8,14 +8,10 @@
 ***************************** */
 
 import autopartstore.ItemJSON;
-import autopartstore.ItemDAOImpl;
-import autopartstore.ItemJSON;
 import autopartstore.ShoppingCart;
-import autopartstore.db.ConnectionManager;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -38,37 +34,23 @@ public class orderCheckoutServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
         HttpSession session = request.getSession();
 
         ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
-        if (shoppingCart != null ) {
+        if (shoppingCart != null) {
             String json = gson.toJson(shoppingCart.getCartItems());
 
             ItemJSON[] tmp = gson.fromJson(json, ItemJSON[].class);
-
-            response.setContentType("text/html;charset=UTF-8");
-            try (PrintWriter out = response.getWriter()) {
-                /* TODO output your page here. You may use following sample code. */
-                out.println("<!DOCTYPE html>");
-                out.println("<html>");
-                out.println("<head>");
-                out.println("<title>Servlet orderCheckoutServlet</title>");
-                out.println("</head>");
-                out.println("<body>");
-                out.println("<h1>returned json:<br></h1><p> " + json + "</p>");
-                out.println("<h1>made from json [" + tmp + "]:<br></h1><p> ");
-                for (ItemJSON temp : tmp) {
-                    out.printf("%s<br>\r\n", temp.getItem());
-                }
-                out.println("</p></body>");
-                out.println("</html>");
-            }
+            session.setAttribute("items", tmp);
+            session.setAttribute("json", json);
         }
+
+        request.getRequestDispatcher("WEB-INF/orderConfirm.jsp").forward(request, response);
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *

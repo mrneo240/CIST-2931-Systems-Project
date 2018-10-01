@@ -28,7 +28,6 @@ public class ShoppingCartServlet extends HttpServlet {
             String referrerArr[] = request.getHeader("referer").split("/");
             ref = referrerArr[referrerArr.length - 1];
         }
-        //response.sendRedirect("ShoppingCart.jsp");
         response.sendRedirect(ref);
     }
 
