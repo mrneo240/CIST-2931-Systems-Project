@@ -145,7 +145,7 @@ public class ItemDAOImpl implements ItemDAO {
         try {
             PreparedStatement stmt = connection.prepareStatement("UPDATE ? SET id= ?, dept=?, name=?, desc=?, price=? WHERE partcode=?");
             stmt.setString(1, item.getDept());
-            stmt.setInt(2,item.getID());
+            stmt.setInt(2, item.getID());
             stmt.setString(3, item.getDept());
             stmt.setString(4, item.getName());
             stmt.setString(5, item.getDesc());

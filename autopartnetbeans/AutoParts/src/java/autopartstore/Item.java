@@ -8,6 +8,8 @@
 ***************************** */
 package autopartstore;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 /**
  *
  * @author Hayden Kowalchuk
@@ -84,16 +86,30 @@ public class Item implements java.io.Serializable {
         this.price = price;
     }
     
+    @Expose(serialize = false)
     private int ID;
+    
+    @SerializedName("itemID")
+    @Expose
     private String partCode;
+    
+    @Expose(serialize = false)
     private String dept;
+    
+    @Expose(serialize = false)
     private String name;
+    
+    @Expose(serialize = false)
     private String desc;
+    
+    @Expose(serialize = false)
     private double price;
     
     /** Michelle
      * adding the quantity of items and total cost properties for Shopping Cart
      */
+    @SerializedName("qty")
+    @Expose
     private int quantity;
     /**
      * 

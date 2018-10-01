@@ -11,7 +11,6 @@ package autopartstore;
 import autopartstore.db.ConnectionManager;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import java.sql.Connection;
 
 /**
  *
@@ -21,28 +20,26 @@ public class ItemJSON {
 
     @SerializedName("itemID")
     @Expose
-    private String itemID;
+    public String itemID = "";
+
     @SerializedName("qty")
     @Expose
-    private Integer qty;
-    
-    //Ignore in GSON
-    private transient Item item;
+    public int qty = 0;
 
-    public String getItemID() {
-        return itemID;
+    @Expose(serialize = false)
+    private Item item;
+
+    public void synchronize() {
+        if (itemID != null && item == null) {
+            System.out.println("Creating new JSON Item with code:" + itemID);
+            item = (new ItemDAOImpl(ConnectionManager.getConnection()).getItemByPartCode(itemID));
+            System.out.println(item.getPartCode() + " Item Created succesfully!");
+        }
     }
 
-    public void setItemID(String itemID) {
-        this.itemID = itemID;
-        item = (new ItemDAOImpl(ConnectionManager.getConnection()).getItemByPartCode(itemID));
+    public Item getItem() {
+        synchronize();
+        return item;
     }
 
-    public Integer getQty() {
-        return item.getQuantity();
-    }
-
-    public void setQty(Integer qty) {
-    }
-    
 }

@@ -19,11 +19,16 @@ import javax.servlet.ServletContext;
  * @author Hayden Kowalchuk
  */
 public class ConnectionManager {
-
+    
+    private static boolean online = true;
     private static ServletContext context = null;
 
     public ConnectionManager(ServletContext con) {
         context = con;
+        ConnectionManager.online = true;
+    }
+    public ConnectionManager(boolean online){
+        ConnectionManager.online = online;
     }
 
     public static Connection init(ServletContext con) {
@@ -46,7 +51,12 @@ public class ConnectionManager {
             }
 
             //SQL Data
-            String path = context.getRealPath("/");
+            String path = "";
+            if(ConnectionManager.online){
+                 path = context.getRealPath("/");
+            } else {
+                path = "resources";
+            }
             String dbURL = "jdbc:ucanaccess://" + path + "/AutoPart1.mdb";
             try {
                 //Open our database file using ucanaccess
