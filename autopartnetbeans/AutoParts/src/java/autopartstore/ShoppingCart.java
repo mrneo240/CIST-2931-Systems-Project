@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class ShoppingCart {
 
-    private ArrayList cartItems = new ArrayList();
+    private ArrayList<Item> cartItems = new ArrayList();
 
     public ArrayList getCartItems() {
         return cartItems;
@@ -46,6 +46,12 @@ public class ShoppingCart {
     }
 
     public void addCartItem(Item item) {
+        for(Item temp : cartItems){
+            if(temp.getPartCode() == item.getPartCode()){
+                temp.setQuantity(temp.getQuantity()+1);
+                return;
+            }
+        }
         cartItems.add(item);
     }
 

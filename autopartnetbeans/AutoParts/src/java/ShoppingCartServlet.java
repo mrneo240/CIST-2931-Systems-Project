@@ -7,7 +7,6 @@
 import autopartstore.*;
 import autopartstore.db.ConnectionManager;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,10 +23,10 @@ public class ShoppingCartServlet extends HttpServlet {
 
     public void finishRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String ref="";
-        if(request.getHeader("referer") != null){
-        String referrerArr[] = request.getHeader("referer").split("/");
-        ref= referrerArr[referrerArr.length - 1];
+        String ref = "";
+        if (request.getHeader("referer") != null) {
+            String referrerArr[] = request.getHeader("referer").split("/");
+            ref = referrerArr[referrerArr.length - 1];
         }
         //response.sendRedirect("ShoppingCart.jsp");
         response.sendRedirect(ref);
@@ -37,7 +36,6 @@ public class ShoppingCartServlet extends HttpServlet {
             throws ServletException, IOException {
         finishRequest(request, response);
     }
-    
 
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -79,8 +77,6 @@ public class ShoppingCartServlet extends HttpServlet {
             shoppingCart = new ShoppingCart();
             session.setAttribute("cart", shoppingCart);
         }
-
-        System.out.println("shopping cart items: " + shoppingCart.getLineItemCount());
 
         shoppingCart.addCartItem(temp);
     }
