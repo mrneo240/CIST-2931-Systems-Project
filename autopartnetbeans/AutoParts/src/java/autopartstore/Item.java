@@ -85,6 +85,7 @@ public class Item implements java.io.Serializable {
     }
     
     private int ID;
+    private String partCode;
     private String dept;
     private String name;
     private String desc;
@@ -123,26 +124,40 @@ public class Item implements java.io.Serializable {
         desc = "";
         name = "";
         price = 0.0;
-        
+        partCode = "";
         quantity = 0;
     }
 
-    public Item(int id, String _dept, String _name, String _desc, double _price, int _quantity) {
+    public Item(int id, String _dept, String _name, String _desc, double _price, int _quantity, String code) {
         ID = id;
         dept = _dept;
         desc = _desc;
         name = _name;
         price = _price;
-        
+        partCode = code;
         quantity = _quantity;
     }
     
     public String toString(){
-        return String.format("Item[%d, %s, %s, %s, %f]", ID, dept, desc, name, price, quantity, getTotalPrice());
+        return String.format("Item[%d, %s, %s, %s, %s, %f]", ID, partCode, dept, desc, name, price, quantity, getTotalPrice());
     }
     
     public void display(){
         System.out.println(toString());
+    }
+
+    /**
+     * @return the partCode
+     */
+    public String getPartCode() {
+        return partCode;
+    }
+
+    /**
+     * @param partCode the partCode to set
+     */
+    public void setPartCode(String partCode) {
+        this.partCode = partCode;
     }
 
 }

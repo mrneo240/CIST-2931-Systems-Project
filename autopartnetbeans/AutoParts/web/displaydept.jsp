@@ -23,7 +23,7 @@
                         <form action="ShoppingCartServlet" method="post">
                             <input type="hidden" name="action" value="add">
                             <img src="${attractImgs[random]}" alt="Paris">
-                            <input type="hidden" name="id" value="${item.getID()}"/>
+                            <input type="hidden" name="id" value="${item.getPartCode()}"/>
                             <input type="hidden" name="department" value="${item.getDept()}" />
                             <p><strong>${item.getName()}</strong></p>
                             <p>${item.getDesc()}</p>
@@ -48,7 +48,7 @@
                         <form action="ShoppingCartServlet" method="post">
                             <input type="hidden" name="action" value="add">
                             <img src="${attractImgs[random]}" alt="Paris">
-                            <input type="hidden" name="id" value="${item.getID()}"/>
+                            <input type="hidden" name="id" value="${item.getPartCode()}"/>
                             <input type="hidden" name="department" value="${item.getDept()}" />
                             <p><strong>${item.getName()}</strong></p>
                             <p>${item.getDesc()}</p>

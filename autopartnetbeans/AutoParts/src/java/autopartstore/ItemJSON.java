@@ -26,7 +26,8 @@ public class ItemJSON {
     @Expose
     private Integer qty;
     
-    private Item item;
+    //Ignore in GSON
+    private transient Item item;
 
     public String getItemID() {
         return itemID;
@@ -34,15 +35,14 @@ public class ItemJSON {
 
     public void setItemID(String itemID) {
         this.itemID = itemID;
-        item = (new ItemDAOImpl(ConnectionManager.getConnection()).getItemByID(0))
+        item = (new ItemDAOImpl(ConnectionManager.getConnection()).getItemByPartCode(itemID));
     }
 
     public Integer getQty() {
-        return qty;
+        return item.getQuantity();
     }
 
     public void setQty(Integer qty) {
-        this.qty = qty;
     }
     
 }

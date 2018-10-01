@@ -61,24 +61,24 @@
                                             <form action="ShoppingCartServlet" method="POST" name="item">
                                                 <input type='hidden' name='itemIndex' value='<c:out value="${counter.count-1}" />'>
                                                 <tr>
-                                                    <td class="col-md-3">
+                                                    <td class="col-md-5">
                                                         <div class="media">
                                                             <a class="thumbnail pull-left" href="#"> <img class="media-object" src="https://loremflickr.com/320/240/${cartItem.getDept()}?id=${cartItem.getPrice()}" style="width: 72px; height: 72px;"> </a>
                                                             <div class="media-body">
                                                                 <h5 class="media-heading"> ${cartItem.getName()}</h5>
-                                                                <h5 class="media-heading"> ${cartItem.getID()}</h5>
+                                                                <h5 class="media-heading"> ${cartItem.getPartCode()}</h5>
                                                             </div>
                                                         </div>
                                                     </td>
                                                     <td class="text-center"><fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="2" value="${cartItem.getPrice()}"/></td>
-                                                    <td class="text-center"><div class="input-group">
+                                                    <td class="text-center col-md-2"><div class="input-group">
                                                             <input type="text" class="form-control" placeholder="1" name="quantity" value='${cartItem.getQuantity()}'>
                                                             <div class="input-group-btn">
                                                                 <button class="btn btn-default" type="submit" name="action" value="Update"><i class="fa fa-search"></i></button>
                                                             </div>
                                                         </div></td>
                                                     <td class="text-right"><fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="2" value="${cartItem.getTotalPrice()}"/></td>
-                                                    <td class="text-right"><button type="submit" name="action" value="Delete" class="btn btn-danger">Remove</button></td>
+                                                    <td class="text-right col-md-2"><button type="submit" name="action" value="Delete" class="btn btn-danger">Remove</button></td>
                                                 </tr>
                                             </form>
                                         </c:forEach>

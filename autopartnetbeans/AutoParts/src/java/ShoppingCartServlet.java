@@ -65,10 +65,9 @@ public class ShoppingCartServlet extends HttpServlet {
 
         HttpSession session = request.getSession();
 
-        int id = Integer.parseInt(request.getParameter("id"));
+        String id = request.getParameter("id");
         ItemDAOImpl itemDAO = new ItemDAOImpl(ConnectionManager.init(this.getServletContext()));
-        Item temp = itemDAO.getItemByID(id);
-        System.out.println("Item id: " + id);
+        Item temp = itemDAO.getItemByPartCode(id);
         temp.setQuantity(1);
 
         ShoppingCart shoppingCart;
