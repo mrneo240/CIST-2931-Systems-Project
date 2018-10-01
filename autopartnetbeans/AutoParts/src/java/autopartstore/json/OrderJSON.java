@@ -31,16 +31,16 @@ public class OrderJSON {
 
     @SerializedName("ID")
     @Expose
-    public int ID;
+    private int ID;
 
     //public Customer customer; 
     @SerializedName("custID")
     @Expose
-    public int CustomerID;
+    private int CustomerID;
 
     @SerializedName("total")
     @Expose
-    public Double Total;
+    private Double Total;
 
     @SerializedName("items")
     @Expose
@@ -48,19 +48,19 @@ public class OrderJSON {
 
     @SerializedName("lineCount")
     @Expose
-    public int lineCount;
+    private int lineCount;
 
     @SerializedName("date")
     @Expose
-    public Date date;
+    private Date date;
 
     @SerializedName("status")
     @Expose
-    public int status;
+    private int status;
 
     @SerializedName("details")
     @Expose
-    public OrderDetailsJSON orderDetails;
+    private OrderDetailsJSON orderDetails;
 
     /**
      * @return the items
@@ -75,7 +75,7 @@ public class OrderJSON {
     public void setItems(List<ItemJSON> items) {
         this.items.clear();
         this.items = items;
-        this.lineCount = this.items.size();
+        this.setLineCount(this.items.size());
     }
 
     /**
@@ -84,20 +84,118 @@ public class OrderJSON {
     public void setItems(ItemJSON[] items) {
         this.items.clear();
         this.items.addAll(Arrays.asList(items));
-        this.lineCount = this.items.size();
+        this.setLineCount(this.items.size());
     }
 
     public void synchronize() {
         for (ItemJSON item : items) {
             item.synchronize();
         }
-        this.lineCount = this.items.size();
-        if (CustomerID != -1) {
-            Customer tmp = (new CustomerDAOImpl(ConnectionManager.getConnection()).getCustomerByID(CustomerID));
+        this.setLineCount(this.items.size());
+        if (getCustomerID() != -1) {
+            Customer tmp = (new CustomerDAOImpl(ConnectionManager.getConnection()).getCustomerByID(getCustomerID()));
             orderDetails.address = tmp.getaddress();
             orderDetails.creditCard = tmp.getcreditC();
             orderDetails.name = tmp.getcustName();
         }
+    }
+
+    /**
+     * @return the ID
+     */
+    public int getID() {
+        return ID;
+    }
+
+    /**
+     * @param ID the ID to set
+     */
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+    /**
+     * @return the CustomerID
+     */
+    public int getCustomerID() {
+        return CustomerID;
+    }
+
+    /**
+     * @param CustomerID the CustomerID to set
+     */
+    public void setCustomerID(int CustomerID) {
+        this.CustomerID = CustomerID;
+    }
+
+    /**
+     * @return the Total
+     */
+    public Double getTotal() {
+        return Total;
+    }
+
+    /**
+     * @param Total the Total to set
+     */
+    public void setTotal(Double Total) {
+        this.Total = Total;
+    }
+
+    /**
+     * @return the lineCount
+     */
+    public int getLineCount() {
+        return lineCount;
+    }
+
+    /**
+     * @param lineCount the lineCount to set
+     */
+    public void setLineCount(int lineCount) {
+        this.lineCount = lineCount;
+    }
+
+    /**
+     * @return the date
+     */
+    public Date getDate() {
+        return date;
+    }
+
+    /**
+     * @param date the date to set
+     */
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    /**
+     * @return the status
+     */
+    public int getStatus() {
+        return status;
+    }
+
+    /**
+     * @param status the status to set
+     */
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    /**
+     * @return the orderDetails
+     */
+    public OrderDetailsJSON getOrderDetails() {
+        return orderDetails;
+    }
+
+    /**
+     * @param orderDetails the orderDetails to set
+     */
+    public void setOrderDetails(OrderDetailsJSON orderDetails) {
+        this.orderDetails = orderDetails;
     }
 
 }

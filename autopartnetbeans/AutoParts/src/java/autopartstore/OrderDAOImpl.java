@@ -65,7 +65,8 @@ public class OrderDAOImpl implements OrderDAO {
         connection = ConnectionManager.getConnection();
         try {
             Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM orders WHERE customerid=" + id);
+            ResultSet rs = stmt.executeQuery("SELECT * FROM orders WHERE customerid='" + id+"' ORDER BY dateplaced DESC");
+            
             Set<Order> orders = new HashSet();
             while (rs.next()) {
                 Order order = extractOrderFromResultSet(rs);

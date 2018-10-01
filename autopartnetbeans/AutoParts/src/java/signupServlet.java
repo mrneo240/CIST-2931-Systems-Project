@@ -73,7 +73,6 @@ public class signupServlet extends HttpServlet {
         boolean success = false;
 
         if (request.getParameter("action").equals("register")) {
-
             String name = request.getParameter("name").trim();
             String email = request.getParameter("email").trim();
             String username = request.getParameter("username").trim();
@@ -84,16 +83,13 @@ public class signupServlet extends HttpServlet {
             CustomerDAOImpl customerDAO = new CustomerDAOImpl(temp);
 
             try {
-
                 // Select user from database to check user login id and password
                 querySmt = temp.createStatement();
                 result = querySmt.executeQuery("select * from Customers where (Username = '" + username + "' OR EMail = '" + email + "');");
-                this.getServletContext().log("select * from Customers where (Username = '" + username + "' OR EMail = '" + email + "')");
                 int count = 0;
                 while (result.next()) {
                     count++;
                 }
-                this.getServletContext().log("Found "+count+" records!");
                 if (!password.equals(passwordConfirm)) {
                     failWithError(request, response, "Passwords don't match!");
                     return;

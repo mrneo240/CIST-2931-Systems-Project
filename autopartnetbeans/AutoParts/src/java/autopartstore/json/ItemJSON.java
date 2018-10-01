@@ -19,27 +19,28 @@ import com.google.gson.annotations.SerializedName;
  * @author Hayden Kowalchuk
  */
 public class ItemJSON {
-
+    
     @SerializedName("itemID")
     @Expose
     public String itemID = "";
-
+    
     @SerializedName("qty")
     @Expose
     public int qty = 0;
-
+    
     @Expose(serialize = false)
     private Item item;
-
+    
     public void synchronize() {
         if (itemID != null && item == null) {
             item = (new ItemDAOImpl(ConnectionManager.getConnection()).getItemByPartCode(itemID));
         }
+        item.setQuantity(qty);
     }
-
+    
     public Item getItem() {
         synchronize();
         return item;
     }
-
+    
 }

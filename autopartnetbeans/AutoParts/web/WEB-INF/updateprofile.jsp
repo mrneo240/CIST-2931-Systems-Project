@@ -20,12 +20,12 @@
                 <li><a href="#help" class="list-group-item nav-link " id="list-help-list" data-toggle="tab" role="tab">Enquiry</a></li>
             </ul>
         </div>
-        <div class="col-8">
+        <div class="col-md-9">
             <div class="tab-content">
                 <div class="tab-pane fade in active" id="dash" role="tabpanel">
-                    <div class="col-lg-9">
-                        <div class="panel">
-                            <h3 class="text-center">${customer.getcustName()}'s Overview</h3>
+                    <div class="">
+                        <div class="panel panel-info">
+                            <div class="panel-heading text-center"><h3>${customer.getcustName()}'s Overview</h3></div>
                             <div class="panel-body">   
 
                             </div>
@@ -33,18 +33,15 @@
                     </div>
                 </div>
                 <div class="tab-pane" id="user" role="tabpanel">
-                    <div class="col-lg-9">
-                        <div class="panel">
-
-                            <h3 class="text-center">
-                                Update my information</h3>
-
+                    <div class="">
+                        <div class="panel panel-info">
+                            <div class="panel-heading text-center"><h3>Update my information</h3></div>
                             <div class="panel-body">   
                                 <form action="updatecustomer.jsp" method="post">
                                     <div class="form-group">
                                         <c:set var="customerNames" value="${fn:split(customer.getcustName(), ' ')}" />
                                         <label for="confirm" class="cols-sm-2 control-label">First and Last Name</label>
-                                            
+
                                         <div class="input-group">
                                             <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
                                             <input type="text" name="fname" class="form-control w-50" placeholder="First Name" value="${customerNames[0]}"/>
@@ -81,10 +78,10 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="confirm" class="cols-sm-2 control-label">Credit Card</label>
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><span class="glyphicon glyphicon-credit-card"></span></span>
-                                                <input type="text" name="creditc" class="form-control" placeholder="Credit card" value="${customer.getcreditC()}"/>
-                                            </div>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-credit-card"></span></span>
+                                            <input type="text" name="creditc" class="form-control" placeholder="Credit card" value="${customer.getcreditC()}"/>
+                                        </div>
                                     </div>
                                     <button class="btn btn-lg btn-primary btn-block" type="submit" name="action" value="update">
                                         Save
@@ -96,20 +93,34 @@
                     </div>
                 </div>
                 <div class="tab-pane" id="orders" role="tabpanel">
-                    <div class="col-lg-9">
-                        <div class="panel">
-                            <h3 class="text-center">Order History</h3>
+                    <div class="">
+                        <div class="panel panel-info">
+                            <div class="panel-heading text-center"><h3>Order History</h3></div>
                             <div class="panel-body">   
-
+                                <c:if test="${orders != null}">
+                                    <c:forEach items="${orders}" var="order">
+                                        <div class="panel panel-primary">
+                                            <div class="panel-heading">
+                                                <h3 class="panel-title">Order #${order.ID} placed on ${order.getDate()}</h3>
+                                            </div>
+                                            <div class="panel-body">
+                                                <c:forEach items="${order.items}" var="item">
+                                                    <br>${item.getItem().getName()} | $${item.getItem().getTotalPrice()}</p>
+                                                </c:forEach>
+                                            </div>
+                                            <div class="panel-footer"> Total: $${order.total}</div>
+                                        </div>
+                                    </c:forEach>
+                                </c:if>
                             </div>
                         </div>
                     </div>
 
                 </div>
                 <div class="tab-pane" id="help" role="tabpanel">
-                    <div class="col-lg-9">
-                        <div class="panel">
-                            <h3 class="text-center">Call Customer Support</h3>
+                    <div class="">
+                        <div class="panel panel-info">
+                            <div class="panel-heading text-center"><h3>Call Customer Support</h3></div>
                             <div class="panel-body">   
 
                             </div>

@@ -41,7 +41,7 @@ public class NewClass {
         order.synchronize();
         
         String json = gson.toJson(order);*/
-        String input = "{\"ID\":1,\"custID\":6,\"total\":69.0,\"items\":[{\"itemID\":\"I2\",\"qty\":1},{\"itemID\":\"M1\",\"qty\":4}],\"lineCount\":2,\"date\":\"Oct 1, 2018\",\"status\":1,\"details\":{\"name\":\"Danielle Strom\",\"addr\":\"987 Thotville lane\"}}";
+        String input = "{\"ID\":1,\"custID\":12,\"total\":69.0,\"items\":[{\"itemID\":\"I2\",\"qty\":1},{\"itemID\":\"M1\",\"qty\":4}],\"lineCount\":2,\"date\":\"Oct 1, 2018\",\"status\":1,\"details\":{\"name\":\"Danielle Strom\",\"addr\":\"987 Thotville lane\"}}";
         OrderJSON tmp = gson.fromJson(input, OrderJSON.class);
         tmp.synchronize();
         System.out.println(tmp.getItems().get(0).getItem().toString());
