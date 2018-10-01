@@ -32,7 +32,7 @@ public class OrderDAOImpl implements OrderDAO {
     private Order extractOrderFromResultSet(ResultSet rs) throws SQLException {
         Order order = new Order();
         order.setID(rs.getInt("id"));
-        order.setCustID(rs.getInt("customerid"));
+        order.setCustomerID(rs.getInt("customerid"));
         order.setOrderJSON(rs.getString("orderjson"));
         order.setStatus(rs.getInt("status"));
         order.setTotal(rs.getDouble("total"));
@@ -105,7 +105,7 @@ public class OrderDAOImpl implements OrderDAO {
         try {
             PreparedStatement stmt = connection.prepareStatement("INSERT INTO orders VALUES (NULL, ?, ?, ?, ?, ?)");
             stmt.setString(1, order.getOrderJSON());
-            stmt.setInt(2, order.getCustID());
+            stmt.setInt(2, order.getCustomerID());
             stmt.setDate(3, order.getDate());
             stmt.setInt(4, order.getStatus());
             stmt.setDouble(5, order.getTotal());
@@ -116,7 +116,7 @@ public class OrderDAOImpl implements OrderDAO {
         }
         return numUpdated > 0;
     }
-
+    
     @Override
     public boolean updateOrder(Order order) {
         int numUpdated = 0;
@@ -124,7 +124,7 @@ public class OrderDAOImpl implements OrderDAO {
         try {
             PreparedStatement stmt = connection.prepareStatement("UPDATE orders SET orderjson=?, customerid=?, dateplaced=?, status=?, total=? WHERE ID=?");
             stmt.setString(1, order.getOrderJSON());
-            stmt.setInt(2, order.getCustID());
+            stmt.setInt(2, order.getCustomerID());
             stmt.setDate(3, order.getDate());
             stmt.setInt(4, order.getStatus());
             stmt.setDouble(5, order.getTotal());

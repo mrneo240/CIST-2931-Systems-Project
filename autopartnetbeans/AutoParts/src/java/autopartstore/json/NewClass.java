@@ -8,6 +8,7 @@
 ***************************** */
 package autopartstore.json;
 
+import autopartstore.Item;
 import autopartstore.ItemDAOImpl;
 import autopartstore.Order;
 import autopartstore.OrderDAOImpl;
@@ -27,6 +28,8 @@ public class NewClass {
         ItemDAOImpl itemDAO = (new ItemDAOImpl((new ConnectionManager(false)).getConnection()));
         Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
         
+        String jsonString = "[{\"itemID\":\"I2\",\"qty\":1},{\"itemID\":\"M1\",\"qty\":4}]";
+        
         /*OrderJSON order = new OrderJSON();
         order.setCustomerID(12);
         order.setDate(new java.sql.Date(System.currentTimeMillis()));
@@ -41,7 +44,7 @@ public class NewClass {
         order.synchronize();
         
         String json = gson.toJson(order);*/
-        String input = "{\"ID\":1,\"custID\":12,\"total\":69.0,\"items\":[{\"itemID\":\"I2\",\"qty\":1},{\"itemID\":\"M1\",\"qty\":4}],\"lineCount\":2,\"date\":\"Oct 1, 2018\",\"status\":1,\"details\":{\"name\":\"Danielle Strom\",\"addr\":\"987 Thotville lane\"}}";
+        /*String input = "{\"ID\":1,\"custID\":12,\"total\":69.0,\"items\":[{\"itemID\":\"I2\",\"qty\":1},{\"itemID\":\"M1\",\"qty\":4}],\"lineCount\":2,\"date\":\"Oct 1, 2018\",\"status\":1,\"details\":{\"name\":\"Danielle Strom\",\"addr\":\"987 Thotville lane\"}}";
         OrderJSON tmp = gson.fromJson(input, OrderJSON.class);
         tmp.synchronize();
         System.out.println(tmp.getItems().get(0).getItem().toString());
@@ -51,7 +54,7 @@ public class NewClass {
         order.setOrderJSON(input);
         orderDAO.insertOrder(order);
         
-        System.out.println(gson.toJson(tmp));
+        System.out.println(gson.toJson(tmp));*/
         /*
         Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
         

@@ -7,8 +7,13 @@
 * Copyright (C) 2018 Hayden Kowalchuk
 ***************************** */
 
+import autopartstore.ItemDAOImpl;
+import autopartstore.Order;
+import autopartstore.OrderDAOImpl;
 import autopartstore.json.ItemJSON;
 import autopartstore.ShoppingCart;
+import autopartstore.db.ConnectionManager;
+import autopartstore.json.OrderJSON;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.io.IOException;
@@ -41,10 +46,34 @@ public class orderCheckoutServlet extends HttpServlet {
         ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
         if (shoppingCart != null) {
             String json = gson.toJson(shoppingCart.getCartItems());
-
             ItemJSON[] tmp = gson.fromJson(json, ItemJSON[].class);
-            session.setAttribute("items", tmp);
-            session.setAttribute("json", json);
+
+            //Create JSON object
+            OrderJSON order = new OrderJSON();
+            int custID = (session.getAttribute("loginID") != null ? (int) session.getAttribute("loginID") : -1);
+            order.setCustomerID(custID);
+            order.setDate(new java.sql.Date(System.currentTimeMillis()));
+            order.setStatus(0);
+            order.setTotal(shoppingCart.getOrderTotal());
+            order.setItems(tmp);
+
+            order.synchronize();
+
+            String orderJSON = gson.toJson(order);
+
+            //Now to create ACTUAL ORDER object
+            Order orderObject = new Order();
+            orderObject.setCustomerID(custID);
+            orderObject.setDate(new java.sql.Date(System.currentTimeMillis()));
+            orderObject.setStatus(0);
+            orderObject.setTotal(shoppingCart.getOrderTotal());
+            orderObject.setOrderJSON(orderJSON);
+
+            OrderDAOImpl orderDAO = (new OrderDAOImpl((new ConnectionManager(false)).getConnection()));
+
+            orderDAO.insertOrder(orderObject);
+            
+            session.setAttribute("cart", null);
         }
 
         request.getRequestDispatcher("WEB-INF/orderConfirm.jsp").forward(request, response);

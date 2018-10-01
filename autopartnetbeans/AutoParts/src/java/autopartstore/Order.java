@@ -47,14 +47,14 @@ public class Order {
     /**
      * @return the custID
      */
-    public int getCustID() {
+    public int getCustomerID() {
         return custID;
     }
 
     /**
      * @param custID the custID to set
      */
-    public void setCustID(int custID) {
+    public void setCustomerID(int custID) {
         this.custID = custID;
     }
 
@@ -108,7 +108,7 @@ public class Order {
     private double total;
 
     public String toString() {
-        return String.format("Order[%d, JSON, %d, %s, %d, %f]", getID(), getCustID(), getDate(), getStatus(), getTotal());
+        return String.format("Order[%d, JSON, %d, %s, %d, %f]", getID(), getCustomerID(), getDate(), getStatus(), getTotal());
     }
 
     public void display() {
