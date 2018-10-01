@@ -6,8 +6,10 @@
 * Description of file and lab.
 * Copyright (C) 2018 Hayden Kowalchuk
 ***************************** */
-package autopartstore;
+package autopartstore.json;
 
+import autopartstore.Item;
+import autopartstore.ItemDAOImpl;
 import autopartstore.db.ConnectionManager;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -31,9 +33,7 @@ public class ItemJSON {
 
     public void synchronize() {
         if (itemID != null && item == null) {
-            System.out.println("Creating new JSON Item with code:" + itemID);
             item = (new ItemDAOImpl(ConnectionManager.getConnection()).getItemByPartCode(itemID));
-            System.out.println(item.getPartCode() + " Item Created succesfully!");
         }
     }
 

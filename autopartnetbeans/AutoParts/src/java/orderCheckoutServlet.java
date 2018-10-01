@@ -7,7 +7,7 @@
 * Copyright (C) 2018 Hayden Kowalchuk
 ***************************** */
 
-import autopartstore.ItemJSON;
+import autopartstore.json.ItemJSON;
 import autopartstore.ShoppingCart;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

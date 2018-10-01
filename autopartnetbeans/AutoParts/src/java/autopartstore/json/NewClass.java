@@ -6,11 +6,15 @@
 * Description of file and lab.
 * Copyright (C) 2018 Hayden Kowalchuk
 ***************************** */
-package autopartstore;
+package autopartstore.json;
 
+import autopartstore.Item;
+import autopartstore.ItemDAOImpl;
 import autopartstore.db.ConnectionManager;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import java.sql.Connection;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 /**
@@ -20,9 +24,33 @@ import java.util.ArrayList;
 public class NewClass {
 
     public static void main(String[] args) {
-
-        String jsonString = "[{\"itemID\":\"I2\",\"qty\":1},{\"itemID\":\"M1\",\"qty\":4}]";
         
+        
+        ItemDAOImpl itemDAO = (new ItemDAOImpl((new ConnectionManager(false)).getConnection()));
+        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+        
+        /*OrderJSON order = new OrderJSON();
+        order.setCustomerID(12);
+        order.setDate(new java.sql.Date(System.currentTimeMillis()));
+        order.setID(1);
+        order.setStatus(1);
+        order.setTotal(69.0);
+        
+        String jsonString = "[{\"itemID\":\"I2\",\"qty\":1},{\"itemID\":\"M1\",\"qty\":4}]";
+        ItemJSON[] tmp = gson.fromJson(jsonString, ItemJSON[].class);
+        
+        order.setItems(tmp);
+        order.synchronize();
+        
+        String json = gson.toJson(order);*/
+        String input = "{\"ID\":1,\"custID\":6,\"total\":69.0,\"items\":[{\"itemID\":\"I2\",\"qty\":1},{\"itemID\":\"M1\",\"qty\":4}],\"date\":\"Oct 1, 2018\",\"status\":1}";
+        OrderJSON tmp = gson.fromJson(input, OrderJSON.class);
+        tmp.synchronize();
+        System.out.println(tmp.getItems().get(0).getItem().toString());
+        
+        
+        System.out.println(gson.toJson(tmp));
+        /*
         Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
         
         ArrayList<Item> cartItems = new ArrayList();
@@ -37,6 +65,6 @@ public class NewClass {
 
         for (ItemJSON temp : tmp) {
             System.out.printf("%s, %d %s\n", temp.itemID, temp.qty, temp.getItem().getName());
-        }
+        }*/
     }
 }
