@@ -10,6 +10,7 @@ package autopartstore;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
 /**
  *
  * @author Hayden Kowalchuk
@@ -85,52 +86,56 @@ public class Item implements java.io.Serializable {
     public void setPrice(double price) {
         this.price = price;
     }
-    
+
     @Expose(serialize = false)
     private int ID;
-    
+
     @SerializedName("itemID")
     @Expose
     private String partCode;
-    
+
     @Expose(serialize = false)
     private String dept;
-    
+
     @Expose(serialize = false)
     private String name;
-    
+
     @Expose(serialize = false)
     private String desc;
-    
+
     @Expose(serialize = false)
     private double price;
-    
-    /** Michelle
-     * adding the quantity of items and total cost properties for Shopping Cart
+
+    /**
+     * Michelle adding the quantity of items and total cost properties for Shopping Cart
      */
     @SerializedName("qty")
     @Expose
     private int quantity;
+
     /**
-     * 
+     *
      * @return the quantity
      */
     public int getQuantity() {
         return quantity;
     }
+
     /**
      * set the quantity
-     * @param quantity 
+     *
+     * @param quantity
      */
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+
     /**
-     * 
+     *
      * @return the total price
      */
     public double getTotalPrice() {
-        return getPrice()*getQuantity();
+        return getPrice() * getQuantity();
     }
 
     //Constructors
@@ -153,12 +158,13 @@ public class Item implements java.io.Serializable {
         partCode = code;
         quantity = _quantity;
     }
-    
-    public String toString(){
+
+    @Override
+    public String toString() {
         return String.format("Item[%d, %s, %s, %s, %s, %f]", ID, partCode, dept, desc, name, price, quantity, getTotalPrice());
     }
-    
-    public void display(){
+
+    public void display() {
         System.out.println(toString());
     }
 

@@ -10,7 +10,6 @@ package autopartstore.json;
 
 import autopartstore.Customer;
 import autopartstore.CustomerDAOImpl;
-import autopartstore.ItemDAOImpl;
 import autopartstore.db.ConnectionManager;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -93,8 +92,8 @@ public class OrderJSON {
             item.synchronize();
         }
         this.lineCount = this.items.size();
-        if(CustomerID != -1){
-            Customer tmp =  (new CustomerDAOImpl(ConnectionManager.getConnection()).getCustomerByID(CustomerID));
+        if (CustomerID != -1) {
+            Customer tmp = (new CustomerDAOImpl(ConnectionManager.getConnection()).getCustomerByID(CustomerID));
             orderDetails.address = tmp.getaddress();
             orderDetails.creditCard = tmp.getcreditC();
             orderDetails.name = tmp.getcustName();
