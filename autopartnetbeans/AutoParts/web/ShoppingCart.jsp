@@ -70,9 +70,9 @@
                                                         </div>
                                                     </td>
                                                     <td class="text-center"><fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="2" value="${cartItem.getPrice()}"/></td>
-                                                    <td class="text-center col-md-2"><div class="input-group">
+                                                    <td class="text-center col-md-2 col-sm-3 col-xs-4"><div class="input-group">
                                                             <input type="text" class="form-control" placeholder="1" name="quantity" value='${cartItem.getQuantity()}'>
-                                                            <div class="input-group-btn">
+                                                            <div class="input-group-btn hidden-xs">
                                                                 <button class="btn btn-default" type="submit" name="action" value="Update"><i class="fa fa-check-square"></i></button>
                                                             </div>
                                                         </div></td>

@@ -70,11 +70,9 @@ public class orderCheckoutServlet extends HttpServlet {
             orderObject.setOrderJSON(orderJSON);
 
             OrderDAOImpl orderDAO = (new OrderDAOImpl((new ConnectionManager(false)).getConnection()));
-
             orderDAO.insertOrder(orderObject);
             
             session.setAttribute("cart", null);
-            
             request.setAttribute("order", order);
         }
 
