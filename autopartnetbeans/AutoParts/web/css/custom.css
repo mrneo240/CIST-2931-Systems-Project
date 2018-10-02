@@ -27,6 +27,10 @@ html, body {
     font-weight:bold;
 }
 
+.thumbnail {
+    /*margin-bottom: 0px;*/
+}
+
 p {
     white-space: nowrap;
     overflow: hidden;
@@ -111,7 +115,11 @@ p {
 }
 
 .feature-imgs img{
-    height: 200px;
+    min-height: 200px;
+    min-width: 200px;
+    height: auto;
+    max-width: 10%;
+    max-height: 10%;
 }
 
 h1 { 

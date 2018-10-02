@@ -33,14 +33,12 @@ public class updateCustomerServlet extends HttpServlet {
         if (session.getAttribute("loginID") != null) {
             int custID = (int) session.getAttribute("loginID");
             Set<Order> orders = orderDAO.getAllOrdersByCustomer(custID);
-            //this.getServletContext().log("Finding orders for custID:"+(int) session.getAttribute("loginID"));
-            orders.forEach((order) -> {
-                this.getServletContext().log(order.toString());
-            });
 
             Set<OrderJSON> ordersFINAL = new HashSet<>();
             for (Order temp : orders) {
-                ordersFINAL.add(gson.fromJson(temp.getOrderJSON(), OrderJSON.class));
+                OrderJSON temp2 = gson.fromJson(temp.getOrderJSON(), OrderJSON.class);
+                temp2.setID(temp.getID());
+                ordersFINAL.add(temp2);
             }
             ordersFINAL.forEach((temp) -> {
                 temp.synchronize();

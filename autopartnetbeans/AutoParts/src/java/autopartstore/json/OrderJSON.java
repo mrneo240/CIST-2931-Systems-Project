@@ -10,6 +10,7 @@ package autopartstore.json;
 
 import autopartstore.Customer;
 import autopartstore.CustomerDAOImpl;
+import autopartstore.Item;
 import autopartstore.db.ConnectionManager;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -132,14 +133,14 @@ public class OrderJSON {
      * @return the Total
      */
     public Double getTotal() {
-        return Total;
+        return Math.round(Total * 100) / 100.0;
     }
 
     /**
      * @param Total the Total to set
      */
     public void setTotal(Double Total) {
-        this.Total = Total;
+        this.Total = Math.round(Total * 100) / 100.0d;
     }
 
     /**
@@ -196,6 +197,28 @@ public class OrderJSON {
      */
     public void setOrderDetails(OrderDetailsJSON orderDetails) {
         this.orderDetails = orderDetails;
+    }
+
+    public double getOrderSubTotal() {
+        double total = 0.0;
+        for (ItemJSON item : items) {
+            //if(item.getItem() != null){
+            total += item.getItem().getTotalPrice();
+            //}
+        }
+        return Math.round(total * 100) / 100.0d;
+    }
+
+    public double getOrderTax() {
+        return Math.round(getOrderSubTotal() * 0.07 * 100) / 100.0d;
+    }
+
+    public double getOrderTotal() {
+        return Math.round((getOrderSubTotal() + getOrderTax()) * 100) / 100.0d;
+    }
+
+    public String toString() {
+        return String.format("OrderJSON[%d, %d, %f, ITEMS{%d}, %s, %d, DETAILS{}", getID(), getCustomerID(), getTotal(), getLineCount(), getDate(), getStatus());
     }
 
 }

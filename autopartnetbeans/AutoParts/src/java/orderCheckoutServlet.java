@@ -74,6 +74,8 @@ public class orderCheckoutServlet extends HttpServlet {
             orderDAO.insertOrder(orderObject);
             
             session.setAttribute("cart", null);
+            
+            request.setAttribute("order", order);
         }
 
         request.getRequestDispatcher("WEB-INF/orderConfirm.jsp").forward(request, response);

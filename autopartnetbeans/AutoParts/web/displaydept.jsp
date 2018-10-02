@@ -27,7 +27,7 @@
                             <input type="hidden" name="department" value="${item.getDept()}" />
                             <p><strong>${item.getName()}</strong></p>
                             <p>${item.getDesc()}</p>
-                            <button class="btn" name="addToCart" type="submit"><strong>$ ${item.getPrice()}<input type="hidden" name="price" value="${item.getPrice()}"/></strong> - Add to cart</button>
+                            <button class="btn" name="addToCart" type="submit"><strong>$${item.getPrice()}<input type="hidden" name="price" value="${item.getPrice()}"/></strong> - Add to cart</button>
                         </form>
                     </div>
                 </div>
@@ -52,7 +52,7 @@
                             <input type="hidden" name="department" value="${item.getDept()}" />
                             <p><strong>${item.getName()}</strong></p>
                             <p>${item.getDesc()}</p>
-                            <button class="btn" name="addToCart" type="submit"><strong>$ ${item.getPrice()}<input type="hidden" name="price" value="${item.getPrice()}"/></strong> - Add to cart</button>
+                            <button class="btn" name="addToCart" type="submit"><strong>$${item.getPrice()}<input type="hidden" name="price" value="${item.getPrice()}"/></strong> - Add to cart</button>
                         </form>
                     </div>
                 </div>

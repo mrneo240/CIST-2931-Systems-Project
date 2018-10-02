@@ -12,7 +12,7 @@
 <div class='main-container'>
     <div class="row form-group">
         <div class="container">
-            <div class="col-xs-12">
+            <div class="form-group">
                 <ul class="nav nav-pills nav-justified thumbnail setup-panel">
                     <li class="active"><a href="ShoppingCart.jsp" >
                             <h4 class="list-group-item-heading">Step 1</h4>
@@ -29,8 +29,7 @@
                 </ul>
             </div>
             <div class="row">
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                    <div class="col-md-8">
+                   <div class="col-md-8 col-sm-8 col-xs-12">
                         <!--SHIPPING METHOD-->
                         <div class="panel panel-default">
                             <div class="panel-heading text-center"><h4>Current Cart</h4></div>
@@ -57,7 +56,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <c:forEach var="cartItem" items="${cart.getCartItems()}" varStatus="counter">
+                                        <c:forEach var="cartItem" items="${cart.getCartItems()}" varStatus="counter">
                                             <form action="ShoppingCartServlet" method="POST" name="item">
                                                 <input type='hidden' name='itemIndex' value='<c:out value="${counter.count-1}" />'>
                                                 <tr>
@@ -89,7 +88,7 @@
                         </div>
                         <!--SHIPPING METHOD END-->
                     </div>
-                    <div class="col-md-4 col-sm-12 col-xs-12">
+                    <div class="col-md-4 col-sm-4 col-xs-12">
                         <!--REVIEW ORDER-->
                         <div class="panel panel-info">
                             <div class="panel-heading text-center">
@@ -119,7 +118,7 @@
                             <!--REVIEW ORDER END-->
                         </div>
 
-                    </div>
+                   
                 </div>
             </div>
         </div>
