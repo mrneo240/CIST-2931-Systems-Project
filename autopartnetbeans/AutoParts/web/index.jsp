@@ -36,21 +36,21 @@
     <h2>Feature Items</h2>
     <div class="col-sm-4 col-xs-6">
         <div class="thumbnail">
-            <img src="https://www.autozone.com/images/MEDIA_ProductCatalog/m9880016_deals-v47.png" alt="Paris">
+            <div class="ThumbContainer"><img height="inherit" width="100%"  src="https://www.autozone.com/images/MEDIA_ProductCatalog/m9880016_deals-v47.png"></div>
             <p><strong>Full Synthetic Oil</strong></p>
             <button class="btn">Add to cart</button>
         </div>
     </div>
     <div class="col-sm-4 col-xs-6">
         <div class="thumbnail">
-            <img src="https://www.autozone.com/images/MEDIA_ProductCatalog/m3490247_prd-Alternator.jpg" alt="New York">
+            <div class="ThumbContainer"><img height="inherit" width="100%"  src="https://www.autozone.com/images/MEDIA_ProductCatalog/m3490247_prd-Alternator.jpg"></div>
             <p><strong>Alternator</strong></p>
             <button class="btn">Add to cart</button>
         </div>
     </div>
     <div class="col-sm-4 col-xs-6">
         <div class="thumbnail">
-            <img src="https://www.autozone.com/images/MEDIA_ProductCatalog/m3490609_prd-Idler-Pulley.jpg" alt="San Francisco">
+            <div class="ThumbContainer"><img height="inherit" width="100%"  src="https://www.autozone.com/images/MEDIA_ProductCatalog/m3490609_prd-Idler-Pulley.jpg"></div>
             <p><strong>Pulley</strong></p>
             <button class="btn">Add to cart</button>
         </div>
