@@ -29,8 +29,24 @@ public class updateCustomerServlet extends HttpServlet {
 
         HttpSession session = request.getSession();
         OrderDAOImpl orderDAO = new OrderDAOImpl(ConnectionManager.init(this.getServletContext()));
-        
-        if (session.getAttribute("loginID") != null) {
+        boolean admin = session.getAttribute("admin") != null ? (boolean) session.getAttribute("admin") : false;
+
+        if (admin) {
+            Set<Order> orders = orderDAO.getAllOrders();
+
+            Set<OrderJSON> ordersFINAL = new HashSet<>();
+            for (Order temp : orders) {
+                OrderJSON temp2 = gson.fromJson(temp.getOrderJSON(), OrderJSON.class);
+                temp2.setID(temp.getID());
+                ordersFINAL.add(temp2);
+            }
+            ordersFINAL.forEach((temp) -> {
+                temp.synchronize();
+            });
+
+            session.setAttribute("orders", ordersFINAL);
+
+        } else if (session.getAttribute("loginID") != null) {
             int custID = (int) session.getAttribute("loginID");
             Set<Order> orders = orderDAO.getAllOrdersByCustomer(custID);
 

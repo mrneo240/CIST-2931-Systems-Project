@@ -81,6 +81,10 @@ public class Customer implements java.io.Serializable {
         System.out.println("Password "+ getpassword());
     }
     
+    public boolean getIsAdmin(){
+        return false;
+    }
+    
     public void setpassword(String pass){
         password = pass;
     }

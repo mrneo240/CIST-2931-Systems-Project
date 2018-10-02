@@ -23,7 +23,7 @@ import java.util.Set;
  */
 public class CustomerDAOImpl implements CustomerDAO {
 
-    private Connection connection;
+    Connection connection;
 
     public CustomerDAOImpl(Connection connect) {
         connection = connect;
@@ -77,6 +77,7 @@ public class CustomerDAOImpl implements CustomerDAO {
         } 
         return getCustomerError();
     }
+    
     public Customer getCustomerByUsername(String user) {
         connection = ConnectionManager.getConnection();
         try {
