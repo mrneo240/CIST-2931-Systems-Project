@@ -89,6 +89,9 @@
                 </div>
                 <div class="container"><c:if test="${loginID != null}"><p class="font-weight-bold">Hello ${customer.getcustName()}</p></c:if></div>
                 </nav>
-            <c:if test="${requestScope.displayAlert}">
-                <div class="alert ${requestScope.alertType} alert-dismissable" role="alert"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>${requestScope.alertMessage}</div>
+            <c:if test="${displayAlert}">
+                <div class="alert ${alertType} alert-dismissable" role="alert"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>${alertMessage}</div>
+            <c:remove var = "alertType"/>
+            <c:remove var = "displayAlert"/>
+            <c:remove var = "alertMessage"/>
             </c:if>

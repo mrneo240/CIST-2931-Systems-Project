@@ -39,21 +39,30 @@ public class ShoppingCartServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String action = request.getParameter("action");
+        HttpSession session = request.getSession();
+        boolean admin = session.getAttribute("admin") != null ? (boolean) session.getAttribute("admin") : false;
+        if (!admin) {
+            String action = request.getParameter("action");
 
-        if (action != null && !action.equals("")) {
-            if (action.equals("add")) {
-                addToCart(request);
+            if (action != null && !action.equals("")) {
+                if (action.equals("add")) {
+                    addToCart(request);
 
-            } else if (action.equals("Update")) {
+                } else if (action.equals("Update")) {
 
-                updateCart(request);
+                    updateCart(request);
 
-            } else if (action.equals("Delete")) {
+                } else if (action.equals("Delete")) {
 
-                deleteCart(request);
+                    deleteCart(request);
 
+                }
             }
+        } else {
+            session.setAttribute("displayAlert", true);
+            session.setAttribute("alertType", "alert-danger");
+            session.setAttribute("alertMessage", "Shopping not allowed as Order Picker");
+            session.removeAttribute("cart");
         }
         finishRequest(request, response);
     }

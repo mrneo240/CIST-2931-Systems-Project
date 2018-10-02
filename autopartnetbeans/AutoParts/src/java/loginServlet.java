@@ -93,6 +93,7 @@ public class loginServlet extends HttpServlet {
             //Must be for Logout
             session.removeAttribute("loginID");
             session.removeAttribute("customer");
+            session.removeAttribute("admin");
         }
         finishRequest(request, response);
     }
