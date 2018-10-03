@@ -1,6 +1,8 @@
 
 import autopartstore.Customer;
 import autopartstore.CustomerDAOImpl;
+import autopartstore.OrderPicker;
+import autopartstore.OrderPickerDAOImpl;
 import autopartstore.db.ConnectionManager;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -22,12 +24,12 @@ public class loginServlet extends HttpServlet {
     protected void finishRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //response.sendRedirect(request.getHeader("referer"));
-        String ref="";
-        if(request.getHeader("referer") != null){
-        String referrerArr[] = request.getHeader("referer").split("/");
-        ref= referrerArr[referrerArr.length - 1];
+        String ref = "";
+        if (request.getHeader("referer") != null) {
+            String referrerArr[] = request.getHeader("referer").split("/");
+            ref = referrerArr[referrerArr.length - 1];
         }
-        if(ref.equals("login.jsp") || ref.equals("createNewSignup.jsp") || !ref.contains(".jsp")){
+        if (ref.equals("login.jsp") || ref.equals("createNewSignup.jsp") || !ref.contains(".jsp")) {
             ref = "index.jsp";
         }
         request.getRequestDispatcher(ref).forward(request, response);
@@ -52,9 +54,21 @@ public class loginServlet extends HttpServlet {
             String password = request.getParameter("pass").trim();
 
             CustomerDAOImpl customerDAO = new CustomerDAOImpl(ConnectionManager.init(this.getServletContext()));
+            OrderPickerDAOImpl pickerDAO = new OrderPickerDAOImpl(ConnectionManager.init(this.getServletContext()));
             Customer customer = customerDAO.getCustomerByUsername(user_id);
 
             if (customer.getcustName().equals("ERROR")) {
+                //Found as a picker though
+                Customer orderpicker = (Customer) pickerDAO.getOrderPickerByUsername(user_id);
+                if (orderpicker != null) {
+                    if (orderpicker.getpassword().equals(password)) {
+                        session.setAttribute("customer", orderpicker);
+                        session.setAttribute("loginID", orderpicker.getcid());
+                        session.setAttribute("admin", true);
+                        finishRequest(request, response);
+                        return;
+                    }
+                }
                 //ERROR!
                 request.setAttribute("displayAlert", true);
                 request.setAttribute("alertType", "alert-danger");
@@ -79,6 +93,7 @@ public class loginServlet extends HttpServlet {
             //Must be for Logout
             session.removeAttribute("loginID");
             session.removeAttribute("customer");
+            session.removeAttribute("admin");
         }
         finishRequest(request, response);
     }

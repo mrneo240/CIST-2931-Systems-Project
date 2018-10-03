@@ -15,7 +15,9 @@
                         'https://www.autozone.com/images/MEDIA_ProductCatalog/m3490247_prd-Alternator.jpg',
                         'https://www.autozone.com/images/MEDIA_ProductCatalog/m3490609_prd-Idler-Pulley.jpg']}"
                scope="application" />
-
+    <div class="col-md-12 col-xs-12">
+        <hr class="line">
+    </div>
     <div class="row text-center feature-imgs">
         <c:if test="${searchItems != null}">
             <c:forEach items="${searchItems}" var="item">
@@ -24,13 +26,13 @@
                     pageContext.setAttribute("randomNum", randomNum);
                 %>
                 <c:set var="random" value="${randomNum}"/>
-                <div class="col-sm-4">
+                <div class="col-md-3 col-sm-4 col-xs-6">
                     <div class="thumbnail">
                         <form action="ShoppingCartServlet" method="post">
                             <input type="hidden" name="action" value="add">
-                            <img src="${attractImgs[random]}" >
-                            <input type="hidden" name="id" value="${item.getID()}"/>
+                            <input type="hidden" name="id" value="${item.getPartCode()}"/>
                             <input type="hidden" name="department" value="${item.getDept()}" />
+                            <div class="ThumbContainer"><img height="inherit" width="100%"  src="${attractImgs[random]}"></div>
                             <p><strong>${item.getName()}</strong></p>
                             <p>${item.getDesc()}</p>
                             <button class="btn" name="addToCart" type="submit"><strong>$ ${item.getPrice()}<input type="hidden" name="price" value="${item.getPrice()}"/></strong> - Add to cart</button>

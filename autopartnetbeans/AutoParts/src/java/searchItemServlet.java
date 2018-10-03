@@ -3,10 +3,8 @@ import autopartstore.Item;
 import autopartstore.ItemDAOImpl;
 import autopartstore.db.ConnectionManager;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.HashSet;
 import java.util.Set;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -49,7 +47,7 @@ public class searchItemServlet extends HttpServlet {
             if (searchTerm.length() != 0) {
                 session.setAttribute("searchTerm", searchTerm);
                 items = itemDAO.getItemsBySearchParam(searchTerm);
-                session.setAttribute("searchItems", items.size() > 0 ? items : null);
+                session.setAttribute("searchItems", items!= null ? (items.size() > 0 ? items : null) : null);
             } else {
                 session.setAttribute("searchTerm", null);
                 session.setAttribute("searchItems", null);

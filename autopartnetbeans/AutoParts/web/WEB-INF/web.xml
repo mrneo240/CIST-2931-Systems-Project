@@ -24,6 +24,10 @@
         <servlet-name>updateCustomerServlet</servlet-name>
         <servlet-class>updateCustomerServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>orderCheckoutServlet</servlet-name>
+        <servlet-class>orderCheckoutServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>loginServlet</servlet-name>
         <url-pattern>/login.jsp</url-pattern>
@@ -54,6 +58,10 @@
     <servlet-mapping>
         <servlet-name>displayCategoryItems</servlet-name>
         <url-pattern>/displayDeptItems.jsp</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>orderCheckoutServlet</servlet-name>
+        <url-pattern>/orderCheckoutServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
