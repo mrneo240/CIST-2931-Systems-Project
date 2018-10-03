@@ -42,6 +42,7 @@ public class ItemDAOImpl implements ItemDAO {
         item.setDept(rs.getString("dept"));
         item.setDesc(rs.getString("description"));
         item.setPrice(rs.getDouble("price"));
+        item.setphoto(rs.getString("photo"));
         return item;
     }
 
