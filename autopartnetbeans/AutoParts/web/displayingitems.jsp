@@ -2,6 +2,7 @@
     Document   : DisplayingItems
     Created on : Sep 15, 2018, 1:20:51 PM
     Author     : Hayden Kowalchuk
+    Edited     : Levi Llewellyn
 --%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
