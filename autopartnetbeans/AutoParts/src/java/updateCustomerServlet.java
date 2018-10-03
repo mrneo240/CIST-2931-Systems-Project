@@ -1,11 +1,15 @@
 
 import autopartstore.Customer;
 import autopartstore.CustomerDAOImpl;
+import autopartstore.Order;
+import autopartstore.OrderDAOImpl;
 import autopartstore.db.ConnectionManager;
+import autopartstore.json.OrderJSON;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.SQLException;
+import java.util.HashSet;
+import java.util.Set;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,8 +22,47 @@ import javax.servlet.http.HttpSession;
  */
 public class updateCustomerServlet extends HttpServlet {
 
+    Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+
     protected void finishRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        HttpSession session = request.getSession();
+        OrderDAOImpl orderDAO = new OrderDAOImpl(ConnectionManager.init(this.getServletContext()));
+        boolean admin = session.getAttribute("admin") != null ? (boolean) session.getAttribute("admin") : false;
+
+        if (admin) {
+            Set<Order> orders = orderDAO.getAllOrders();
+
+            Set<OrderJSON> ordersFINAL = new HashSet<>();
+            for (Order temp : orders) {
+                OrderJSON temp2 = gson.fromJson(temp.getOrderJSON(), OrderJSON.class);
+                temp2.setID(temp.getID());
+                ordersFINAL.add(temp2);
+            }
+            ordersFINAL.forEach((temp) -> {
+                temp.synchronize();
+            });
+
+            session.setAttribute("orders", ordersFINAL);
+
+        } else if (session.getAttribute("loginID") != null) {
+            int custID = (int) session.getAttribute("loginID");
+            Set<Order> orders = orderDAO.getAllOrdersByCustomer(custID);
+
+            Set<OrderJSON> ordersFINAL = new HashSet<>();
+            for (Order temp : orders) {
+                OrderJSON temp2 = gson.fromJson(temp.getOrderJSON(), OrderJSON.class);
+                temp2.setID(temp.getID());
+                ordersFINAL.add(temp2);
+            }
+            ordersFINAL.forEach((temp) -> {
+                temp.synchronize();
+            });
+
+            session.setAttribute("orders", ordersFINAL);
+        }
+
         request.getRequestDispatcher("WEB-INF/updateprofile.jsp").forward(request, response);
     }
 
@@ -54,7 +97,7 @@ public class updateCustomerServlet extends HttpServlet {
 
         if (request.getParameter("action").equals("update")) {
 
-            String name = request.getParameter("fname").trim() + " "+request.getParameter("lname").trim();
+            String name = request.getParameter("fname").trim() + " " + request.getParameter("lname").trim();
             String email = request.getParameter("email").trim();
             //String username = request.getParameter("username").trim();
             String password = request.getParameter("pass").trim();
@@ -66,16 +109,27 @@ public class updateCustomerServlet extends HttpServlet {
             // Database operations using JDBC
             try {
                 //ensure we have a connection to the DB
-                Connection temp = ConnectionManager.init(this.getServletContext());
                 customer = (Customer) session.getAttribute("customer");
-                if (name.length()> 0) customer.setcustName(name); else  ;
-                if (email.length()> 0) customer.setemail(email); else  ;
-                if (password.length()> 0) customer.setpassword(password); else  ;
-                if (creditc.length()> 0) customer.setcreditC(creditc); else  ;
-                if (address.length()> 0) customer.setaddress(address); else  ;
-                
+                if (name.length() > 0) {
+                    customer.setcustName(name);
+                } else  ;
+                if (email.length() > 0) {
+                    customer.setemail(email);
+                } else  ;
+                if (password.length() > 0) {
+                    customer.setpassword(password);
+                } else  ;
+                if (creditc.length() > 0) {
+                    customer.setcreditC(creditc);
+                } else  ;
+                if (address.length() > 0) {
+                    customer.setaddress(address);
+                } else  ;
+
                 success = customerDAO.updateCustomer(customer);
-                if(email.equalsIgnoreCase("error")){success = false;}
+                if (email.equalsIgnoreCase("error")) {
+                    success = false;
+                }
                 if (success) {
                     request.setAttribute("displayAlert", true);
                     request.setAttribute("alertType", "alert-success");

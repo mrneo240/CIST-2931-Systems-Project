@@ -7,7 +7,6 @@
 import autopartstore.*;
 import autopartstore.db.ConnectionManager;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,33 +23,46 @@ public class ShoppingCartServlet extends HttpServlet {
 
     public void finishRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.sendRedirect("ShoppingCart.jsp");
+        String ref = "";
+        if (request.getHeader("referer") != null) {
+            String referrerArr[] = request.getHeader("referer").split("/");
+            ref = referrerArr[referrerArr.length - 1];
+        }
+        response.sendRedirect(ref);
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         finishRequest(request, response);
     }
-    
 
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String action = request.getParameter("action");
+        HttpSession session = request.getSession();
+        boolean admin = session.getAttribute("admin") != null ? (boolean) session.getAttribute("admin") : false;
+        if (!admin) {
+            String action = request.getParameter("action");
 
-        if (action != null && !action.equals("")) {
-            if (action.equals("add")) {
-                addToCart(request);
+            if (action != null && !action.equals("")) {
+                if (action.equals("add")) {
+                    addToCart(request);
 
-            } else if (action.equals("Update")) {
+                } else if (action.equals("Update")) {
 
-                updateCart(request);
+                    updateCart(request);
 
-            } else if (action.equals("Delete")) {
+                } else if (action.equals("Delete")) {
 
-                deleteCart(request);
+                    deleteCart(request);
 
+                }
             }
+        } else {
+            session.setAttribute("displayAlert", true);
+            session.setAttribute("alertType", "alert-danger");
+            session.setAttribute("alertMessage", "Shopping not allowed as Order Picker");
+            session.removeAttribute("cart");
         }
         finishRequest(request, response);
     }
@@ -59,10 +71,9 @@ public class ShoppingCartServlet extends HttpServlet {
 
         HttpSession session = request.getSession();
 
-        int id = Integer.parseInt(request.getParameter("id"));
+        String id = request.getParameter("id");
         ItemDAOImpl itemDAO = new ItemDAOImpl(ConnectionManager.init(this.getServletContext()));
-        Item temp = itemDAO.getItemByID(id);
-        System.out.println("Item id: " + id);
+        Item temp = itemDAO.getItemByPartCode(id);
         temp.setQuantity(1);
 
         ShoppingCart shoppingCart;
@@ -74,8 +85,6 @@ public class ShoppingCartServlet extends HttpServlet {
             shoppingCart = new ShoppingCart();
             session.setAttribute("cart", shoppingCart);
         }
-
-        System.out.println("shopping cart items: " + shoppingCart.getLineItemCount());
 
         shoppingCart.addCartItem(temp);
     }

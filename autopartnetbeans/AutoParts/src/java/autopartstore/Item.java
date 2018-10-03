@@ -8,6 +8,9 @@
 ***************************** */
 package autopartstore;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 /**
  *
  * @author Hayden Kowalchuk
@@ -83,37 +86,56 @@ public class Item implements java.io.Serializable {
     public void setPrice(double price) {
         this.price = price;
     }
-    
+
+    @Expose(serialize = false)
     private int ID;
+
+    @SerializedName("itemID")
+    @Expose
+    private String partCode;
+
+    @Expose(serialize = false)
     private String dept;
+
+    @Expose(serialize = false)
     private String name;
+
+    @Expose(serialize = false)
     private String desc;
+
+    @Expose(serialize = false)
     private double price;
-    
-    /** Michelle
-     * adding the quantity of items and total cost properties for Shopping Cart
-     */
-    private int quantity;
+
     /**
-     * 
+     * Michelle adding the quantity of items and total cost properties for Shopping Cart
+     */
+    @SerializedName("qty")
+    @Expose
+    private int quantity;
+
+    /**
+     *
      * @return the quantity
      */
     public int getQuantity() {
         return quantity;
     }
+
     /**
      * set the quantity
-     * @param quantity 
+     *
+     * @param quantity
      */
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+
     /**
-     * 
+     *
      * @return the total price
      */
     public double getTotalPrice() {
-        return getPrice()*getQuantity();
+        return getPrice() * getQuantity();
     }
 
     //Constructors
@@ -123,26 +145,41 @@ public class Item implements java.io.Serializable {
         desc = "";
         name = "";
         price = 0.0;
-        
+        partCode = "";
         quantity = 0;
     }
 
-    public Item(int id, String _dept, String _name, String _desc, double _price, int _quantity) {
+    public Item(int id, String _dept, String _name, String _desc, double _price, int _quantity, String code) {
         ID = id;
         dept = _dept;
         desc = _desc;
         name = _name;
         price = _price;
-        
+        partCode = code;
         quantity = _quantity;
     }
-    
-    public String toString(){
-        return String.format("Item[%d, %s, %s, %s, %f]", ID, dept, desc, name, price, quantity, getTotalPrice());
+
+    @Override
+    public String toString() {
+        return String.format("Item[%d, %s, %s, %s, %s, %f]", ID, partCode, dept, desc, name, price, quantity, getTotalPrice());
     }
-    
-    public void display(){
+
+    public void display() {
         System.out.println(toString());
+    }
+
+    /**
+     * @return the partCode
+     */
+    public String getPartCode() {
+        return partCode;
+    }
+
+    /**
+     * @param partCode the partCode to set
+     */
+    public void setPartCode(String partCode) {
+        this.partCode = partCode;
     }
 
 }
