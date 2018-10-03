@@ -40,7 +40,9 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#">AutoParts Logo</a>
+                        <img src="img/autopartlogo2.jpg" alt="auto parts image" width="200px" height="70"/>
+                        <!--<a class="navbar-brand" href="#">Auto Parts Co.</a>-->
+                        
                     </div>
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -51,10 +53,12 @@
                             <li class="${requestPage.equals('index.jsp') ? 'active' : ''}"><a href="index.jsp">Home ${requestPage.equals('index.jsp') ? '<span class="sr-only">(current)</span>' : ''}</a></li>
                             <li class="${requestPage.equals('displaydept.jsp') ? 'active' : ''}"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Department<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
+                                    
+                                    <li class="${searchTerm.equals('All') ? 'active' : ''}"><a href="displayDeptItems.jsp?cat=All">All</a></li>
                                     <li class="${searchTerm.equals('Exterior') ? 'active' : ''}"><a href="displayDeptItems.jsp?cat=exterior">Exterior</a></li>
                                     <li class="${searchTerm.equals('Interior') ? 'active' : ''}"><a href="displayDeptItems.jsp?cat=interior">Interior</a></li>
                                     <li class="${searchTerm.equals('Engine') ? 'active' : ''}"><a href="displayDeptItems.jsp?cat=engine">Engine</a></li>
-                                    <li class="${searchTerm.equals('Maintenance') ? 'active' : ''}"><a href="displayDeptItems.jsp?cat=maintenace">Maintenance</a></li>
+                                    <li class="${searchTerm.equals('Maintenance') ? 'active' : ''}"><a href="displayDeptItems.jsp?cat=maintenance">Maintenance</a></li>
                                 </ul>
                             </li>
                             <li class="${requestPage.equals('faq.jsp') ? 'active' : ''}"><a href="faq.jsp">FAQ${requestPage.equals('faq.jsp') ? '<span class="sr-only">(current)</span>' : ''}</a></li>
