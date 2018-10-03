@@ -210,13 +210,13 @@ public class ItemDAOImpl implements ItemDAO {
         connection = ConnectionManager.getConnection();
         try {
             Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT ID, partCode, dept, partName, description, price FROM Exterior WHERE PartCode='" + code + "'"
+            ResultSet rs = stmt.executeQuery("SELECT ID, partCode, dept, partName, description, price, photo FROM Exterior WHERE PartCode='" + code + "'"
                     + " UNION ALL "
-                    + "SELECT ID, partCode, dept, partName, description, price FROM Engine WHERE PartCode='" + code + "'"
+                    + "SELECT ID, partCode, dept, partName, description, price, photo FROM Engine WHERE PartCode='" + code + "'"
                     + " UNION ALL "
-                    + "SELECT ID, partCode, dept, partName, description, price FROM Interior WHERE PartCode='" + code + "'"
+                    + "SELECT ID, partCode, dept, partName, description, price, photo FROM Interior WHERE PartCode='" + code + "'"
                     + " UNION ALL "
-                    + "SELECT ID, partCode, dept, partName, description, price FROM Maintenance WHERE PartCode='" + code + "'");
+                    + "SELECT ID, partCode, dept, partName, description, price, photo FROM Maintenance WHERE PartCode='" + code + "'");
             if (rs.next()) {
                 return extractItemFromResultSet(rs);
             }

@@ -62,7 +62,7 @@
                                                 <tr>
                                                     <td class="col-md-5">
                                                         <div class="media">
-                                                            <a class="thumbnail pull-left" href="#"> <img class="media-object" src="https://loremflickr.com/320/240/${cartItem.getDept()}?id=${cartItem.getPrice()}" style="width: 72px; height: 72px;"> </a>
+                                                            <a class="thumbnail pull-left" href="#"> <img class="media-object" src="${cartItem.getphoto()}" style="width: 72px; height: 72px;"> </a>
                                                             <div class="media-body">
                                                                 <h5 class="media-heading"> ${cartItem.getName()}</h5>
                                                                 <h5 class="media-heading"> ${cartItem.getPartCode()}</h5>
