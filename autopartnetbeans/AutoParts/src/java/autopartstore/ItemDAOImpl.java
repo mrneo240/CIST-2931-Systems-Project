@@ -25,7 +25,6 @@ import java.util.TreeSet;
  * @author Hayden Kowalchuk
  * @Edited Levi Llewellyn
  */
-
 public class ItemDAOImpl implements ItemDAO {
 
     private Connection connection;
@@ -45,14 +44,13 @@ public class ItemDAOImpl implements ItemDAO {
         item.setDesc(rs.getString("description"));
         item.setPrice(rs.getDouble("price"));
         String dftphoto = rs.getString("photo");
+        if(dftphoto == null){
+            dftphoto = "https://img.clipartxtras.com/f668a365fed3b2830ea7e1aa6b0b0841_oops-sorry-clipart-clipartxtras-oops-clipart-funny_476-480.jpeg";
+        } else if(dftphoto.length() == 0 || dftphoto.equals("")) {
+            dftphoto = "https://img.clipartxtras.com/f668a365fed3b2830ea7e1aa6b0b0841_oops-sorry-clipart-clipartxtras-oops-clipart-funny_476-480.jpeg";
+        }
+        item.setphoto(dftphoto);
 
-         if (dftphoto.equals("")){
-             dftphoto = "https://img.clipartxtras.com/f668a365fed3b2830ea7e1aa6b0b0841_oops-sorry-clipart-clipartxtras-oops-clipart-funny_476-480.jpeg";
-         }
-             item.setphoto(dftphoto);
-        
-        
-        
         return item;
     }
 
