@@ -10,7 +10,6 @@ package autopartstore.json;
 
 import autopartstore.Customer;
 import autopartstore.CustomerDAOImpl;
-import autopartstore.Item;
 import autopartstore.db.ConnectionManager;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -34,7 +33,6 @@ public class OrderJSON {
     @Expose
     private int ID;
 
-    //public Customer customer; 
     @SerializedName("custID")
     @Expose
     private int CustomerID;
@@ -216,7 +214,16 @@ public class OrderJSON {
     public double getOrderTotal() {
         return Math.round((getOrderSubTotal() + getOrderTax()) * 100) / 100.0d;
     }
+    
+    
+   @Expose(serialize = false)
+   private static final String statMsg[] ={"Invoiced", "Shipping", "Out for Delivery", "Delivered"};
+    
+    public String getStringStatus(){
+        return statMsg[status];
+    }
 
+    @Override
     public String toString() {
         return String.format("OrderJSON[%d, %d, %f, ITEMS{%d}, %s, %d, DETAILS{}", getID(), getCustomerID(), getTotal(), getLineCount(), getDate(), getStatus());
     }
