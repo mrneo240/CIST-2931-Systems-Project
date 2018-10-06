@@ -103,6 +103,36 @@
                                             <h3 class="panel-title">Order #${order.getID()} placed on ${order.getDate()}</h3>
                                         </div>
                                         <div class="panel-body">
+                                             <div class="row">
+            <div class="board">
+                <ul class="nav nav-tabs">
+                    <div class="liner"></div>
+                    <li rel-index="0" class="col-md-2 col-xs-2">
+                        <a href="#step-1" class="btn shipbtn" role="tab" data-toggle="tab" target="1">
+                            <span><i class="fas fa-file-invoice-dollar"></i></span>
+                        </a>
+                    </li>
+                    <li rel-index="1" class="col-md-2 col-xs-2">
+                        <a href="#step-2" class="btn shipbtn" role="tab" data-toggle="tab" target="2">
+                            <span><i class="fa fa-truck-loading"></i></span>
+                        </a>
+                    </li>
+                    <li class="col-md-4 col-xs-4">
+                        <h2 style="margin: 0 0 20px 0;text-align: center;">Invoiced</h2>
+                    </li>
+                    <li rel-index="2" class="col-md-2 col-xs-2">
+                        <a href="#step-3" class="btn"role="tab" data-toggle="tab">
+                            <span><i class="fa fa-truck"></i></span>
+                        </a>
+                    </li>
+                    <li rel-index="3" class="col-md-2 col-xs-2">
+                        <a href="#step-4" class="btn " role="tab" data-toggle="tab">
+                            <span><i class="fa fa-home"></i></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
                                             <table class="table borderless">
                                                 <tbody
                                                     <c:forEach var="item" items="${order.items}" varStatus="counter">
