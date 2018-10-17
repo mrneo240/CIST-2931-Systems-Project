@@ -14,6 +14,7 @@ import com.google.gson.annotations.SerializedName;
 /**
  *
  * @author Hayden Kowalchuk
+ * @author Levi Llewellyn
  */
 public class Item implements java.io.Serializable {
 
@@ -86,6 +87,14 @@ public class Item implements java.io.Serializable {
     public void setPrice(double price) {
         this.price = price;
     }
+    
+    public String getphoto(){
+        return photo;
+    }
+    
+    public void setphoto(String photo){
+        this.photo = photo;
+    }
 
     @Expose(serialize = false)
     private int ID;
@@ -105,6 +114,9 @@ public class Item implements java.io.Serializable {
 
     @Expose(serialize = false)
     private double price;
+    
+    @Expose(serialize = false)
+    private String photo;
 
     /**
      * Michelle adding the quantity of items and total cost properties for Shopping Cart

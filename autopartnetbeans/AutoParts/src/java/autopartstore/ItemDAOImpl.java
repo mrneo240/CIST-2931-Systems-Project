@@ -23,6 +23,7 @@ import java.util.TreeSet;
 /**
  *
  * @author Hayden Kowalchuk
+ * @Edited Levi Llewellyn
  */
 public class ItemDAOImpl implements ItemDAO {
 
@@ -42,6 +43,14 @@ public class ItemDAOImpl implements ItemDAO {
         item.setDept(rs.getString("dept"));
         item.setDesc(rs.getString("description"));
         item.setPrice(rs.getDouble("price"));
+        String dftphoto = rs.getString("photo");
+        if(dftphoto == null){
+            dftphoto = "https://img.clipartxtras.com/f668a365fed3b2830ea7e1aa6b0b0841_oops-sorry-clipart-clipartxtras-oops-clipart-funny_476-480.jpeg";
+        } else if(dftphoto.length() == 0 || dftphoto.equals("")) {
+            dftphoto = "https://img.clipartxtras.com/f668a365fed3b2830ea7e1aa6b0b0841_oops-sorry-clipart-clipartxtras-oops-clipart-funny_476-480.jpeg";
+        }
+        item.setphoto(dftphoto);
+
         return item;
     }
 
@@ -199,13 +208,13 @@ public class ItemDAOImpl implements ItemDAO {
         connection = ConnectionManager.getConnection();
         try {
             Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT ID, partCode, dept, partName, description, price FROM Exterior WHERE PartCode='" + code + "'"
+            ResultSet rs = stmt.executeQuery("SELECT ID, partCode, dept, partName, description, price, photo FROM Exterior WHERE PartCode='" + code + "'"
                     + " UNION ALL "
-                    + "SELECT ID, partCode, dept, partName, description, price FROM Engine WHERE PartCode='" + code + "'"
+                    + "SELECT ID, partCode, dept, partName, description, price, photo FROM Engine WHERE PartCode='" + code + "'"
                     + " UNION ALL "
-                    + "SELECT ID, partCode, dept, partName, description, price FROM Interior WHERE PartCode='" + code + "'"
+                    + "SELECT ID, partCode, dept, partName, description, price, photo FROM Interior WHERE PartCode='" + code + "'"
                     + " UNION ALL "
-                    + "SELECT ID, partCode, dept, partName, description, price FROM Maintenance WHERE PartCode='" + code + "'");
+                    + "SELECT ID, partCode, dept, partName, description, price, photo FROM Maintenance WHERE PartCode='" + code + "'");
             if (rs.next()) {
                 return extractItemFromResultSet(rs);
             }

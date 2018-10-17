@@ -103,6 +103,58 @@
                                             <h3 class="panel-title">Order #${order.getID()} placed on ${order.getDate()}</h3>
                                         </div>
                                         <div class="panel-body">
+                                            <c:if test="${admin}">
+                                                <div class="form-group">
+                                                    <form action="updateOrderServlet" method="post" class="form-inline">
+                                                        <div class="form-group">
+                                                            <input type="hidden" name="orderID" value="${order.getID()}">
+                                                            <label class="control-label">Change Order Status:</label>
+                                                            <select class="form-control" name="orderStatus" onchange="this.form.submit()">
+                                                                <option value="0" <c:if test="${order.getStatus() ==0}">selected</c:if>>Invoiced</option>
+                                                                <option value="1" <c:if test="${order.getStatus() ==1}">selected</c:if>>Shipping</option>
+                                                                <option value="2" <c:if test="${order.getStatus() ==2}">selected</c:if>>Out for Delivery</option>
+                                                                <option value="3" <c:if test="${order.getStatus() ==3}">selected</c:if>>Delivered</option>
+                                                                </select>
+                                                            </div>
+                                                            <button type="submit" name="action" value="Delete" class="btn btn-danger pull-right">Delete</button>
+                                                        </form>
+                                                    </div>
+                                            </c:if>
+                                            <c:if test="${!admin}">
+                                                <div class="row">
+                                                    <div class="board">
+                                                        <ul class="nav nav-tabs">
+                                                            <div class="liner"></div>
+                                                            <li rel-index="0" class="col-md-2 col-xs-2 hidden-xs <c:if test="${order.getStatus() ==0}">active</c:if>">
+                                                                    <a href="#step-1">
+                                                                        <span><i class="fas fa-file-invoice-dollar"></i></span>
+                                                                    </a>
+                                                                </li>
+                                                                <li rel-index="1" class="col-md-2 col-xs-2 hidden-xs <c:if test="${order.getStatus() ==1}">active</c:if>">
+                                                                    <a href="#step-2">
+                                                                        <span><i class="fa fa-truck-loading"></i></span>
+                                                                    </a>
+                                                                </li>
+                                                                <li class="col-md-4 col-sm-4 col-xs-12" style="white-space: nowrap;">
+                                                                    <a href="#step-5" class="visible-xs">
+                                                                        <span></span>
+                                                                    </a>
+                                                                    <h2 style="margin: 0 0 20px 0;text-align: center;">${order.getStringStatus()}</h2>
+                                                            </li>
+                                                            <li rel-index="2" class="col-md-2 col-xs-2 hidden-xs <c:if test="${order.getStatus() ==2}">active</c:if>">
+                                                                    <a href="#step-3">
+                                                                        <span><i class="fa fa-truck"></i></span>
+                                                                    </a>
+                                                                </li>
+                                                                <li rel-index="3" class="col-md-2 col-xs-2 hidden-xs <c:if test="${order.getStatus() ==3}">active</c:if>">
+                                                                    <a href="#step-4">
+                                                                        <span><i class="fa fa-home"></i></span>
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                            </c:if>
                                             <table class="table borderless">
                                                 <tbody
                                                     <c:forEach var="item" items="${order.items}" varStatus="counter">
@@ -110,7 +162,7 @@
                                                         <tr>
                                                             <td class="col-md-5">
                                                                 <div class="media">
-                                                                    <a class="thumbnail pull-left" href="#"> <img class="media-object" src="https://loremflickr.com/320/240/${cartItem.getDept()}?id=${cartItem.getPrice()}" style="width: 72px; height: 72px;"> </a>
+                                                                    <a class="thumbnail pull-left" href="#"> <img class="media-object" src="${cartItem.getphoto()}" style="width: 72px; height: 72px;"> </a>
                                                                     <div class="media-body">
                                                                         <h5 class="media-heading"> ${cartItem.getName()}</h5>
                                                                         <h5 class="media-heading"> ${cartItem.getPartCode()}</h5>

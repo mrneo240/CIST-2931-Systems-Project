@@ -40,7 +40,7 @@
                                 <c:forEach var="cartItem" items="${cart.getCartItems()}" varStatus="counter">
                                     <div class="form-group">
                                         <div class="col-sm-3 col-xs-3">
-                                            <img class="img-responsive" src="https://loremflickr.com/320/240/${cartItem.getDept()}?id=${cartItem.getPrice()}" />
+                                            <img class="img-responsive" src="${cartItem.getphoto()}" />
                                         </div>
                                         <div class="col-sm-6 col-xs-6">
                                             <div class="col-xs-12">${cartItem.getName()}</div>

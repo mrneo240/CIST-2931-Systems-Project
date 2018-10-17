@@ -2,6 +2,7 @@
     Document   : DisplayingItems
     Created on : Sep 15, 2018, 1:20:51 PM
     Author     : Hayden Kowalchuk
+    Edited     : Levi Llewellyn
 --%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -21,18 +22,13 @@
     <div class="row text-center feature-imgs">
         <c:if test="${searchItems != null}">
             <c:forEach items="${searchItems}" var="item">
-                <%
-                    int randomNum = (int) (java.lang.Math.random() * (3));
-                    pageContext.setAttribute("randomNum", randomNum);
-                %>
-                <c:set var="random" value="${randomNum}"/>
                 <div class="col-md-3 col-sm-4 col-xs-6">
                     <div class="thumbnail">
                         <form action="ShoppingCartServlet" method="post">
                             <input type="hidden" name="action" value="add">
                             <input type="hidden" name="id" value="${item.getPartCode()}"/>
                             <input type="hidden" name="department" value="${item.getDept()}" />
-                            <div class="ThumbContainer"><img height="inherit" width="100%"  src="${attractImgs[random]}"></div>
+                            <div class="ThumbContainer"><img height="inherit" width="100%"  src="${item.getphoto()}"></div>
                             <p><strong>${item.getName()}</strong></p>
                             <p>${item.getDesc()}</p>
                             <button class="btn" name="addToCart" type="submit"><strong>$ ${item.getPrice()}<input type="hidden" name="price" value="${item.getPrice()}"/></strong> - Add to cart</button>
