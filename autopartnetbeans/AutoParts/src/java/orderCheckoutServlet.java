@@ -7,7 +7,6 @@
 * Copyright (C) 2018 Hayden Kowalchuk
 ***************************** */
 
-import autopartstore.ItemDAOImpl;
 import autopartstore.Order;
 import autopartstore.OrderDAOImpl;
 import autopartstore.json.ItemJSON;
