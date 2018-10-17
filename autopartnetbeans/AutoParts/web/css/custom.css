@@ -52,6 +52,10 @@ p {
     height: 100%;
 }
 
+.no-padding{
+     padding: 0 0 0 0;
+}
+
 .line {
     margin-top: 20px;
     margin-bottom: 20px;
@@ -356,36 +360,8 @@ input::-webkit-input-placeholder {
 .cards .mastercard {
     background-position: -51px 0;
 }
-.cards li {
-    -webkit-transition: all .2s;
-    -moz-transition: all .2s;
-    -ms-transition: all .2s;
-    -o-transition: all .2s;
-    transition: all .2s;
-    background-image: url('//c2.staticflickr.com/4/3713/20116660060_f1e51a5248_m.jpg');
-    background-position: 0 0;
-    float: left;
-    height: 32px;
-    margin-right: 8px;
-    text-indent: -9999px;
-    width: 51px;
-}
 .cards .amex {
     background-position: -102px 0;
-}
-.cards li {
-    -webkit-transition: all .2s;
-    -moz-transition: all .2s;
-    -ms-transition: all .2s;
-    -o-transition: all .2s;
-    transition: all .2s;
-    background-image: url('//c2.staticflickr.com/4/3713/20116660060_f1e51a5248_m.jpg');
-    background-position: 0 0;
-    float: left;
-    height: 32px;
-    margin-right: 8px;
-    text-indent: -9999px;
-    width: 51px;
 }
 .cards li:last-child {
     margin-right: 0;

@@ -43,7 +43,7 @@
                                         <label for="confirm" class="cols-sm-2 control-label">First and Last Name</label>
 
                                         <div class="input-group">
-                                            <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                                            <span class="input-group-addon"><span class="fa fa-user"></span></span>
                                             <input type="text" name="fname" class="form-control w-50" placeholder="First Name" value="${customerNames[0]}"/>
                                             <input type="text" name="lname" class="form-control w-50" placeholder="Last Name" value="${customerNames[1]}"/>
                                         </div>
@@ -51,35 +51,35 @@
                                     <div class="form-group">
                                         <label for="confirm" class="cols-sm-2 control-label">Email</label>
                                         <div class="input-group">
-                                            <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+                                            <span class="input-group-addon"><span class="fa fa-envelope"></span></span>
                                             <input type="text" name="email" class="form-control" placeholder="Email" value="${customer.getemail()}"/>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="confirm" class="cols-sm-2 control-label">New Password</label>
                                         <div class="input-group">
-                                            <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                                            <span class="input-group-addon"><span class="fa fa-lock"></span></span>
                                             <input type="password" name="pass"class="form-control" placeholder="New Password" />
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="confirm" class="cols-sm-2 control-label">Address</label>
                                         <div class="input-group">
-                                            <span class="input-group-addon"><span class="glyphicon glyphicon-home"></span></span>
+                                            <span class="input-group-addon"><span class="fa fa-home"></span></span>
                                             <input type="text" name="address" class="form-control" placeholder="Address" value="${customer.getaddress()}"/>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="confirm" class="cols-sm-2 control-label">Username</label>
                                         <div class="input-group">
-                                            <span class="input-group-addon"><span class="glyphicon glyphicon-heart"></span></span>
+                                            <span class="input-group-addon"><span class="fa fa-heart"></span></span>
                                             <input type="text" name="username" class="form-control" placeholder="Username" value="${customer.getusername()}" disabled/>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="confirm" class="cols-sm-2 control-label">Credit Card</label>
                                         <div class="input-group">
-                                            <span class="input-group-addon"><span class="glyphicon glyphicon-credit-card"></span></span>
+                                            <span class="input-group-addon"><span class="fa fa-credit-card"></span></span>
                                             <input type="text" name="creditc" class="form-control" placeholder="Credit card" value="${customer.getcreditC()}"/>
                                         </div>
                                     </div>

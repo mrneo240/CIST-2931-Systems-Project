@@ -89,15 +89,15 @@ public class Order {
     /**
      * @return the total
      */
-    public double getTotal() {
-        return total;
+    public Double getTotal() {
+        return Math.round(total * 100) / 100.0;
     }
 
     /**
-     * @param total the total to set
+     * @param Total the Total to set
      */
-    public void setTotal(double total) {
-        this.total = total;
+    public void setTotal(Double Total) {
+        this.total = Math.round(Total * 100) / 100.0d;
     }
 
     private int ID;

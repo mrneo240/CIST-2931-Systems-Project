@@ -71,8 +71,16 @@ public class orderCheckoutServlet extends HttpServlet {
             OrderDAOImpl orderDAO = (new OrderDAOImpl((new ConnectionManager(false)).getConnection()));
             orderDAO.insertOrder(orderObject);
             
+            //Pull and update internal Order JSON
+            Order orderNew = orderDAO.getMostRecentOrder();
+            
+            OrderJSON tmpNew = gson.fromJson(orderNew.getOrderJSON(), OrderJSON.class);
+            tmpNew.synchronize();
+            tmpNew.setID(orderNew.getID());
+
+
             session.setAttribute("cart", null);
-            request.setAttribute("order", order);
+            request.setAttribute("order", tmpNew);
         }
 
         request.getRequestDispatcher("WEB-INF/orderConfirm.jsp").forward(request, response);
