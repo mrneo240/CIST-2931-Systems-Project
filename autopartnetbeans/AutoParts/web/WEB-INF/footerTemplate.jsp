@@ -104,10 +104,20 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-address-card" aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" name="address" id="address"  placeholder="1234 Cloverdale st Atlanta, GA 20229"/>
+                                <input type="text" class="form-control" name="address" id="address"  placeholder="1234 Cloverdale St" required/>
                             </div>
                         </div>
                     </div>
+                     <div class="form-group">
+                        <label for="confirm" class="cols-sm-2 control-label">City</label>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-address-card" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" name="city" id="city"  placeholder="Atlanta" required />
+                            </div>
+                        </div>
+                     </div>
+ 
 
                     <div class="form-group ">
                         <button class="btn btn-primary btn-lg btn-block login-button" type="submit" name="action" class="login logoutmodal-submit" value="register">Register</button>
