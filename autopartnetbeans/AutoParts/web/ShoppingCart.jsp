@@ -117,7 +117,40 @@
                                 </div>                </div>
                             <!--REVIEW ORDER END-->
                         </div>
+    <h2>Shopping Cart List</h2>
 
+    <c:if test="${cart.getLineItemCount()==0 || cart == null}">
+        <h2>Cart is currently empty!</h2>
+        </c:if>
+        <c:forEach var="cartItem" items="${cart.getCartItems()}" varStatus="counter">
+            <form action="ShoppingCartServlet" method="POST" name="item">
+                <tr>
+                    <td>${cartItem.getDept()}</td>
+                    <td>${cartItem.getName()}</td>
+                    <td>desc</td>
+                    <td>
+                        <input type='hidden' name='itemIndex' value='<c:out value="${counter.count-1}" />'>
+                        <input type='text' name='quantity' value='${cartItem.getQuantity()}'>
+                        <input type="submit" name="action" value="Update"><br />
+                        <input type="submit" name="action" value="Delete">
+                    </td>
+                    <td>$<fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="2" value="${cartItem.getPrice()}"/></td>
+                    <td>$<fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="2" value="${cartItem.getTotalPrice()}"/></td>
+                </tr>
+            </form>
+        </c:forEach>
+        <tr>
+            <td> </td>
+            <td> </td>
+            <td>Subtotal: $<fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="2" value="${cart.getOrderTotal()}"/></td>
+        </tr>
+    </table>
+        <Form action="OrderReview.jsp" method="POST">
+            <input type="submit" name="action" value="Order">
+        </Form>
+        </table>
+    </c:if>
+</div>
                    
                 </div>
             </div>
