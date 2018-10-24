@@ -13,7 +13,8 @@
         <hr>
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">Order placed on ${order.getDate()}</h3>
+                <div class="panel-heading text"><h4 class="panel-title">Your Order is placed Today ( ${order.getDate()} )</h4></div>
+                <div class="panel-heading text"><h4 class="panel-title">Order #${order.getID()}</h4></div>
             </div>
             <div class="panel-body">
                 <table class="table borderless">

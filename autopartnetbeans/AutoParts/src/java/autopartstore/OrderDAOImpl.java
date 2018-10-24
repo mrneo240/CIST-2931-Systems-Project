@@ -97,6 +97,22 @@ public class OrderDAOImpl implements OrderDAO {
         }
         return null;
     }
+    
+    public Order getMostRecentOrder() {
+        connection = ConnectionManager.getConnection();
+        try {
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM orders  ORDER BY id DESC LIMIT 1");
+            if (rs.next()) {
+                return extractOrderFromResultSet(rs);
+            }
+            rs.close();
+            stmt.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    }
 
     @Override
     public boolean insertOrder(Order order) {
