@@ -107,9 +107,9 @@ public class updateCustomerServlet extends HttpServlet {
             String addr_city = request.getParameter("addr_city").trim();
             String addr_state = request.getParameter("addr_state").trim();
             String addr_zip = request.getParameter("addr_zip").trim();
-            addressJSON address = new addressJSON(addr_street,addr_city,addr_state, addr_zip);
-            
-                //        String jsonAddress = gson.toJson(shoppingCart.getCartItems());
+            addressJSON address = new addressJSON(addr_street, addr_city, addr_state, addr_zip);
+
+            //        String jsonAddress = gson.toJson(shoppingCart.getCartItems());
             Customer customer = null;
             CustomerDAOImpl customerDAO = new CustomerDAOImpl(ConnectionManager.init(this.getServletContext()));
 

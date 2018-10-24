@@ -20,6 +20,10 @@ public class OrderDetailsJSON {
     @SerializedName("name")
     @Expose
     public String name = "";
+    
+    public String getname(){
+        return name;
+    }
 
     @SerializedName("addr")
     @Expose
@@ -32,6 +36,18 @@ public class OrderDetailsJSON {
     @SerializedName("CC")
     @Expose
     public String creditCard = "";
+    
+    public String getCreditCard(){
+        return creditCard;
+    }
+    
+    @SerializedName("email")
+    @Expose
+    public String email = "";
+    
+    public String getEmail(){
+        return email;
+    }
 
     public void synchronize() {
 

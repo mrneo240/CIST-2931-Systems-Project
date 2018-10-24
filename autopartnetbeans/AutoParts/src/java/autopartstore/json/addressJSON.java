@@ -5,6 +5,8 @@
  */
 package autopartstore.json;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -76,20 +78,16 @@ public class addressJSON {
         return zip;
     }
 
-    public void display() {
-        System.out.println("Street = " + getstreet());
-        System.out.println("City = " + getcity());
-        System.out.println("State = " + getstate());
-        System.out.println("Zip = " + getzip());
-    }
-
+    @Override
     public String toString() {
         return String.format("%s %s, %s %s", getstreet(), getcity(), getstate(), getzip());
     }
 
     public static void main(String[] args) {
         addressJSON a1 = new addressJSON("167 timber st", "atlanta", "ga", "11342");
+        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+        
         //a1.display();
-        System.out.println(a1.toString());
+        System.out.println(gson.toJson(a1));
     }
 }

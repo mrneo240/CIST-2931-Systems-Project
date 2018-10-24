@@ -97,11 +97,9 @@
                                 <div class="form-group">
                                     <div class="col-md-12 col-xs-12">
                                         <strong>Name:</strong>
-                                        <input type="text" name="first_name" class="form-control" value="${customer.getcustName()}" required />
+                                        <input type="text" name="name" class="form-control" value="${customer.getcustName()}" required />
                                     </div>
-
                                 </div>
-
                                 <div class="form-group">
                                     <div class="col-md-12"><strong>Address:</strong></div>
                                     <div class="col-md-12">
@@ -126,7 +124,7 @@
                                 </div> 
                                 <div class="form-group">
                                     <div class="col-md-12"><strong>Email Address:</strong></div>
-                                    <div class="col-md-12"><input type="email" name="email_address" class="form-control" value="${customer.getemail()}" required /></div>
+                                    <div class="col-md-12"><input type="email" name="email" class="form-control" value="${customer.getemail()}" required /></div>
                                 </div>
                             </div>
                         </div>
@@ -149,9 +147,9 @@
                                 <div class="form-group">
                                     <div class="col-md-9">
                                         <strong>Credit Card Number:</strong>
-                                        <input type="text" class="form-control" name="car_number" pattern="[0-9]{13,16}" value="${customer.getcreditC()}" required /></div>
+                                        <input type="text" class="form-control" name="card_number" pattern="[0-9]{13,16}" value="${customer.getcreditC()}" required /></div>
                                     <div class="col-md-3"><strong>Card CVV:</strong>
-                                        <input type="text" class="form-control" name="car_code" pattern="^[0-9]{1,3}$" value="" required /></div>
+                                        <input type="text" class="form-control" name="card_ccv" pattern="^[0-9]{1,3}$" value="" required /></div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-12">
