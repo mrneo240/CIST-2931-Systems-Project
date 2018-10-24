@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 import autopartstore.*;
 import autopartstore.db.ConnectionManager;
 import java.io.IOException;
@@ -66,7 +60,7 @@ public class ShoppingCartServlet extends HttpServlet {
         }
         finishRequest(request, response);
     }
-
+ /*** Adding to the shopping cart ***/
     protected void addToCart(HttpServletRequest request) {
 
         HttpSession session = request.getSession();
@@ -88,7 +82,9 @@ public class ShoppingCartServlet extends HttpServlet {
 
         shoppingCart.addCartItem(temp);
     }
-
+    
+/*** Updating shopping cart ***/
+    
     protected void updateCart(HttpServletRequest request) {
         HttpSession session = request.getSession();
         int quantity = Integer.parseInt(request.getParameter("quantity"));
@@ -108,7 +104,7 @@ public class ShoppingCartServlet extends HttpServlet {
         }
         shoppingCart.updateCartItem(itemIndex, quantity);
     }
-
+/*** deleting from shopping cart ***/
     protected void deleteCart(HttpServletRequest request) {
 
         HttpSession session = request.getSession();
