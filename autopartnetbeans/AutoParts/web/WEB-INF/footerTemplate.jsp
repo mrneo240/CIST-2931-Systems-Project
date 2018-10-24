@@ -10,8 +10,11 @@
 <div class="footer">
     <div class="footer-content">
         <p>Copyright @2017 | Express Car Parts</p>
-        <a href="legalPolicies.jsp#Terms-and-conditions">Terms &amp; Conditions</a>
-        <a href="legalPolicies.jsp#Privacy-policy">Privacy Policy</a>
+        <p style="display:inline;">
+            <a href="legalPolicies.jsp#Terms-and-conditions">Terms &amp; Conditions</a>
+            <div style="width:50px;"></div>
+            <a href="legalPolicies.jsp#Privacy-policy">Privacy Policy</a>
+        </p>
     </div>
 </div>
 
@@ -25,7 +28,7 @@
                 <input type="submit" name="action" class="login loginmodal-submit" value="login">
             </form>    
             <div class="login-help">
-            <a href="#" data-toggle="modal" data-target="#register-modal" data-dismiss="modal">Register</a>
+                <a href="#" data-toggle="modal" data-target="#register-modal" data-dismiss="modal">Register</a>
             </div>
         </div>
     </div>
@@ -108,7 +111,7 @@
                             </div>
                         </div>
                     </div>
-                     <div class="form-group">
+                    <div class="form-group">
                         <label for="confirm" class="cols-sm-2 control-label">City</label>
                         <div class="col-sm-4">
                             <div class="input-group">
@@ -116,8 +119,8 @@
                                 <input type="text" class="form-control" name="city" id="city"  placeholder="Atlanta" required />
                             </div>
                         </div>
-                     </div>
- 
+                    </div>
+
 
                     <div class="form-group ">
                         <button class="btn btn-primary btn-lg btn-block login-button" type="submit" name="action" class="login logoutmodal-submit" value="register">Register</button>
@@ -136,9 +139,9 @@
 <script src="./js/slide.js"></script>
 <c:if test="${jsScript != null}">
     <script>
-        $(function() {
-            ${jsScript}
-         });
+        $(function () {
+        ${jsScript}
+        });
     </script>
     <c:remove var="jsScript" />
 </c:if>
