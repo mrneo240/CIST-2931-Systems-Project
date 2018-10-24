@@ -24,6 +24,10 @@ public class OrderDetailsJSON {
     @SerializedName("addr")
     @Expose
     public String address = "";
+    
+    public String getAddress(){
+        return address;
+    }
 
     @SerializedName("CC")
     @Expose

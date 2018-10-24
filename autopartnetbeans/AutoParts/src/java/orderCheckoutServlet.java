@@ -81,6 +81,10 @@ public class orderCheckoutServlet extends HttpServlet {
 
             session.setAttribute("cart", null);
             request.setAttribute("order", tmpNew);
+            
+            request.setAttribute("displayAlert", true);
+            request.setAttribute("alertType", "alert-success");
+            request.setAttribute("alertMessage", "Order Placed and a copy of the Invoice emailed to "+" "+"!"/*<a href=\"#\" class=\"alert-link\">Test Link</a>*/);
         }
 
         request.getRequestDispatcher("WEB-INF/orderConfirm.jsp").forward(request, response);

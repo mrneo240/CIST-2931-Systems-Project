@@ -65,10 +65,10 @@
                                         <label for="confirm" class="cols-sm-2 control-label">Address</label>
                                         <div class="input-group">
                                             <span class="input-group-addon"><span class="fa fa-home"></span></span>
-                                            <input type="text" name="addr_street" class="form-control w-50" placeholder="Street" value="${customerNames[0]}"/>
-                                            <input type="text" name="addr_city" class="form-control w-25" placeholder="City" value="${customerNames[0]}"/>
-                                            <input type="text" name="addr_state" class="form-control w-10" placeholder="State" value="${customerNames[1]}"/>
-                                            <input type="text" name="addr_zip" class="form-control w-15" placeholder="Zipcode" value="${customerNames[1]}"/>
+                                            <input type="text" name="addr_street" class="form-control w-50" placeholder="Street" value="${customer.getaddress().getstreet()}"/>
+                                            <input type="text" name="addr_city" class="form-control w-25" placeholder="City" value="${customer.getaddress().getcity()}"/>
+                                            <input type="text" name="addr_state" class="form-control w-10" placeholder="State" value="${customer.getaddress().getstate()}"/>
+                                            <input type="text" name="addr_zip" class="form-control w-15" placeholder="Zipcode" value="${customer.getaddress().getzip()}"/>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -197,6 +197,9 @@
                                             </div>
                                         </div>
                                         <div class="panel-footer" style="overflow:hidden;">
+                                            <div class="col-md-6 col-xs-6">
+                                                <strong>Delivery Address: </strong><span>${order.getOrderDetails().address}</span>
+                                            </div>
                                             <div class="pull-right col-md-3 col-xs-6">
                                                 <strong>Total: </strong><div class="pull-right"><span>$</span><span>${order.getOrderTotal()}</span></div>
                                             </div>
