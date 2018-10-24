@@ -9,12 +9,16 @@
 <%@page trimDirectiveWhitespaces="true"%>
 <div class="footer">
     <div class="footer-content">
-        <p>Copyright @2017 | Express Car Parts</p>
-        <p style="display:inline;">
-            <a href="legalPolicies.jsp#Terms-and-conditions">Terms &amp; Conditions</a>
-            <div style="width:50px;"></div>
-            <a href="legalPolicies.jsp#Privacy-policy">Privacy Policy</a>
-        </p>
+        <div style="position: relative;">
+            <p style="
+               white-space: nowrap;
+               overflow: hidden;
+               text-overflow: ellipsis;
+               display: inline-block;
+               padding: 10px;">Copyright @2017 | Express Car Parts</p>
+            <a href="legalPolicies.jsp#Terms-and-conditions" style="right: 100px;">Terms &amp; Conditions</a>
+            <a href="legalPolicies.jsp#Privacy-policy" style="right: 0px;">Privacy Policy</a>
+        </div>
     </div>
 </div>
 
@@ -104,24 +108,14 @@
                     </div>
                     <div class="form-group">
                         <label for="confirm" class="cols-sm-2 control-label">Address</label>
-                        <div class="cols-sm-10">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-address-card" aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" name="address" id="address"  placeholder="1234 Cloverdale St" required/>
-                            </div>
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="fa fa-home"></span></span>
+                            <input type="text" name="addr_street" class="form-control w-50" placeholder="Street" value="${customerNames[0]}"/>
+                            <input type="text" name="addr_city" class="form-control w-25" placeholder="City" value="${customerNames[0]}"/>
+                            <input type="text" name="addr_state" class="form-control w-10" placeholder="State" value="${customerNames[1]}"/>
+                            <input type="text" name="addr_zip" class="form-control w-15" placeholder="Zipcode" value="${customerNames[1]}"/>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="confirm" class="cols-sm-2 control-label">City</label>
-                        <div class="col-sm-4">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-address-card" aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" name="city" id="city"  placeholder="Atlanta" required />
-                            </div>
-                        </div>
-                    </div>
-
-
                     <div class="form-group ">
                         <button class="btn btn-primary btn-lg btn-block login-button" type="submit" name="action" class="login logoutmodal-submit" value="register">Register</button>
                     </div>

@@ -5,6 +5,7 @@ import autopartstore.Order;
 import autopartstore.OrderDAOImpl;
 import autopartstore.db.ConnectionManager;
 import autopartstore.json.OrderJSON;
+import autopartstore.json.addressJSON;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.io.IOException;
@@ -102,7 +103,13 @@ public class updateCustomerServlet extends HttpServlet {
             //String username = request.getParameter("username").trim();
             String password = request.getParameter("pass").trim();
             String creditc = request.getParameter("creditc").trim();
-            String address = request.getParameter("address").trim();
+            String addr_street = request.getParameter("addr_street").trim();
+            String addr_city = request.getParameter("addr_city").trim();
+            String addr_state = request.getParameter("addr_state").trim();
+            String addr_zip = request.getParameter("addr_zip").trim();
+            addressJSON address = new addressJSON(addr_street,addr_city,addr_state, addr_zip);
+            
+                //        String jsonAddress = gson.toJson(shoppingCart.getCartItems());
             Customer customer = null;
             CustomerDAOImpl customerDAO = new CustomerDAOImpl(ConnectionManager.init(this.getServletContext()));
 
@@ -122,9 +129,7 @@ public class updateCustomerServlet extends HttpServlet {
                 if (creditc.length() > 0) {
                     customer.setcreditC(creditc);
                 } else  ;
-                if (address.length() > 0) {
-                    customer.setaddress(address);
-                } else  ;
+                customer.setaddress(address);
 
                 success = customerDAO.updateCustomer(customer);
                 if (email.equalsIgnoreCase("error")) {

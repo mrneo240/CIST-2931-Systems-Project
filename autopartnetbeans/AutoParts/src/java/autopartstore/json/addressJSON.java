@@ -17,15 +17,15 @@ public class addressJSON {
     @SerializedName("street")
     @Expose
     private String street;
-    
+
     @SerializedName("city")
     @Expose
     private String city;
-    
+
     @SerializedName("state")
     @Expose
     private String state;
-    
+
     @SerializedName("zipcode")
     @Expose
     private String zip;
@@ -81,7 +81,6 @@ public class addressJSON {
         System.out.println("City = " + getcity());
         System.out.println("State = " + getstate());
         System.out.println("Zip = " + getzip());
-
     }
 
     public String toString() {
@@ -90,6 +89,7 @@ public class addressJSON {
 
     public static void main(String[] args) {
         addressJSON a1 = new addressJSON("167 timber st", "atlanta", "ga", "11342");
-        a1.display();
+        //a1.display();
+        System.out.println(a1.toString());
     }
 }

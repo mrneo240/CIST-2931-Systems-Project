@@ -41,7 +41,6 @@
                                     <div class="form-group">
                                         <c:set var="customerNames" value="${fn:split(customer.getcustName(), ' ')}" />
                                         <label for="confirm" class="cols-sm-2 control-label">First and Last Name</label>
-
                                         <div class="input-group">
                                             <span class="input-group-addon"><span class="fa fa-user"></span></span>
                                             <input type="text" name="fname" class="form-control w-50" placeholder="First Name" value="${customerNames[0]}"/>
@@ -66,7 +65,10 @@
                                         <label for="confirm" class="cols-sm-2 control-label">Address</label>
                                         <div class="input-group">
                                             <span class="input-group-addon"><span class="fa fa-home"></span></span>
-                                            <input type="text" name="address" class="form-control" placeholder="Address" value="${customer.getaddress()}"/>
+                                            <input type="text" name="addr_street" class="form-control w-50" placeholder="Street" value="${customerNames[0]}"/>
+                                            <input type="text" name="addr_city" class="form-control w-25" placeholder="City" value="${customerNames[0]}"/>
+                                            <input type="text" name="addr_state" class="form-control w-10" placeholder="State" value="${customerNames[1]}"/>
+                                            <input type="text" name="addr_zip" class="form-control w-15" placeholder="Zipcode" value="${customerNames[1]}"/>
                                         </div>
                                     </div>
                                     <div class="form-group">

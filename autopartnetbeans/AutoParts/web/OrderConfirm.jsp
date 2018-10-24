@@ -156,7 +156,7 @@
                                         <strong>Credit Card Number:</strong>
                                         <input type="text" class="form-control" name="car_number" pattern="[0-9]{13,16}" value="${customer.getcreditC()}" required /></div>
                                     <div class="col-md-3"><strong>Card CVV:</strong>
-                                        <input type="text" class="form-control" name="car_code" pattern="/^[0-9]{3,4}$/" value="" required /></div>
+                                        <input type="text" class="form-control" name="car_code" pattern="^[0-9]{1,3}$" value="" required /></div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-12">
