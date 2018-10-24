@@ -2,13 +2,16 @@
     Document   : footerTemplate
     Created on : Sep 15, 2018, 11:53:59 AM
     Author     : Hayden Kowalchuk
+    Edited     : Michelle (Boobin) Choi
 --%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page trimDirectiveWhitespaces="true"%>
 <div class="footer">
-    <div class='footer-content'>
-        <p>Footer</p>
+    <div class="footer-content">
+        <p>Copyright @2017 | Express Car Parts</p>
+        <a href="legalPolicies.jsp#Terms-and-conditions">Terms &amp; Conditions</a>
+        <a href="legalPolicies.jsp#Privacy-policy">Privacy Policy</a>
     </div>
 </div>
 
