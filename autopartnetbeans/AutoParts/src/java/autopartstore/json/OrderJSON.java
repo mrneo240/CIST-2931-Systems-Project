@@ -91,13 +91,6 @@ public class OrderJSON {
             item.synchronize();
         }
         this.setLineCount(this.items.size());
-        /*if (getCustomerID() != -1) {
-            Customer tmp = (new CustomerDAOImpl(ConnectionManager.getConnection()).getCustomerByID(getCustomerID()));
-            orderDetails.address = tmp.getaddress().toString();
-            orderDetails.creditCard = tmp.getcreditC();
-            orderDetails.name = tmp.getcustName();
-        }*/
-
     }
 
     /**

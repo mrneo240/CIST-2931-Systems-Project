@@ -492,7 +492,6 @@ input::-webkit-input-placeholder {
 
 /* faq page css */
 .faq_nav {
-    position: fixed;
 }
 .faq_nav h3 {
     text-align: center;
@@ -510,11 +509,6 @@ input::-webkit-input-placeholder {
     text-decoration: none;
 }
 .faq_main {
-    margin-left: 220px;
-    padding-left: 30px;
-    padding-top: 10px;
-    padding-bottom: 20px;
-    text-align: justify;
 }
 .faq_article {
     padding-bottom: 20px;
