@@ -97,41 +97,34 @@
                                 <div class="form-group">
                                     <div class="col-md-12 col-xs-12">
                                         <strong>Name:</strong>
-                                        <input type="text" name="first_name" class="form-control" value="${customer.getcustName()}" required />
+                                        <input type="text" name="name" class="form-control" value="${customer.getcustName()}" required />
                                     </div>
-
                                 </div>
-
                                 <div class="form-group">
                                     <div class="col-md-12"><strong>Address:</strong></div>
                                     <div class="col-md-12">
-                                        <input type="text" name="address" class="form-control" value="${customer.getaddress()}" required />
+                                        <input type="text" name="address" class="form-control" value="${customer.getaddress().getstreet()}" required />
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-6 col-xs-12">
                                         <strong>City:</strong>
-                                        <input type="text" name="city" class="form-control" value="" required />
+                                        <input type="text" name="city" class="form-control" value="${customer.getaddress().getcity()}" required />
                                     </div>
                                     <div class="span1"></div>
                                     <div class="col-md-3 col-xs-6">
                                         <strong>State:</strong>
-                                        <input type="text" name="state" class="form-control" value="" required />
+                                        <input type="text" name="state" class="form-control" value="${customer.getaddress().getstate()}" required />
                                     </div>
                                     <div class="span1"></div>
                                     <div class="col-md-3 col-xs-6">
                                         <strong>Zip Code:</strong>
-                                        <input type="text" name="zip_code" class="form-control" value="" required />
+                                        <input type="text" name="zip_code" class="form-control" value="${customer.getaddress().getzip()}" required />
                                     </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="col-md-12"><strong>Phone Number:</strong></div>
-                                    <div class="col-md-12"><input type="tel" name="phone_number" class="form-control" placeholder="123-456-7890" pattern="^\d{3}-?\d{3}.-?\d{4}$" required /></div>
-                                </div>
+                                </div> 
                                 <div class="form-group">
                                     <div class="col-md-12"><strong>Email Address:</strong></div>
-                                    <div class="col-md-12"><input type="email" name="email_address" class="form-control" value="${customer.getemail()}" required /></div>
+                                    <div class="col-md-12"><input type="email" name="email" class="form-control" value="${customer.getemail()}" required /></div>
                                 </div>
                             </div>
                         </div>
@@ -154,9 +147,9 @@
                                 <div class="form-group">
                                     <div class="col-md-9">
                                         <strong>Credit Card Number:</strong>
-                                        <input type="text" class="form-control" name="car_number" pattern="[0-9]{13,16}" value="${customer.getcreditC()}" required /></div>
+                                        <input type="text" class="form-control" name="card_number" pattern="[0-9]{13,16}" value="${customer.getcreditC()}" required /></div>
                                     <div class="col-md-3"><strong>Card CVV:</strong>
-                                        <input type="text" class="form-control" name="car_code" pattern="/^[0-9]{3,4}$/" value="" required /></div>
+                                        <input type="text" class="form-control" name="card_ccv" pattern="^[0-9]{1,3}$" value="" required /></div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-12">
@@ -195,7 +188,7 @@
                                             <option value="2025">2025</option>
                                         </select>
                                     </div>
-                                     <div class="col-md-4 no-padding">
+                                    <div class="col-md-4 no-padding">
                                         <ul class="cards">
                                             <li class="visa hand">Visa</li>
                                             <li class="mastercard hand">MasterCard</li>
@@ -203,7 +196,7 @@
                                         </ul>
                                     </div>
                                 </div>
-                                
+
                                 <div class="form-group">
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <button type="submit" class="btn btn-primary btn-submit-fix btn-lg">Place Order</button>

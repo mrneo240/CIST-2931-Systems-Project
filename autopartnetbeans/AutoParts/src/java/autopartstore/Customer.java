@@ -1,111 +1,111 @@
-
 package autopartstore;
+
+import autopartstore.json.addressJSON;
+
 /*
  Advance Projects
 Auto Parts Store 
  */
 public class Customer implements java.io.Serializable {
-    
+
     private int cid;
     private String custName;
-    private String address;
+    private addressJSON address;
     private String email;
     private String creditC;
     private String username;
     private String password;
-      
+
     //Constructors
-    public Customer(){
+    public Customer() {
         cid = 0;
         custName = "";
-        address = "";
+        address = new addressJSON();
         email = "";
         creditC = "";
         password = "";
         username = "";
     }
-    public Customer(int i, String cn, String add, String em, String cc, String user, String pass){
+
+    public Customer(int i, String cn, addressJSON addr, String em, String cc, String user, String pass) {
         cid = i;
         custName = cn;
-        address = add;
+        address = addr;
         email = em;
         creditC = cc;
         password = pass;
         username = user;
     }
-    
+
     //Getter and Setters
-    public void setcid(int i){
+    public void setcid(int i) {
         cid = i;
     }
-    public int getcid(){
+
+    public int getcid() {
         return cid;
     }
-    
-    public void setcustName(String cn){
+
+    public void setcustName(String cn) {
         custName = cn;
     }
-    public String getcustName(){
+
+    public String getcustName() {
         return custName;
     }
-    
-    public void setaddress(String ad){
+
+    public void setaddress(addressJSON ad) {
         address = ad;
     }
-    public String getaddress(){
+
+    public addressJSON getaddress() {
         return address;
     }
-    
-    public void setemail(String em){
+
+    public void setemail(String em) {
         email = em;
     }
-    public String getemail(){
+
+    public String getemail() {
         return email;
     }
-    
-    public void setcreditC(String cno){
+
+    public void setcreditC(String cno) {
         creditC = cno;
     }
-    public String getcreditC(){
+
+    public String getcreditC() {
         return creditC;
     }
-    
+
     //Display Methods
-    public void display(){
-        System.out.println("Customer ID "+ getcid());
-        System.out.println("Customer Name "+ getcustName());
-        System.out.println("Customer Address "+ getaddress());
-        System.out.println("Customer email "+ getemail());
-        System.out.println("Customer Credit Card # "+ getcreditC());
-        System.out.println("username "+ getpassword());
-        System.out.println("Password "+ getpassword());
+    public void display() {
+        System.out.println("Customer ID " + getcid());
+        System.out.println("Customer Name " + getcustName());
+        System.out.println("Customer Address " + getaddress().toString());
+        System.out.println("Customer email " + getemail());
+        System.out.println("Customer Credit Card # " + getcreditC());
+        System.out.println("username " + getpassword());
+        System.out.println("Password " + getpassword());
     }
-    
-    public boolean getIsAdmin(){
+
+    public boolean getIsAdmin() {
         return false;
     }
-    
-    public void setpassword(String pass){
+
+    public void setpassword(String pass) {
         password = pass;
     }
-    
-    public String getpassword(){
+
+    public String getpassword() {
         return password;
     }
-    
-    public void setusername(String user){
+
+    public void setusername(String user) {
         username = user;
     }
-    
-    public String getusername(){
+
+    public String getusername() {
         return username;
-    }
-    
-    
-//MAin tester
-public static void main(String[] args){
-        Customer c1;
-        c1 = new Customer(546, "kevin Davis", "465 east ake st", "hetdg@gmail.com", "657653567765", "kdavis1", "123abc");
-        c1.display();
     }
 }

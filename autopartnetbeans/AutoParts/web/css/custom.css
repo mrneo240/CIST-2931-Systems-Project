@@ -114,6 +114,12 @@ p {
     bottom:0;
 }
 
+.footer-content a {
+    position: absolute;
+    color:#ffffff;
+    margin: 10px;
+}
+
 .module1 {
     background: url('https://images.pexels.com/photos/924675/pexels-photo-924675.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
     height: 500px;
@@ -333,7 +339,15 @@ input::-webkit-input-placeholder {
 .w-50 {
     width: 50%!important;
 }
-
+.w-25 {
+    width: 25%!important;
+}
+.w-10 {
+    width: 10%!important;
+}
+.w-15 {
+    width: 15%!important;
+}
 
 .cards{
     padding-left:0;
@@ -478,7 +492,6 @@ input::-webkit-input-placeholder {
 
 /* faq page css */
 .faq_nav {
-    position: fixed;
 }
 .faq_nav h3 {
     text-align: center;
@@ -496,11 +509,6 @@ input::-webkit-input-placeholder {
     text-decoration: none;
 }
 .faq_main {
-    margin-left: 220px;
-    padding-left: 30px;
-    padding-top: 10px;
-    padding-bottom: 20px;
-    text-align: justify;
 }
 .faq_article {
     padding-bottom: 20px;
