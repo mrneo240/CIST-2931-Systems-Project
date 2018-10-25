@@ -11,15 +11,26 @@ import java.util.ArrayList;
 public class ShoppingCart {
 
     private ArrayList<Item> cartItems = new ArrayList();
-
+    /**
+     * 
+     * @return 
+     */
     public ArrayList getCartItems() {
         return cartItems;
     }
 
+    /**
+     * 
+     * @param cartItems 
+     */
     public void setCartItems(ArrayList cartItems) {
         this.cartItems = cartItems;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public double getOrderSubTotal() {
         double total = 0.0;
         for (int c = 0; c < cartItems.size(); c++) {
@@ -29,19 +40,34 @@ public class ShoppingCart {
         return total;
     }
     
+    /**
+     * 
+     * @return 
+     */
     public double getOrderTax(){
         return getOrderSubTotal()*0.07;
     }
     
-    
+    /**
+     * 
+     * @return 
+     */
     public double getOrderTotal() {
         return getOrderSubTotal()+getOrderTax();
     }
 
+    /**
+     * 
+     * @return 
+     */
     public int getLineItemCount() {
         return cartItems.size();
     }
 
+    /**
+     * 
+     * @param item 
+     */
     public void addCartItem(Item item) {
         for(Item temp : cartItems){
             if(temp.getPartCode() == item.getPartCode()){
@@ -52,6 +78,11 @@ public class ShoppingCart {
         cartItems.add(item);
     }
 
+    /**
+     * 
+     * @param itemIndex
+     * @return 
+     */
     public Item getCartItem(int itemIndex) {
         Item item = null;
         if (cartItems.size() > itemIndex) {
@@ -60,6 +91,10 @@ public class ShoppingCart {
         return item;
     }
     
+    /**
+     * 
+     * @param itemIndex 
+     */
     public void deleteCartItem(int itemIndex) {
         try {
             cartItems.remove(itemIndex);
@@ -69,6 +104,11 @@ public class ShoppingCart {
         }
     }
 
+    /**
+     * 
+     * @param itemIndex
+     * @param quant 
+     */
     public void updateCartItem(int itemIndex, int quant) {
         try {
 
