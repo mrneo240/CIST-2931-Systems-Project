@@ -10,12 +10,7 @@
 <div class="footer">
     <div class="footer-content">
         <div style="position: relative;">
-            <p style="
-               white-space: nowrap;
-               overflow: hidden;
-               text-overflow: ellipsis;
-               display: inline-block;
-               padding: 10px;">Copyright @2017 | Express Car Parts</p>
+            <p>Copyright @2017 | Express Car Parts</p>
             <a href="legalPolicies.jsp#Terms-and-conditions" style="right: 100px;">Terms &amp; Conditions</a>
             <a href="legalPolicies.jsp#Privacy-policy" style="right: 0px;">Privacy Policy</a>
         </div>

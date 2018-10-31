@@ -116,8 +116,16 @@ p {
 
 .footer-content a {
     position: absolute;
-    color:#ffffff;
+    color: #ffffff;
     margin: 10px;
+    top: 10px;
+}
+
+.footer-content p {
+        overflow: hidden;
+    display: inline-block;
+    top: 20px;
+    text-align: center;
 }
 
 .module1 {
@@ -148,12 +156,14 @@ h1 {
     height: 600px;
     overflow: hidden;
     white-space: nowrap;
+    object-fit: cover;
+    width: 100%;
 }
 
 #slideshow img {
-    display: inline-block;
-    width: 100%;
-    height: 100%;
+    width: inherit;
+    height: inherit;
+    object-fit: inherit;
 }
 
 .circle {
