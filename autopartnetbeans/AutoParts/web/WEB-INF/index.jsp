@@ -31,8 +31,7 @@
             <div id="circle3" class="circle"></div>
         </div>
     </div>
-</div>
-<div class="row text-center feature-imgs">
+    <div class="row text-center feature-imgs">
     <h2>Feature Items</h2>
     <c:if test="${featureItems != null}">
             <c:forEach items="${featureItems}" var="item">
@@ -52,4 +51,6 @@
             </c:forEach>
         </c:if>
 </div>
+</div>
+
 <%@ include file="footerTemplate.jsp" %>

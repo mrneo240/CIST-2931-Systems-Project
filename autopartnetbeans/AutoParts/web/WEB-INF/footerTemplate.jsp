@@ -16,29 +16,48 @@
         </div>
     </div>
 </div>
-
 <div class="modal fade" id="login-modal" role="dialog" style="display: none;">
-    <div class="modal-dialog">
-        <div class="loginmodal-container">
-            <h1>Login</h1><br>
-            <form action="login.jsp" method="post">
-                <input type="text" name="user" placeholder="Username">
-                <input type="password" name="pass" placeholder="Password">
-                <input type="submit" name="action" class="login loginmodal-submit" value="login">
-            </form>    
-            <div class="login-help">
-                <a href="#" data-toggle="modal" data-target="#register-modal" data-dismiss="modal">Register</a>
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="title">Login</h1>
+            </div> 
+            <div class="main-center">
+                <form class="form-horizontal" method="post" action="login.jsp">
+                    <div class="form-group">
+                        <label for="username" class="cols-sm-2 control-label">Username</label>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" name="user" id="user"  placeholder="Enter your Username"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="cols-sm-2 control-label">Password</label>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                            <input type="password" class="form-control" name="pass" id="pass"  placeholder="Enter your Password"/>
+                        </div>
+                    </div>
             </div>
+            <div class="modal-footer">
+                <button type="submit" name="action" style="float:right;" class="btn btn-primary btn-lg" value="login">Login</button>
+                <button href="#" data-toggle="modal" style="float:left;" class="btn btn-warning" data-target="#register-modal" data-dismiss="modal">Register</button>
+            </div>
+            </form>
         </div>
     </div>
 </div>
 <div class="modal fade" id="logout-modal" role="dialog" style="display: none;">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
-            <div class="modal-header"><h4>Logout <i class="fa fa-lock"></i></h4></div>
-            <div class="modal-body"><i class="fa fa-question-circle"></i> Are you sure you want to log-off?</div>
+            <div class="modal-header">
+                <h1 class="title">Logout &nbsp;<i class="fa fa-lock"></i></h1>
+            </div> 
+            <div class="logout-center">
+                <i class="fa fa-question-circle"></i> Are you sure you want to logout?
+            </div>
             <div class="modal-footer">
-                <form action="login.jsp" method="post"><button type="submit" name="action" class="login logoutmodal-submit btn btn-danger" value="logout">Logout</button></form>         
+                <form action="login.jsp" method="post"><button type="submit" name="action" class="btn btn-lg btn-danger" value="logout">Logout</button></form>         
             </div>
         </div>
     </div>
@@ -111,14 +130,12 @@
                             <input type="text" name="addr_zip" class="form-control w-15" placeholder="Zipcode" />
                         </div>
                     </div>
-                    <div class="form-group ">
-                        <button class="btn btn-primary btn-lg btn-block login-button" type="submit" name="action" class="login logoutmodal-submit" value="register">Register</button>
-                    </div>
-                    <div class="login-register">
-                        <a href="#" data-toggle="modal"  data-target="#login-modal" data-dismiss="modal">Login</a>
-                    </div>
-                </form>
             </div>
+            <div class="modal-footer">
+                <button style="float:right;" class="btn btn-primary btn-lg col-sm-8" type="submit" name="action" value="register">Register</button>
+                <button href="#" data-toggle="modal" style="float:left;" class="btn btn-warning btn login-button col-sm-2" data-target="#login-modal" data-dismiss="modal">Login</button>
+            </div>
+            </form>
         </div>
     </div>
 </div>

@@ -91,17 +91,8 @@ p {
     margin-right:  10px;
 }
 
-.main-container, .feature-imgs {
+.main-container {
     padding-bottom: 60px;
-}
-
-.submit-btn {
-    background: #FC7233;
-    border: none;
-}
-
-.submit-btn:hover {
-    background: #f7834f;
 }
 
 .footer {
@@ -122,7 +113,7 @@ p {
 }
 
 .footer-content p {
-        overflow: hidden;
+    overflow: hidden;
     display: inline-block;
     top: 20px;
     text-align: center;
@@ -174,107 +165,6 @@ h1 {
     height: 12px;
     border-radius: 50px;
 }
-
-.loginmodal-container {
-    padding: 30px;
-    max-width: 350px;
-    width: 100% !important;
-    background-color: #F7F7F7;
-    margin: 0 auto;
-    border-radius: 2px;
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-    overflow: hidden;
-    font-family: 'Open Sans', sans-serif;
-}
-
-.loginmodal-container h1 {
-    text-align: center;
-    font-size: 1.8em;
-    font-family: 'Open Sans', sans-serif;
-}
-
-.loginmodal-container input[type=submit] {
-    width: 100%;
-    display: block;
-    margin-bottom: 10px;
-    position: relative;
-}
-
-.loginmodal-container input[type=text], .loginmodal-container input[type=password] {
-    height: 44px;
-    font-size: 16px;
-    width: 100%;
-    margin-bottom: 10px;
-    -webkit-appearance: none;
-    background: #fff;
-    border: 1px solid #d9d9d9;
-    border-top: 1px solid #c0c0c0;
-    /* border-radius: 2px; */
-    padding: 0 8px;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-}
-
-.loginmodal-container input[type=text]:hover, input[type=password]:hover {
-    border: 1px solid #b9b9b9;
-    border-top: 1px solid #a0a0a0;
-    -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
-    -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
-    box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
-}
-
-.loginmodal {
-    text-align: center;
-    font-size: 14px;
-    font-family: 'Arial', sans-serif;
-    font-weight: 700;
-    height: 36px;
-    padding: 0 8px;
-}
-
-.loginmodal-submit {
-    border: 0px;
-    color: #fff;
-    text-shadow: 0 1px rgba(0,0,0,0.1); 
-    background-color: #4d90fe;
-    padding: 17px 0px;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 14px;
-}
-
-.logoutmodal-submit {
-    border: 0px;
-    color: #fff;
-    text-shadow: 0 1px rgba(0,0,0,0.1); 
-    padding: 17px;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 14px;
-}
-.logoutmodal-submit:hover {
-    border: 0px;
-    text-shadow: 0 1px rgba(0,0,0,0.3);
-}
-
-.loginmodal-submit:hover {
-    border: 0px;
-    text-shadow: 0 1px rgba(0,0,0,0.3);
-    background-color: #357ae8;
-}
-
-.loginmodal-container a {
-    text-decoration: none;
-    color: #666;
-    font-weight: 400;
-    text-align: center;
-    display: inline-block;
-    opacity: 0.6;
-    transition: opacity ease 0.5s;
-} 
-
-.login-help{
-    font-size: 12px;
-}
-
 .search-form  {
     background: #0066ccad;
     border-radius: 6px;
@@ -307,35 +197,11 @@ input::-webkit-input-placeholder {
     padding-top: 3px;
 }
 
-.main-login{
-    background-color: #fff;
-    /* shadows and rounded borders */
-    -moz-border-radius: 2px;
-    -webkit-border-radius: 2px;
-    border-radius: 2px;
-    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-
-}
-
 .main-center{
-    margin-top: 30px;
-    margin: 0 auto;
-    padding: 40px 40px;
-
+    padding: 0px 30px;
 }
-
-.login-button{
-    margin-top: 5px;
-}
-
-.login-register{
-    font-size: 11px;
-    text-align: center;
-}
-
-.form-horizontal .form-group{
+.logout-center{
+    padding: 30px 30px;
 }
 
 .form-signup input[type="text"],.form-signup input[type="password"] { border: 1px solid rgb(50, 118, 177); }
@@ -535,18 +401,6 @@ input::-webkit-input-placeholder {
     bottom: 20px;
     right: 30px;
     z-index: 99;
-    font-size: 18px;
-    border: none;
-    outline: none;
-    background-color: #4d4dff;
-    color: white;
-    cursor: pointer;
-    padding: 15px;
-    border-radius: 4px;
-    font-weight: 900;
-}
-#myBtn:hover {
-    background-color: #0000b3;
 }
 
 @media screen and (max-width: 768px){
