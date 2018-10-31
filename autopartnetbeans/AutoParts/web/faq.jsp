@@ -36,7 +36,7 @@
                     <!--SHIPPING METHOD-->
                     <div class="panel panel-default">
                         <div class="panel-heading text-center">
-                            <h3>Article Contents</h3>
+                            <h2>Article Contents</h2>
                         </div>
                         <div class="panel-body faq_nav">
                             <ul>
@@ -58,7 +58,7 @@
                     <!--SHIPPING METHOD-->
                     <div class="panel panel-default">
                         <div class="panel-heading text-center">
-                            <h1>Online Shopping at Express Cart Parts</h1>
+                            <h2>Online Shopping at Express Cart Parts</h2>
                         </div>
                         <div class="panel-body">
                             <div class="faq_main">
