@@ -11,7 +11,7 @@
 
 <div class='main-container'>
 
-    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+    <button onclick="topFunction()" id="myBtn" class="btn btn-lg btn-primary" title="Go to top">Top</button>
 
     <script>
         window.onscroll = function () {
