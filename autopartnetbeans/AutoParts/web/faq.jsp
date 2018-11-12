@@ -10,7 +10,7 @@
 <%@ include file="WEB-INF/headerTemplate.jsp" %>
 
 <div class='main-container'>
-    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+    <button onclick="topFunction()" id="myBtn" class="btn btn-info btn-lg" title="Go to top">Top</button>
     <script>
         window.onscroll = function () {
             scrollFunction()

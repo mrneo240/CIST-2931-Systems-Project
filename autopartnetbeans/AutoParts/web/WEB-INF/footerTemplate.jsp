@@ -41,7 +41,7 @@
             </div>
             <div class="modal-footer">
                 <button type="submit" name="action" style="float:right;" class="btn btn-primary btn-lg" value="login">Login</button>
-                <button href="#" data-toggle="modal" style="float:left;" class="btn btn-warning" data-target="#register-modal" data-dismiss="modal">Register</button>
+                <button href="#" data-toggle="modal" style="float:left;" class="btn btn-warning btn-lg" data-target="#register-modal" data-dismiss="modal">Register</button>
             </div>
             </form>
         </div>
@@ -133,7 +133,7 @@
             </div>
             <div class="modal-footer">
                 <button style="float:right;" class="btn btn-primary btn-lg col-sm-8" type="submit" name="action" value="register">Register</button>
-                <button href="#" data-toggle="modal" style="float:left;" class="btn btn-warning btn login-button col-sm-2" data-target="#login-modal" data-dismiss="modal">Login</button>
+                <button href="#" data-toggle="modal" style="float:left;" class="btn btn-warning btn login-button col-sm-2 btn-lg" data-target="#login-modal" data-dismiss="modal">Login</button>
             </div>
             </form>
         </div>
