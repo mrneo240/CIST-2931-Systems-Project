@@ -12,13 +12,14 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 /**
- *
+ * Item class implements java.io.Serializable
  * @author Hayden Kowalchuk
  * @author Levi Llewellyn
  */
 public class Item implements java.io.Serializable {
 
     /**
+     * Get Method that returns ID
      * @return the ID
      */
     public int getID() {
@@ -26,6 +27,7 @@ public class Item implements java.io.Serializable {
     }
 
     /**
+     * Set Method for ID
      * @param ID the ID to set
      */
     public void setID(int ID) {
@@ -33,6 +35,7 @@ public class Item implements java.io.Serializable {
     }
 
     /**
+     * Get Method that returns department
      * @return the dept
      */
     public String getDept() {
@@ -40,6 +43,7 @@ public class Item implements java.io.Serializable {
     }
 
     /**
+     * Set Method for Department
      * @param dept the dept to set
      */
     public void setDept(String dept) {
@@ -47,6 +51,7 @@ public class Item implements java.io.Serializable {
     }
 
     /**
+     * Get Method that returns name
      * @return the name
      */
     public String getName() {
@@ -54,6 +59,7 @@ public class Item implements java.io.Serializable {
     }
 
     /**
+     * Set Method for name
      * @param name the name to set
      */
     public void setName(String name) {
@@ -61,6 +67,7 @@ public class Item implements java.io.Serializable {
     }
 
     /**
+     * Get Method that returns description
      * @return the desc
      */
     public String getDesc() {
@@ -68,6 +75,7 @@ public class Item implements java.io.Serializable {
     }
 
     /**
+     * Set Method for description
      * @param desc the desc to set
      */
     public void setDesc(String desc) {
@@ -75,6 +83,7 @@ public class Item implements java.io.Serializable {
     }
 
     /**
+     * Get Method that returns price
      * @return the price
      */
     public double getPrice() {
@@ -82,16 +91,25 @@ public class Item implements java.io.Serializable {
     }
 
     /**
+     * Set Method for price
      * @param price the price to set
      */
     public void setPrice(double price) {
         this.price = price;
     }
     
+    /**
+     * Get Method that returns photo
+     * @return 
+     */
     public String getphoto(){
         return photo;
     }
     
+    /**
+     * Set Method for photo
+     * @param photo 
+     */
     public void setphoto(String photo){
         this.photo = photo;
     }
@@ -126,7 +144,7 @@ public class Item implements java.io.Serializable {
     private int quantity;
 
     /**
-     *
+     * Get Method that returns quantity
      * @return the quantity
      */
     public int getQuantity() {
@@ -143,14 +161,16 @@ public class Item implements java.io.Serializable {
     }
 
     /**
-     *
+     * Get Method that returns the total price - price * quantity
      * @return the total price
      */
     public double getTotalPrice() {
         return getPrice() * getQuantity();
     }
 
-    //Constructors
+    /**
+     * Constructor that takes no argument
+     */
     public Item() {
         ID = 0;
         dept = "";
@@ -161,6 +181,16 @@ public class Item implements java.io.Serializable {
         quantity = 0;
     }
 
+    /**
+     * Constructor with parameters
+     * @param id
+     * @param _dept
+     * @param _name
+     * @param _desc
+     * @param _price
+     * @param _quantity
+     * @param code 
+     */
     public Item(int id, String _dept, String _name, String _desc, double _price, int _quantity, String code) {
         ID = id;
         dept = _dept;
@@ -171,11 +201,18 @@ public class Item implements java.io.Serializable {
         quantity = _quantity;
     }
 
+    /**
+     * toString Method that returns ID, partCode, department, description, name, price, quantity, and totalprice
+     * @return 
+     */
     @Override
     public String toString() {
         return String.format("Item[%d, %s, %s, %s, %s, %f]", ID, partCode, dept, desc, name, price, quantity, getTotalPrice());
     }
 
+    /**
+     * display Method for ID, partCode, department, description, name, price, quantity, and totalprice
+     */
     public void display() {
         System.out.println(toString());
     }

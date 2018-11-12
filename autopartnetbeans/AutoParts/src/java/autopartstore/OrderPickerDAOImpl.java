@@ -18,15 +18,27 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- *
+ * OrderPicker DAOImpl extends CustomerDAOImpl
  * @author Hayden Kowalchuk
  */
 public class OrderPickerDAOImpl extends CustomerDAOImpl {
 
+    /**
+     * Constructor that pass connection object
+     * @param connect 
+     */
     public OrderPickerDAOImpl(Connection connect) {
         super(connect);
     }
     
+    /**
+     * extractCustomerFromResultSet method
+     * this method pass the resultset and get id, name, username, and password
+     * and set alll values to OrderPicker object
+     * @param rs: ResultSet
+     * @return picker
+     * @throws SQLException 
+     */
     private Customer extractCustomerFromResultSet(ResultSet rs) throws SQLException {
         OrderPicker picker = new OrderPicker();
         picker.setcid(rs.getInt("id"));
@@ -36,6 +48,11 @@ public class OrderPickerDAOImpl extends CustomerDAOImpl {
         return picker;
     }
 
+    /**
+     * getAllOrderPickers method
+     * this method connects to the database and get all data from orderpickers
+     * @return Set<Customer>
+     */
     public Set<Customer> getAllOrderPickers() {
         connection = ConnectionManager.getConnection();
         try {
@@ -55,6 +72,13 @@ public class OrderPickerDAOImpl extends CustomerDAOImpl {
         return null;
     }
     
+    /**
+     * getOrderPickerByUsername method
+     * this method passe user and connects to the database 
+     * and get all data from orderpickers
+     * @param user
+     * @return Customer
+     */
     public Customer getOrderPickerByUsername(String user) {
         connection = ConnectionManager.getConnection();
         try {

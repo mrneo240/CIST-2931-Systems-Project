@@ -11,7 +11,7 @@ package autopartstore;
 import java.util.Set;
 
 /**
- *
+ * interface ItemDAO
  * @author Hayden Kowalchuk
  */
 public interface ItemDAO {

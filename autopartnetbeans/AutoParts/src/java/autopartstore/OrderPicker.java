@@ -9,11 +9,15 @@
 package autopartstore;
 
 /**
- *
+ * OrderPicker class extends Customer
  * @author Hayden Kowalchuk
  */
 public class OrderPicker extends Customer {
     
+    /**
+     * Get Method that returns true
+     * @return 
+     */
     @Override
     public boolean getIsAdmin(){
         return true;

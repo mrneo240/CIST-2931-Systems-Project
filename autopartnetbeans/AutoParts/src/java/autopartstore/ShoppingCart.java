@@ -10,9 +10,13 @@ import java.util.ArrayList;
  */
 public class ShoppingCart {
 
-    private ArrayList<Item> cartItems = new ArrayList();
     /**
-     * 
+     * Property
+     */
+    private ArrayList<Item> cartItems = new ArrayList();
+    
+    /**
+     * Get Method that returns cartItems
      * @return 
      */
     public ArrayList getCartItems() {
@@ -20,7 +24,7 @@ public class ShoppingCart {
     }
 
     /**
-     * 
+     * Set Method for cartItems
      * @param cartItems 
      */
     public void setCartItems(ArrayList cartItems) {
@@ -28,7 +32,7 @@ public class ShoppingCart {
     }
 
     /**
-     * 
+     * Get Method that returns the total of the cartItems
      * @return 
      */
     public double getOrderSubTotal() {
@@ -41,7 +45,7 @@ public class ShoppingCart {
     }
     
     /**
-     * 
+     * Get Method that returns the tax of the total
      * @return 
      */
     public double getOrderTax(){
@@ -49,7 +53,7 @@ public class ShoppingCart {
     }
     
     /**
-     * 
+     * Get Method that returns the total include tax
      * @return 
      */
     public double getOrderTotal() {
@@ -57,7 +61,7 @@ public class ShoppingCart {
     }
 
     /**
-     * 
+     * Get Method that returns the cartItems size
      * @return 
      */
     public int getLineItemCount() {
@@ -65,7 +69,8 @@ public class ShoppingCart {
     }
 
     /**
-     * 
+     * AddCartItem Method
+     * this method pass an instance of the Item class and add the item 
      * @param item 
      */
     public void addCartItem(Item item) {
@@ -79,7 +84,8 @@ public class ShoppingCart {
     }
 
     /**
-     * 
+     * Get Method for CartItem
+     * this method pass the itemIndex and return the item
      * @param itemIndex
      * @return 
      */
@@ -92,7 +98,8 @@ public class ShoppingCart {
     }
     
     /**
-     * 
+     * DeleteCartItem Method
+     * this method pass an itemIndex and removes it
      * @param itemIndex 
      */
     public void deleteCartItem(int itemIndex) {
@@ -105,7 +112,8 @@ public class ShoppingCart {
     }
 
     /**
-     * 
+     * updateCartItem Method
+     * this method passes itemIndex and quantity and update the cartItems
      * @param itemIndex
      * @param quant 
      */

@@ -21,20 +21,34 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 
 /**
- *
+ * ItemDAOImpl class implements ItemDAO
  * @author Hayden Kowalchuk
  * @Edited Levi Llewellyn
  */
 public class ItemDAOImpl implements ItemDAO {
 
+    /**
+     * properties
+     */
     private Connection connection;
 
     String partTables[] = {"Engine", "Exterior", "Interior", "Maintenance"};
 
+    /**
+     * Constructor with connection argument
+     * @param connect 
+     */
     public ItemDAOImpl(Connection connect) {
         connection = connect;
     }
 
+    /**
+     * extractItemFromResultSet Method
+     * this method passes the ResultSet object and sets all Item properties
+     * @param rs : ResultSet
+     * @return item
+     * @throws SQLException 
+     */
     private Item extractItemFromResultSet(ResultSet rs) throws SQLException {
         Item item = new Item();
         item.setID(rs.getInt("id"));
@@ -54,6 +68,11 @@ public class ItemDAOImpl implements ItemDAO {
         return item;
     }
 
+    /**
+     * {@inheritDoc } getAllItems Method
+     * this method connects to the database and gets all items
+     * @return items
+     */
     @Override
     public SortedSet<Item> getAllItems() {
         connection = ConnectionManager.getConnection();
@@ -78,6 +97,12 @@ public class ItemDAOImpl implements ItemDAO {
         return null;
     }
 
+    /**
+     * {@inheritDoc } getItemByID Method
+     * this method passes id and connects to the database to get items by ID
+     * @param id
+     * @return null
+     */
     @Override
     public Item getItemByID(int id) {
         connection = ConnectionManager.getConnection();
@@ -99,6 +124,12 @@ public class ItemDAOImpl implements ItemDAO {
         return null;
     }
 
+    /**
+     * {@inheritDoc} getItemsBySearchParam Method
+     * this method passes search and connects to the database to find the items
+     * @param search
+     * @return items
+     */
     @Override
     public Set<Item> getItemsBySearchParam(String search) {
         connection = ConnectionManager.getConnection();
@@ -128,6 +159,12 @@ public class ItemDAOImpl implements ItemDAO {
         return null;
     }
 
+    /**
+     * {@inheritDoc} insertItem Method
+     * this method passes Item object and connects to the database and inserts the items
+     * @param item
+     * @return numUpdated > 0
+     */
     @Override
     public boolean insertItem(Item item) {
         int numUpdated = 0;
@@ -147,6 +184,12 @@ public class ItemDAOImpl implements ItemDAO {
         return numUpdated > 0;
     }
 
+    /**
+     * {@inheritDoc} updateItem Method
+     * this method passes Item object and connects to the database to update items
+     * @param item
+     * @return numUpdated > 0
+     */
     @Override
     public boolean updateItem(Item item) {
         int numUpdated = 0;
@@ -168,6 +211,12 @@ public class ItemDAOImpl implements ItemDAO {
         return numUpdated > 0;
     }
 
+    /**
+     * {@inheritDoc} deleteItem Method
+     * this method passes Item object and connects to the database to delete the item
+     * @param item
+     * @return numUpdated > 0
+     */
     @Override
     public boolean deleteItem(Item item) {
         int numUpdated = 0;
@@ -182,6 +231,12 @@ public class ItemDAOImpl implements ItemDAO {
         return numUpdated > 0;
     }
 
+    /**
+     * {@inheritDoc} getAllItemsByDept Method
+     * this method passes department and connects to the database to get the items
+     * @param Dept
+     * @return items
+     */
     @Override
     public Set<Item> getAllItemsByDept(String Dept) {
         connection = ConnectionManager.getConnection();
@@ -203,6 +258,12 @@ public class ItemDAOImpl implements ItemDAO {
         return null;
     }
 
+    /**
+     * {@inheritDoc} getItemByPartCode Method
+     * this method passes code and connects to the database to get the items
+     * @param code
+     * @return null
+     */
     @Override
     public Item getItemByPartCode(String code) {
         connection = ConnectionManager.getConnection();
