@@ -66,6 +66,8 @@
                                         <li class="${requestPage.equals('updateprofile.jsp') ? 'active' : ''}"><a href="updatecustomer.jsp">Manage Account</a></li>
                                     </ul></li>
                                 </c:if>
+                                <li><a a href="#" data-toggle="modal" data-target="#lookup-modal">Lookup Order</a></li>
+                                
                         </ul>
                         <form class="navbar-form pull-right" role="search" action="searchItemServlet" method="post">
                             <div class="input-group">

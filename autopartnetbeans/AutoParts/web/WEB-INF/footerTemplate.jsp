@@ -16,6 +16,29 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="lookup-modal" role="dialog" style="display: none;">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="title">Lookup Order</h1>
+            </div> 
+            <div class="main-center">
+                <form class="form-horizontal" method="post" action="lookup.jsp">
+                    <div class="form-group">
+                        <label for="order" class="cols-sm-2 control-label">Order ID</label>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fas fa-barcode" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" name="order" id="order"  placeholder="Order ID"/>
+                        </div>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" name="action" style="float:right;" class="btn btn-primary btn-lg" value="login">Go</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
 <div class="modal fade" id="login-modal" role="dialog" style="display: none;">
     <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">

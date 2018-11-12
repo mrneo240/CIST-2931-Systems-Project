@@ -75,6 +75,7 @@ public class ShoppingCart {
             if (quant > 0) {
                 Item cartItem = (Item) cartItems.get(itemIndex);
                 cartItem.setQuantity(quant);
+                String encodedString = java.util.Base64.getEncoder().encodeToString("hello".getBytes());
             }
         } catch (NumberFormatException nfe) {
             System.out.println("Error while updating cart: " + nfe.getMessage());
