@@ -17,6 +17,7 @@ import java.sql.Date;
 public class Order {
 
     /**
+     * Get Method that returns ID
      * @return the ID
      */
     public int getID() {
@@ -24,6 +25,7 @@ public class Order {
     }
 
     /**
+     * Set Method for ID
      * @param ID the ID to set
      */
     public void setID(int ID) {
@@ -31,6 +33,7 @@ public class Order {
     }
 
     /**
+     * Get Method that returns orderJSON
      * @return the orderJSON
      */
     public String getOrderJSON() {
@@ -38,6 +41,7 @@ public class Order {
     }
 
     /**
+     * Set Method for OrderJSON
      * @param orderJSON the orderJSON to set
      */
     public void setOrderJSON(String orderJSON) {
@@ -45,6 +49,7 @@ public class Order {
     }
 
     /**
+     * Get Method that returns customerID
      * @return the custID
      */
     public int getCustomerID() {
@@ -52,6 +57,7 @@ public class Order {
     }
 
     /**
+     * Set Method for Customer ID
      * @param custID the custID to set
      */
     public void setCustomerID(int custID) {
@@ -59,6 +65,7 @@ public class Order {
     }
 
     /**
+     * Get Method that returns the date
      * @return the date
      */
     public Date getDate() {
@@ -66,6 +73,7 @@ public class Order {
     }
 
     /**
+     * Set Method for Date
      * @param date the date to set
      */
     public void setDate(Date date) {
@@ -73,6 +81,7 @@ public class Order {
     }
 
     /**
+     * Get Method that returns status
      * @return the status
      */
     public int getStatus() {
@@ -80,6 +89,7 @@ public class Order {
     }
 
     /**
+     * Set Method for status
      * @param status the status to set
      */
     public void setStatus(int status) {
@@ -87,6 +97,7 @@ public class Order {
     }
 
     /**
+     * Get Method that returns the total
      * @return the total
      */
     public Double getTotal() {
@@ -94,12 +105,16 @@ public class Order {
     }
 
     /**
+     * Set Method for Total
      * @param Total the Total to set
      */
     public void setTotal(Double Total) {
         this.total = Math.round(Total * 100) / 100.0d;
     }
 
+    /**
+     * Properties
+     */
     private int ID;
     private String orderJSON;
     private int custID;
@@ -107,10 +122,17 @@ public class Order {
     private int status;
     private double total;
 
+    /**
+     * toStirng Method that returns ID, Customer ID, Date, Status, and Total
+     * @return 
+     */
     public String toString() {
         return String.format("Order[%d, JSON, %d, %s, %d, %f]", getID(), getCustomerID(), getDate(), getStatus(), getTotal());
     }
 
+    /**
+     * Display Method for ID, Customer ID, Date, Status, and Total
+     */
     public void display() {
         System.out.println(toString());
     }
