@@ -8,14 +8,12 @@
 ***************************** */
 package autopartstore.json;
 
-import autopartstore.Customer;
-import autopartstore.CustomerDAOImpl;
-import autopartstore.db.ConnectionManager;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Base64;
 import java.util.List;
 
 /**
@@ -105,6 +103,14 @@ public class OrderJSON {
      */
     public void setID(int ID) {
         this.ID = ID;
+    }
+
+    public String getEncID() {
+        if ((this.ID != 0)) {
+            return Base64.getEncoder().encodeToString(("#" + String.valueOf(this.ID)).getBytes());
+        } else {
+            return "";
+        }
     }
 
     /**

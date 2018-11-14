@@ -9,6 +9,7 @@
 package autopartstore;
 
 import java.sql.Date;
+import java.util.Base64;
 
 /**
  *
@@ -122,10 +123,19 @@ public class Order {
     private int status;
     private double total;
 
+    public String getEncID() {
+        if ((ID != 0)) {
+            return Base64.getEncoder().encodeToString(("#"+String.valueOf(ID)).getBytes());
+        } else {
+            return "";
+        }
+    }
+
     /**
-     * toStirng Method that returns ID, Customer ID, Date, Status, and Total
+     * toString Method that returns ID, Customer ID, Date, Status, and Total
      * @return 
      */
+    @Override
     public String toString() {
         return String.format("Order[%d, JSON, %d, %s, %d, %f]", getID(), getCustomerID(), getDate(), getStatus(), getTotal());
     }

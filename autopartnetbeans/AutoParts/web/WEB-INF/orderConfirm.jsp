@@ -14,7 +14,7 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <div class="panel-heading text"><h4 class="panel-title">Your Order is placed Today ( ${order.getDate()} )</h4></div>
-                <div class="panel-heading text"><h4 class="panel-title">Order #${order.getID()}</h4></div>
+                <div class="panel-heading text"><h4 class="panel-title">Order #${order.getID()} | <span class="font-weight-bold"> Order ID: ${order.getEncID()}</span></h4></div>
             </div>
             <div class="panel-body">
                 <table class="table borderless">

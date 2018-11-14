@@ -43,10 +43,10 @@ public class Customer implements java.io.Serializable {
      * @param user : customer Password
      * @param pass : customer Username
      */
-    public Customer(int i, String cn, String add, String em, String cc, String user, String pass){
+    public Customer(int i, String cn, addressJSON add, String em, String cc, String user, String pass){
         cid = i;
         custName = cn;
-        address = addr;
+        address = add;
         email = em;
         creditC = cc;
         password = pass;
@@ -85,14 +85,14 @@ public class Customer implements java.io.Serializable {
      * Set Method for address
      * @param ad : customer address
      */
-    public void setaddress(String ad){
+    public void setaddress(addressJSON ad){
         address = ad;
     }
     /**
      * Get Method that returns address
      * @return address : customer address
      */
-    public String getaddress(){
+    public addressJSON getaddress(){
         return address;
     }
     /**
@@ -171,17 +171,5 @@ public class Customer implements java.io.Serializable {
      */
     public String getusername(){
         return username;
-    }
-    
-    
-//MAin tester
-    /**
-     * main Method
-     * @param args 
-     */
-    public static void main(String[] args){
-        Customer c1;
-        c1 = new Customer(546, "kevin Davis", "465 east ake st", "hetdg@gmail.com", "657653567765", "kdavis1", "123abc");
-        c1.display();
     }
 }
