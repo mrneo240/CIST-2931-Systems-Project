@@ -5,8 +5,13 @@ import autopartstore.json.addressJSON;
 /*
  Advance Projects
 Auto Parts Store 
+Customer class implements java.io.Serializable
  */
 public class Customer implements java.io.Serializable {
+    
+    /**
+     * Properties
+     */
 
     private int cid;
     private String custName;
@@ -15,9 +20,11 @@ public class Customer implements java.io.Serializable {
     private String creditC;
     private String username;
     private String password;
-
-    //Constructors
-    public Customer() {
+      
+    /**
+     * Constructor that takes no argument
+     */
+    public Customer(){
         cid = 0;
         custName = "";
         address = new addressJSON();
@@ -26,86 +33,143 @@ public class Customer implements java.io.Serializable {
         password = "";
         username = "";
     }
-
-    public Customer(int i, String cn, addressJSON addr, String em, String cc, String user, String pass) {
+    /**
+     * Constructor with parameters
+     * @param i : customer ID
+     * @param cn : customer Name
+     * @param add : customer Address
+     * @param em : customer Email
+     * @param cc : customer CreditCard Number
+     * @param user : customer Password
+     * @param pass : customer Username
+     */
+    public Customer(int i, String cn, addressJSON add, String em, String cc, String user, String pass){
         cid = i;
         custName = cn;
-        address = addr;
+        address = add;
         email = em;
         creditC = cc;
         password = pass;
         username = user;
     }
-
-    //Getter and Setters
-    public void setcid(int i) {
+    
+    /**
+     * Set Method for cid
+     * @param i : customer ID
+     */
+    public void setcid(int i){
         cid = i;
     }
-
-    public int getcid() {
+    /**
+     * Get Method that returns cid
+     * @return cid : customer ID
+     */
+    public int getcid(){
         return cid;
     }
-
-    public void setcustName(String cn) {
+    /**
+     * Set Method for custName
+     * @param cn : customer Name
+     */
+    public void setcustName(String cn){
         custName = cn;
     }
-
-    public String getcustName() {
+    /**
+     * Get Method that returns custName
+     * @return custName: customer name
+     */
+    public String getcustName(){
         return custName;
     }
-
-    public void setaddress(addressJSON ad) {
+    /**
+     * Set Method for address
+     * @param ad : customer address
+     */
+    public void setaddress(addressJSON ad){
         address = ad;
     }
-
-    public addressJSON getaddress() {
+    /**
+     * Get Method that returns address
+     * @return address : customer address
+     */
+    public addressJSON getaddress(){
         return address;
     }
-
-    public void setemail(String em) {
+    /**
+     * Set Method for email
+     * @param em : customer email
+     */
+    public void setemail(String em){
         email = em;
     }
-
-    public String getemail() {
+    /**
+     * Get Method that returns email
+     * @return email : customer Email
+     */
+    public String getemail(){
         return email;
     }
-
-    public void setcreditC(String cno) {
+    /**
+     * Set Method for CreditCart
+     * @param cno : credit card
+     */
+    public void setcreditC(String cno){
         creditC = cno;
     }
-
-    public String getcreditC() {
+    /**
+     * Get Method for credit card
+     * @return creditC : credit card
+     */
+    public String getcreditC(){
         return creditC;
     }
-
-    //Display Methods
-    public void display() {
-        System.out.println("Customer ID " + getcid());
-        System.out.println("Customer Name " + getcustName());
-        System.out.println("Customer Address " + getaddress().toString());
-        System.out.println("Customer email " + getemail());
-        System.out.println("Customer Credit Card # " + getcreditC());
-        System.out.println("username " + getpassword());
-        System.out.println("Password " + getpassword());
+    
+    /**
+     * Display Method
+     */
+    public void display(){
+        System.out.println("Customer ID "+ getcid());
+        System.out.println("Customer Name "+ getcustName());
+        System.out.println("Customer Address "+ getaddress());
+        System.out.println("Customer email "+ getemail());
+        System.out.println("Customer Credit Card # "+ getcreditC());
+        System.out.println("username "+ getpassword());
+        System.out.println("Password "+ getpassword());
     }
-
-    public boolean getIsAdmin() {
+    
+    /**
+     * Get method that returns false for admin
+     * @return false
+     */
+    public boolean getIsAdmin(){
         return false;
     }
-
-    public void setpassword(String pass) {
+    /**
+     * Set Method for password
+     * @param pass : password
+     */
+    public void setpassword(String pass){
         password = pass;
     }
-
-    public String getpassword() {
+    /**
+     * Get Method for password
+     * @return password
+     */
+    public String getpassword(){
         return password;
     }
-
-    public void setusername(String user) {
+    /**
+     * Set Method for username
+     * @param user : username
+     */
+    public void setusername(String user){
         username = user;
     }
-
-    public String getusername() {
+    /**
+     * Get Method that returns username
+     * @return username
+     */
+    public String getusername(){
         return username;
     }
 }

@@ -18,17 +18,32 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- *
+ * OrderDAOImpl class implements OrderDAO
  * @author Hayden Kowalchuk
  */
 public class OrderDAOImpl implements OrderDAO {
 
+    /**
+     * Property
+     */
     private Connection connection;
 
+    /**
+     * Constructor with parameter
+     * @param connect 
+     */
     public OrderDAOImpl(Connection connect) {
         connection = connect;
     }
 
+    /**
+     * extractOrderFromResultSet method
+     * this method passes ResultSet object and get Id, customer Id, orderjson, status, total, and date
+     * from the resultSet and set all the values to Order object and return them
+     * @param rs: ResultSet
+     * @return order
+     * @throws SQLException 
+     */
     private Order extractOrderFromResultSet(ResultSet rs) throws SQLException {
         Order order = new Order();
         order.setID(rs.getInt("id"));
@@ -40,6 +55,11 @@ public class OrderDAOImpl implements OrderDAO {
         return order;
     }
 
+    /**
+     * {@inheritDoc} getAllOrders method
+     * this method connects to the database and get all orders
+     * @return orders
+     */
     @Override
     public Set<Order> getAllOrders() {
         connection = ConnectionManager.getConnection();
@@ -60,6 +80,12 @@ public class OrderDAOImpl implements OrderDAO {
         return null;
     }
 
+    /**
+     * {@inheritDoc} getAllOrdersByCustomer method
+     * this method passes id and passes and get all orders by the customers
+     * @param id: customer ID
+     * @return orders
+     */
     @Override
     public Set<Order> getAllOrdersByCustomer(int id) {
         connection = ConnectionManager.getConnection();
@@ -81,6 +107,12 @@ public class OrderDAOImpl implements OrderDAO {
         return null;
     }
 
+    /**
+     * {@inheritDoc} getOrderByID method
+     * this method passes id and get all orders by id
+     * @param id
+     * @return order
+     */
     @Override
     public Order getOrderByID(int id) {
         connection = ConnectionManager.getConnection();
@@ -98,6 +130,11 @@ public class OrderDAOImpl implements OrderDAO {
         return null;
     }
     
+    /**
+     * getMostRecentOrder method
+     * this method connects to the database and get all recent data from orders
+     * @return order
+     */
     public Order getMostRecentOrder() {
         connection = ConnectionManager.getConnection();
         try {
@@ -114,6 +151,12 @@ public class OrderDAOImpl implements OrderDAO {
         return null;
     }
 
+    /**
+     * {@inheritDoc} inssertOrder method
+     * this method passes order object and insert each values
+     * @param order
+     * @return 
+     */
     @Override
     public boolean insertOrder(Order order) {
         int numUpdated = 0;
@@ -133,6 +176,12 @@ public class OrderDAOImpl implements OrderDAO {
         return numUpdated > 0;
     }
     
+    /**
+     * {@inheritDoc} updateOrder method
+     * this method passes order object and update the values
+     * @param order
+     * @return numUpdated > 0
+     */
     @Override
     public boolean updateOrder(Order order) {
         int numUpdated = 0;
@@ -153,6 +202,12 @@ public class OrderDAOImpl implements OrderDAO {
         return numUpdated > 0;
     }
 
+    /**
+     * {@inheritDoc} deleteOrder method
+     * this method passes order object and delete the order
+     * @param order
+     * @return numUpdated > 0
+     */
     @Override
     public boolean deleteOrder(Order order) {
         int numUpdated = 0;

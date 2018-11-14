@@ -371,7 +371,7 @@ input::-webkit-input-placeholder {
 }
 .faq_nav h3 {
     text-align: center;
-    text-shadow: 1px 1px #8080ff;
+    font-weight: 700;
 }
 .faq_nav ul {
     list-style: none;

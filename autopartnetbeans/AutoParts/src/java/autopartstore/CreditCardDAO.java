@@ -11,7 +11,7 @@ package autopartstore;
 import java.util.Set;
 
 /**
- *
+ * interface CreditCardDAO
  * @author Hayden Kowalchuk
  */
 public interface CreditCardDAO {
