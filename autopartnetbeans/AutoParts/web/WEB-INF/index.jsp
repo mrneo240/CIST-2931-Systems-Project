@@ -1,7 +1,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page trimDirectiveWhitespaces="true"%>
-<%@ include file="WEB-INF/headerTemplate.jsp" %>
+<%@ include file="headerTemplate.jsp" %>
 
 <div class='main-container'>
     <div id="slideshow-wrapper" class='relative'>
@@ -31,29 +31,26 @@
             <div id="circle3" class="circle"></div>
         </div>
     </div>
-</div>
-<div class="row text-center feature-imgs">
+    <div class="row text-center feature-imgs">
     <h2>Feature Items</h2>
-    <div class="col-sm-4 col-xs-6">
-        <div class="thumbnail">
-            <div class="ThumbContainer"><img height="inherit" width="100%"  src="https://www.autozone.com/images/MEDIA_ProductCatalog/m9880016_deals-v47.png"></div>
-            <p><strong>Full Synthetic Oil</strong></p>
-            <button class="btn">Add to cart</button>
-        </div>
-    </div>
-    <div class="col-sm-4 col-xs-6">
-        <div class="thumbnail">
-            <div class="ThumbContainer"><img height="inherit" width="100%"  src="https://www.autozone.com/images/MEDIA_ProductCatalog/m3490247_prd-Alternator.jpg"></div>
-            <p><strong>Alternator</strong></p>
-            <button class="btn">Add to cart</button>
-        </div>
-    </div>
-    <div class="col-sm-4 col-xs-6">
-        <div class="thumbnail">
-            <div class="ThumbContainer"><img height="inherit" width="100%"  src="https://www.autozone.com/images/MEDIA_ProductCatalog/m3490609_prd-Idler-Pulley.jpg"></div>
-            <p><strong>Pulley</strong></p>
-            <button class="btn">Add to cart</button>
-        </div>
-    </div>
+    <c:if test="${featureItems != null}">
+            <c:forEach items="${featureItems}" var="item">
+                <div class="col-sm-4 col-xs-6">
+                    <div class="thumbnail">
+                        <form action="ShoppingCartServlet" method="post">
+                            <input type="hidden" name="action" value="add">
+                            <input type="hidden" name="id" value="${item.getPartCode()}"/>
+                            <input type="hidden" name="department" value="${item.getDept()}" />
+                            <div class="ThumbContainer"><img height="inherit" width="100%"  src="${item.getphoto()}"></div>
+                            <p><strong>${item.getName()}</strong></p>
+                            <p>${item.getDesc()}</p>
+                            <button class="btn" name="addToCart" type="submit"><strong>$${item.getPrice()}<input type="hidden" name="price" value="${item.getPrice()}"/></strong> - Add to cart</button>
+                        </form>
+                    </div>
+                </div>
+            </c:forEach>
+        </c:if>
 </div>
-<%@ include file="WEB-INF/footerTemplate.jsp" %>
+</div>
+
+<%@ include file="footerTemplate.jsp" %>

@@ -18,6 +18,7 @@ public interface ItemDAO {
     Set<Item> getAllItems();
     Set<Item> getAllItemsByDept(String Dept);
     Set<Item> getItemsBySearchParam(String search);
+    Set<Item> getItemsByFeatured();
     Item getItemByID(int id);
     Item getItemByPartCode(String code);
     boolean insertItem(Item item);

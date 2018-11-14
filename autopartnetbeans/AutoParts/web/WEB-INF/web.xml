@@ -32,6 +32,10 @@
         <servlet-name>updateOrderServlet</servlet-name>
         <servlet-class>updateOrderServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>indexServlet</servlet-name>
+        <servlet-class>indexServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>loginServlet</servlet-name>
         <url-pattern>/login.jsp</url-pattern>
@@ -70,6 +74,10 @@
     <servlet-mapping>
         <servlet-name>updateOrderServlet</servlet-name>
         <url-pattern>/updateOrderServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>indexServlet</servlet-name>
+        <url-pattern>/index.jsp</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -58,9 +58,9 @@ public class ItemDAOImpl implements ItemDAO {
         item.setDesc(rs.getString("description"));
         item.setPrice(rs.getDouble("price"));
         String dftphoto = rs.getString("photo");
-        if(dftphoto == null){
+        if (dftphoto == null) {
             dftphoto = "https://img.clipartxtras.com/f668a365fed3b2830ea7e1aa6b0b0841_oops-sorry-clipart-clipartxtras-oops-clipart-funny_476-480.jpeg";
-        } else if(dftphoto.length() == 0 || dftphoto.equals("")) {
+        } else if (dftphoto.length() == 0 || dftphoto.equals("")) {
             dftphoto = "https://img.clipartxtras.com/f668a365fed3b2830ea7e1aa6b0b0841_oops-sorry-clipart-clipartxtras-oops-clipart-funny_476-480.jpeg";
         }
         item.setphoto(dftphoto);
@@ -139,7 +139,6 @@ public class ItemDAOImpl implements ItemDAO {
                 String searchTerms[] = search.split(" ");
                 for (String term : searchTerms) {
                     Statement stmt = connection.createStatement();
-                    System.out.printf("Searching [%s] for '%s'\n", table, term);
                     String state = "SELECT * FROM " + table + " WHERE (UPPER(partName) LIKE UPPER('%" + term + "%') "
                             + "OR UPPER(description) LIKE UPPER('%" + term + "%'))";
                     ResultSet rs = stmt.executeQuery(state);
@@ -165,6 +164,32 @@ public class ItemDAOImpl implements ItemDAO {
      * @param item
      * @return numUpdated > 0
      */
+    @Override
+    public SortedSet<Item> getItemsByFeatured() {
+        connection = ConnectionManager.getConnection();
+        SortedSet<Item> items = new TreeSet<>(Comparator.comparing(Item::getName));
+        try {
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery("(SELECT ID, partCode, dept, partName, description, price, photo FROM Exterior ORDER BY RND(10) LIMIT 1)"
+                    + " UNION ALL "
+                    + "(SELECT ID, partCode, dept, partName, description, price, photo FROM Engine ORDER BY RND(10) LIMIT 1)"
+                    + " UNION ALL "
+                    + "(SELECT ID, partCode, dept, partName, description, price, photo FROM Interior ORDER BY RND(10) LIMIT 1)"
+                    + " UNION ALL "
+                    + "(SELECT ID, partCode, dept, partName, description, price, photo FROM Maintenance ORDER BY RND(10) LIMIT 1) LIMIT 3");
+            while (rs.next()) {
+                Item item = extractItemFromResultSet(rs);
+                items.add(item);
+            }
+            rs.close();
+            stmt.close();
+            return items;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    }
+
     @Override
     public boolean insertItem(Item item) {
         int numUpdated = 0;

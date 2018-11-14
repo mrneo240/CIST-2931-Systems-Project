@@ -13,6 +13,7 @@ import autopartstore.json.ItemJSON;
 import autopartstore.ShoppingCart;
 import autopartstore.db.ConnectionManager;
 import autopartstore.json.OrderJSON;
+import autopartstore.json.addressJSON;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.io.IOException;
@@ -57,6 +58,17 @@ public class orderCheckoutServlet extends HttpServlet {
             order.setItems(tmp);
 
             order.synchronize();
+            
+            String address = (String)(request.getParameter("address"));
+            String city = (String)(request.getParameter("city"));
+            String zip = (String)(request.getParameter("zip_code"));
+            String state = (String)(request.getParameter("state"));
+            String email = (String)(request.getParameter("email"));
+            
+            order.getOrderDetails().name = (String)(request.getParameter("name"));
+            order.getOrderDetails().address = (new addressJSON(address,city,state, zip).toString());
+            order.getOrderDetails().email = email;
+            order.getOrderDetails().creditCard = (String)(request.getParameter("card_number"));
 
             String orderJSON = gson.toJson(order);
 
@@ -78,9 +90,12 @@ public class orderCheckoutServlet extends HttpServlet {
             tmpNew.synchronize();
             tmpNew.setID(orderNew.getID());
 
-
             session.setAttribute("cart", null);
             request.setAttribute("order", tmpNew);
+            
+            session.setAttribute("displayAlert", true);
+            session.setAttribute("alertType", "alert-success");
+            session.setAttribute("alertMessage", "Order Placed and a copy of the Invoice emailed to "+email+"!"/*<a href=\"#\" class=\"alert-link\">Test Link</a>*/);
         }
 
         request.getRequestDispatcher("WEB-INF/orderConfirm.jsp").forward(request, response);

@@ -10,6 +10,7 @@
 import autopartstore.Customer;
 import autopartstore.CustomerDAOImpl;
 import autopartstore.db.ConnectionManager;
+import autopartstore.json.addressJSON;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -78,7 +79,12 @@ public class signupServlet extends HttpServlet {
             String username = request.getParameter("username").trim();
             String password = request.getParameter("password").trim();
             String passwordConfirm = request.getParameter("confirm").trim();
-            String address = request.getParameter("address").trim();
+            String addr_street = request.getParameter("addr_street").trim();
+            String addr_city = request.getParameter("addr_city").trim();
+            String addr_state = request.getParameter("addr_state").trim();
+            String addr_zip = request.getParameter("addr_zip").trim();
+            addressJSON address = new addressJSON(addr_street,addr_city,addr_state, addr_zip);
+            
             Connection temp = ConnectionManager.init(this.getServletContext());
             CustomerDAOImpl customerDAO = new CustomerDAOImpl(temp);
 

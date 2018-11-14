@@ -9,6 +9,9 @@
 package autopartstore;
 
 import autopartstore.db.ConnectionManager;
+import autopartstore.json.addressJSON;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -24,6 +27,7 @@ import java.util.Set;
 public class CustomerDAOImpl implements CustomerDAO {
 
     Connection connection;
+    Gson gson;
 
     /**
      * Constructor with Connection Object Parameter
@@ -31,6 +35,7 @@ public class CustomerDAOImpl implements CustomerDAO {
      */
     public CustomerDAOImpl(Connection connect) {
         connection = connect;
+        gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
     }
 
     /**
@@ -46,7 +51,8 @@ public class CustomerDAOImpl implements CustomerDAO {
         customer.setcustName(rs.getString("name"));
         customer.setusername(rs.getString("username"));
         customer.setpassword(rs.getString("password"));
-        customer.setaddress(rs.getString("address"));
+        addressJSON tmp = gson.fromJson(rs.getString("address"), addressJSON.class);
+        customer.setaddress(tmp);
         customer.setemail(rs.getString("email"));
         customer.setcreditC(rs.getString("creditcard"));
         return customer;
@@ -98,10 +104,10 @@ public class CustomerDAOImpl implements CustomerDAO {
             stmt.close();
         } catch (SQLException ex) {
             ex.printStackTrace();
-        } 
+        }
         return getCustomerError();
     }
-    
+
     /**
      * getCustomerByUsername Method
      * this method passes username and connects to the database.
@@ -110,6 +116,7 @@ public class CustomerDAOImpl implements CustomerDAO {
      * @param user
      * @return extractCustomerFromResultSet(rs)
      */
+
     public Customer getCustomerByUsername(String user) {
         connection = ConnectionManager.getConnection();
         try {
@@ -153,6 +160,7 @@ public class CustomerDAOImpl implements CustomerDAO {
      * Get Method that returns error message with customer name
      * @return error
      */
+
     public Customer getCustomerError() {
         Customer error = new Customer();
         error.setcustName("ERROR");
@@ -174,7 +182,7 @@ public class CustomerDAOImpl implements CustomerDAO {
             Statement stmt = connection.createStatement();
             numUpdated = stmt.executeUpdate("INSERT INTO customers (ID, name, username, password, email, address, creditcard) "
                     + "VALUES ('" + customer.getcid() + "','" + customer.getcustName() + "','" + customer.getusername()
-                    + "','" + customer.getpassword() + "','" + customer.getemail() + "','" + customer.getaddress()
+                    + "','" + customer.getpassword() + "','" + customer.getemail() + "','" + gson.toJson(customer.getaddress())
                     + "','" + customer.getcreditC() + "')\n");
             stmt.close();
         } catch (SQLException ex) {
@@ -198,7 +206,7 @@ public class CustomerDAOImpl implements CustomerDAO {
             Statement stmt = connection.createStatement();
             numUpdated = stmt.executeUpdate("UPDATE customers SET name = '" + customer.getcustName() + "',"
                     + " username = '" + customer.getusername() + "', password = '" + customer.getpassword()
-                    + "', address = '" + customer.getaddress() + "', email = '" + customer.getemail() + "',"
+                    + "', address = '" + gson.toJson(customer.getaddress()) + "', email = '" + customer.getemail() + "',"
                     + " creditcard = '" + customer.getcreditC() + "'  WHERE id=" + customer.getcid());
             stmt.close();
         } catch (SQLException ex) {

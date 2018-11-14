@@ -67,7 +67,6 @@
                                     </ul></li>
                                 </c:if>
                         </ul>
-
                         <form class="navbar-form pull-right" role="search" action="searchItemServlet" method="post">
                             <div class="input-group">
                                 <input type="text" class="form-control" placeholder="Search..." name="searchTerm">

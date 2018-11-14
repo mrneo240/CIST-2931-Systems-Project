@@ -1,5 +1,7 @@
-
 package autopartstore;
+
+import autopartstore.json.addressJSON;
+
 /*
  Advance Projects
 Auto Parts Store 
@@ -10,9 +12,10 @@ public class Customer implements java.io.Serializable {
     /**
      * Properties
      */
+
     private int cid;
     private String custName;
-    private String address;
+    private addressJSON address;
     private String email;
     private String creditC;
     private String username;
@@ -24,7 +27,7 @@ public class Customer implements java.io.Serializable {
     public Customer(){
         cid = 0;
         custName = "";
-        address = "";
+        address = new addressJSON();
         email = "";
         creditC = "";
         password = "";
@@ -43,7 +46,7 @@ public class Customer implements java.io.Serializable {
     public Customer(int i, String cn, String add, String em, String cc, String user, String pass){
         cid = i;
         custName = cn;
-        address = add;
+        address = addr;
         email = em;
         creditC = cc;
         password = pass;
