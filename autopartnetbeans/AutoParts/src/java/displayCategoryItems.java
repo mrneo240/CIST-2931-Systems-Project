@@ -31,7 +31,7 @@ public class displayCategoryItems extends HttpServlet {
         Set<Item> featureItems = new HashSet();
         ItemDAOImpl itemDAO = new ItemDAOImpl(ConnectionManager.init(this.getServletContext()));
 
-        // Database operations using JDBC
+        /*** Database operations using JDBC ***/
         try {
 
             if (cat.length() != 0) {
@@ -56,7 +56,7 @@ public class displayCategoryItems extends HttpServlet {
                 session.setAttribute("featureItems", null);
             }
 
-        } // Database operations completed
+        } /*** Database operations completed ***/
         catch (Exception e) {
             e.printStackTrace();
         }

@@ -40,7 +40,7 @@ public class loginServlet extends HttpServlet {
             HttpServletResponse response) throws ServletException, IOException {
         finishRequest(request, response);
     }
-
+/*** Login in log out sessions ***/
     @Override
     protected void doPost(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
@@ -56,9 +56,10 @@ public class loginServlet extends HttpServlet {
             CustomerDAOImpl customerDAO = new CustomerDAOImpl(ConnectionManager.init(this.getServletContext()));
             OrderPickerDAOImpl pickerDAO = new OrderPickerDAOImpl(ConnectionManager.init(this.getServletContext()));
             Customer customer = customerDAO.getCustomerByUsername(user_id);
-
+            
+            /*** check for customer with user name ***/
             if (customer.getcustName().equals("ERROR")) {
-                //Found as a picker though
+                /*** Check to see if its order picker ***/ 
                 Customer orderpicker = (Customer) pickerDAO.getOrderPickerByUsername(user_id);
                 if (orderpicker != null) {
                     if (orderpicker.getpassword().equals(password)) {
