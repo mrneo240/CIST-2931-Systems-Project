@@ -1,7 +1,7 @@
 # The E-Commerce Application – On-line Auto Parts Store
 
 ## Project Description: 
-
+### Team Project Adv Java
 A Web Application that may be used by Customer looking to purchase Auto Parts, and also an internal Order Processing Person, whose job is to fulfill the on-line orders placed by Customers.
 
 ------------
